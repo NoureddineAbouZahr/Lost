@@ -15,7 +15,7 @@ async function addSub(body){
 }
 async function getSubs(id){
     const c=await Category.findById(id).populate('Subs');
-    return u.Subs;
+    return c.Subs;
 }
 module.exports={
     addSub,
