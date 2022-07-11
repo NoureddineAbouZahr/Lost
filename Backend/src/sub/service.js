@@ -1,5 +1,6 @@
 const Sub = require('../../model/Sub');
 const Cat=require('../../model/Category');
+const Category = require('../../model/Category');
 
 async function addSub(body){
     const{
@@ -11,4 +12,12 @@ async function addSub(body){
         cat,
     });
     return await contact.save();
+}
+async function getSubs(id){
+    const c=await Category.findById(id).populate('Subs');
+    return u.Subs;
+}
+module.exports={
+    addSub,
+    getSubs,
 }
