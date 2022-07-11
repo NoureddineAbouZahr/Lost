@@ -39,7 +39,10 @@ subid:{
 type:mongoose.Schema.Types.ObjectId,
 ref:'Sub'
 },
-//uid
+user:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
 
 });
 module.exports = mongoose.model('Item', itemSchema);

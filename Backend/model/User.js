@@ -21,5 +21,9 @@ const userSchema = new mongoose.Schema({
         min: 8,
         max: 1024,
     },
+    items: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Item'
+      }],
 });
 module.exports = mongoose.model('User', userSchema);
