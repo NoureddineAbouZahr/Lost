@@ -1,0 +1,1 @@
+const { getUsers, getById, addUser, getByEmail}= require('./service');
