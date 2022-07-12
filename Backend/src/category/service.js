@@ -14,7 +14,7 @@ async function addCategory(body) {
     });
     return await cat.save();
 }
-module.exports={
+module.exports = {
     getCats,
     addCategory,
 }
