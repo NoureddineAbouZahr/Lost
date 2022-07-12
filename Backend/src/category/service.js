@@ -14,3 +14,7 @@ async function addCategory(body) {
     });
     return await cat.save();
 }
+module.exports={
+    getCats,
+    addCategory,
+}
