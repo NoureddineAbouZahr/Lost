@@ -24,11 +24,24 @@ async function add(req, res) {
 }
 async function get(req, res) {
     try {
-      console.log(req.query);
-      const result = await getItems();
-      console.log('result =>', result);
-      return res.send(result);
+        console.log(req.query);
+        const result = await getItems();
+        console.log('result =>', result);
+        return res.send(result);
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
-  }
+}
+
+async function removeItem(req, res) {
+    try {
+        const item = await Item.findOne({ _id: req.query.id });
+
+        const deleteResult = await item.remove();
+
+        return res.send('item removed');
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
