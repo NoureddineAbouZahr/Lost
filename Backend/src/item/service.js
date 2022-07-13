@@ -31,3 +31,6 @@ async function addItem(body) {
     });
     return await item.save();
 }
+async function getItems(){
+    return await Item.find().populate('subCategories')
+}
