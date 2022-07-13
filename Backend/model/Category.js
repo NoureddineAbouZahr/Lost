@@ -13,10 +13,10 @@ const categorySchema = new mongoose.Schema({
         required: true,
     },
     //subCategories: [subCategoriesSchema],
-    subid:{
+    subid:[{
         type: mongoose.Schema.Types.ObjectId,
         ref:'Sub'
-    },
+    }],
 });
 
 module.exports = mongoose.model('Category', categorySchema);
