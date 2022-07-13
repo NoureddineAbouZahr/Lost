@@ -45,3 +45,21 @@ async function removeItem(req, res) {
         console.log(error);
     }
 }
+async function getbyUser(req, res) {
+    try {
+
+        const result = await getItemsbyUser(req.query.id);
+        console.log('result =>', result)
+        console.log('id', req.query.id)
+
+        return res.send(result);
+    } catch (error) {
+        console.log(error);
+    }
+}
+module.exports={
+    get,
+    add,
+    removeItem,
+    getbyUser,
+}
