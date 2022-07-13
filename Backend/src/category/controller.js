@@ -11,4 +11,12 @@ async function add(req, res) {
         res.status(500).send(error);
     }
 }
+async function get(req, res) {
+    try {
+        const result = await getCats();
+        return res.send(result);
+    } catch (error) {
+        console.log(error);
+    }
+}
 
