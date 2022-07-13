@@ -1,2 +1,14 @@
-const {addCategory,getCats}= require('./service');
-const Cat=require('../../model/Category');
+const { addCategory, getCats } = require('./service');
+const Cat = require('../../model/Category');
+
+async function add(req, res) {
+    try {
+        const newCat = await addCategory(req.body);
+
+        return res.status(200).send(newCat);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+}
+
