@@ -15,9 +15,20 @@ async function add(req, res) {
                 }
             }
         );
+        console.log('updateCategory =>', updateCategory);
         return res.status(200).send(newItem);
     } catch (error) {
         console.log(error);
         res.status(500).send(error);
     }
 }
+async function get(req, res) {
+    try {
+      console.log(req.query);
+      const result = await getItems();
+      console.log('result =>', result);
+      return res.send(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
