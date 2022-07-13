@@ -35,10 +35,10 @@ locationy:{
 status:{
     type:Int,
 },
-subid:{
+subid:[{
 type:mongoose.Schema.Types.ObjectId,
 ref:'Sub'
-},
+}],
 user:{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
