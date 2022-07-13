@@ -1,4 +1,5 @@
 const Item = require('../../model/Item');
+const User = require('../../model/User');
 
 async function addItem(body) {
     const {
@@ -33,4 +34,14 @@ async function addItem(body) {
 }
 async function getItems(){
     return await Item.find().populate('subCategories')
+}
+
+async function getItemsbyUser(id){
+    const u = await User.findById(id).populate('Items');
+    return u.items;
+}
+module.exports={
+    addItem,
+    getItems,
+    getItemsbyUser,
 }
