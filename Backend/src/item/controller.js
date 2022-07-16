@@ -60,9 +60,9 @@ async function removeItem(req, res) {
 async function getbyUser(req, res) {
     try {
 
-        const result = await getItemsbyUser(req.query.id);
+        const result = await getItemsbyUser(req.body.user);
         console.log('result =>', result)
-        console.log('id', req.query.id)
+        console.log('id', req.body.user)
 
         return res.send(result);
     } catch (error) {

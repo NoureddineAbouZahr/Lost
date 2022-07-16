@@ -37,7 +37,8 @@ async function getItems(){
 }
 
 async function getItemsbyUser(id){
-    const u = await User.findById(id).populate('Items');
+    const u = await User.findById(id).populate('items');
+    console.log(u);
     return u.items;
 }
 module.exports={
