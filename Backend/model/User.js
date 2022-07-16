@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
         max: 1024,
     },
     items: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Item'
       }],
 });

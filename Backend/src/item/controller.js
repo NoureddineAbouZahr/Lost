@@ -1,11 +1,22 @@
 const { addItem, getItems, getItemsbyUser } = require('./service');
 const Sub = require('../../model/Sub');
+const User = require('../../model/User');
 const Item = require('../../model/Item');
 
 async function add(req, res) {
     try {
         const newItem = await addItem(req.body);
         const updateSub = await Sub.updateMany(
+            {
+                _id: newItem.subid
+            },
+            {
+                $push: {
+                    items: newItem._id
+                }
+            }
+        );
+        const updateUser = await User.updateMany(
             {
                 _id: newItem.subid
             },
