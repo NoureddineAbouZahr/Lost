@@ -33,7 +33,7 @@ locationy:{
     required:true,
 },
 status:{
-    type:Int,
+    type:Number,
 },
 subid:[{
 type:mongoose.Schema.Types.ObjectId,

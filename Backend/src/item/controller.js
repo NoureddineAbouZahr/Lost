@@ -7,7 +7,7 @@ async function add(req, res) {
         const newItem = await addItem(req.body);
         const updateSub = await Sub.updateMany(
             {
-                _id: newItem.subs
+                _id: newItem.subid
             },
             {
                 $push: {

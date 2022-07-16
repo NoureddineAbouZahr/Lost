@@ -7,7 +7,7 @@ const subSchema = new mongoose.Schema({
         required: true,
     },
     cid: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Category'
     },
     items:[{

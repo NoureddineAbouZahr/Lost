@@ -11,7 +11,7 @@ async function add(req, res) {
             },
             {
                 $push: {
-                    Subs: newSub._id
+                    subid: newSub._id
                 }
             }
         );

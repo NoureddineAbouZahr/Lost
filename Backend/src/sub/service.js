@@ -1,17 +1,16 @@
 const Sub = require('../../model/Sub');
-const Cat=require('../../model/Category');
 const Category = require('../../model/Category');
 
 async function addSub(body){
     const{
         name,
-        cat,
+        cid,
     }=body;
     const sub = new Sub({
         name,
-        cat,
+        cid,
     });
-    return await contact.save();
+    return await sub.save();
 }
 async function getSubs(id){
     const c=await Category.findById(id).populate('Subs');
