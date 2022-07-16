@@ -13,7 +13,7 @@ async function addItem(body) {
         locationx,
         locationy,
         status,
-        sub,
+        subid,
         user,
     } = body;
     const item = new Item({
@@ -27,13 +27,13 @@ async function addItem(body) {
         locationx,
         locationy,
         status,
-        sub,
+        subid,
         user,
     });
     return await item.save();
 }
 async function getItems(){
-    return await Item.find().populate('subCategories')
+    return await Item.find().populate('subid')
 }
 
 async function getItemsbyUser(id){

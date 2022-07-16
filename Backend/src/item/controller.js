@@ -18,7 +18,7 @@ async function add(req, res) {
         );
         const updateUser = await User.updateMany(
             {
-                _id: newItem.subid
+                _id: newItem.user
             },
             {
                 $push: {
@@ -26,7 +26,8 @@ async function add(req, res) {
                 }
             }
         );
-        console.log('updateCategory =>', updateCategory);
+        console.log('updateCategory =>', updateSub);
+        console.log('updateUser =>', updateUser);
         return res.status(200).send(newItem);
     } catch (error) {
         console.log(error);
