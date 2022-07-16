@@ -36,11 +36,11 @@ status:{
     type:Number,
 },
 subid:[{
-type:mongoose.Schema.Types.ObjectId,
+type:mongoose.Types.ObjectId,
 ref:'Sub'
 }],
 user:{
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Types.ObjectId,
     ref: 'User'
   },
 
