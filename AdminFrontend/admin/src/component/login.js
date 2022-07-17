@@ -9,6 +9,14 @@ const Login = () => {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
 
+    const onSubmit=(e)=>{
+        if(!email || !password){
+            alert("no entered data")
+            return
+        }
+       
+    }
+
     return (
         <div className="loginBody">
             <div className="logo">
