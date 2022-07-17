@@ -8,11 +8,12 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const e = document.getElementById('email');
+    const em = document.getElementById('email');
     const p = document.getElementById('password');
 
     const onSubmit = (e) => {
         if (!email || !password) {
+            e.preventDefault();
             alert("no entered data");
             return
         }
@@ -24,7 +25,7 @@ const Login = () => {
         }
         setEmail('');
         setPassword('');
-        e.value = '';
+        em.value = '';
         p.value = '';
         axios({
             method: "post",
@@ -32,10 +33,11 @@ const Login = () => {
             data,
         }).then(function (response) {
             localStorage.clear();
-            localStorage.setItem('token', response.data);
+            localStorage.setItem('tokeeeeen', response.data);
+            
             window.location = "/admin";
         }).catch(function (error) {
-            alert(error)
+            alert('invalid email or password');
         })
 
     }
@@ -45,7 +47,7 @@ const Login = () => {
             <div className="logo">
             </div>
             <img src={logo} alt="logo" className="lgo" />
-            <form action="">
+            <form action="" className="lgn-container" onSubmit={onSubmit}>
 
                 <div className="form-inner">
 
