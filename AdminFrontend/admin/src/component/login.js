@@ -8,8 +8,8 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const e=document.getElementById('email');
-    const p=document.getElementById('password');
+    const e = document.getElementById('email');
+    const p = document.getElementById('password');
 
     const onSubmit = (e) => {
         if (!email || !password) {
@@ -18,14 +18,25 @@ const Login = () => {
         }
         e.preventDefault();
 
-        let data={
-            email:email,
-            password:password
+        let data = {
+            email: email,
+            password: password
         }
         setEmail('');
         setPassword('');
-        e.value='';
-        p.value='';
+        e.value = '';
+        p.value = '';
+        axios({
+            method: "post",
+            url: "http://localhost:3001/api/users/login",
+            data,
+        }).then(function (response) {
+            localStorage.clear();
+            localStorage.setItem('token', response.data);
+            window.location = "/admin";
+        }).catch(function (error) {
+            alert(error)
+        })
 
     }
 
