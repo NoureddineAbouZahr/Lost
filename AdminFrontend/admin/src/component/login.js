@@ -18,7 +18,7 @@ const Login = () => {
 
             <div className="form-inner">
                 
-                <div className='hc'><h2>Log In</h2>
+                <div className='hc'>
                 </div>
                 {/* Error! */}
                 <div className="form-control">
