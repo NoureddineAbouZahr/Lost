@@ -25,12 +25,56 @@ code {
 .form-inner{
   background-color: white;
   padding: 20px;
+  width: 400px;
   
 }
 .form-control {
-  margin: 50px 0;
+  margin: 20px 0;
+  
 }
 
 .form-control label {
   display: block;
 }
+.form-control input {
+  width: 100%;
+  height: 50px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 18px;
+  border: none;
+/* border-radius: 5px; */
+  background: rgb(220, 220, 220);
+  outline: none;
+  }
+  .btn{
+    width: 100%;
+    height: 50px;
+    margin: 5px;
+    padding: 3px 7px;
+    font-size: 18px;
+    border: solid 3px rgb(239, 209, 111); 
+    /* border-radius: 5px; */
+    background-color: rgb(167,160,159);
+  }
+.logo{background-color:rgb(167,160,159) ;
+  position: absolute;
+border-radius: 50%;
+height: 100px;
+width: 100px;
+top: 16.5%;
+opacity: 0.95;
+
+}
+  .lgo{
+    width: 110px;
+    height: 80px;
+    margin-top: 10px;
+    position: absolute;
+    top: 17%;
+    
+  }
+
+
+
+
