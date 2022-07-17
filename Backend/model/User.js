@@ -21,6 +21,9 @@ const userSchema = new mongoose.Schema({
         min: 8,
         max: 1024,
     },
+    role:{
+        type:String,
+    },
     items: [{
         type: mongoose.Types.ObjectId,
         ref: 'Item'

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import axios from "axios";
-import logo from './assets/logo.png'
-import React from 'react'
+import logo from './assets/logo.png';
+import React from 'react';
+import jwt from "jwt-decode";
 
 const Login = () => {
 
@@ -34,7 +35,9 @@ const Login = () => {
         }).then(function (response) {
             localStorage.clear();
             localStorage.setItem('tokeeeeen', response.data);
+            var role=jwt(response.data).role;
             
+            alert(role);
             window.location = "/admin";
         }).catch(function (error) {
             alert('invalid email or password');

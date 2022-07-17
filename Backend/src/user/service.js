@@ -11,13 +11,15 @@ async function addUser(body, hashPassword) {
     name,
     email,
     phone,
+    role,
   } = body;
 
   const user = new User({
     name,
     email,
     phone,
-    password: hashPassword
+    password: hashPassword,
+    role
   });
 
   return await user.save();
