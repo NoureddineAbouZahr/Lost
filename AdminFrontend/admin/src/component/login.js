@@ -33,12 +33,14 @@ const Login = () => {
             url: "http://localhost:3001/api/users/login",
             data,
         }).then(function (response) {
+            var role=jwt(response.data).role;
+            if(role=="admin"){
             localStorage.clear();
             localStorage.setItem('tokeeeeen', response.data);
-            var role=jwt(response.data).role;
             
-            alert(role);
-            window.location = "/admin";
+            
+            window.location.href = "/admin";}
+            else alert("you are not authorized");
         }).catch(function (error) {
             alert('invalid email or password');
         })
