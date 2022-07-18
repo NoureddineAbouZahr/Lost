@@ -24,9 +24,19 @@ const Categories = () => {
             <div className='ic' key={category._id}>
               <details>
                 <summary>{category.name}</summary>
+                <div className="det">
+                <div>
                 {category.subid.map(sub => (
                   <p key={sub._id}>{sub.name}</p>
+
                 ))}
+                </div>
+                <form action="">
+                  <label htmlFor="">Sub Category Name</label>
+                  <input type="text" />
+                  <input type="submit" value="Add" />
+                </form>
+                </div>
               </details>
             </div>
           ))

@@ -310,3 +310,39 @@ details details summary{
   padding: 10px;
   text-align: left;
 }
+
+.det form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+.det form > * {
+  margin-block: 5px;
+}
+
+input[type=submit] {
+  background-color:  rgb(220, 220, 220);
+  border: 0;
+  padding: 10px;
+  box-shadow: 0px 2px 0 rgb(73, 70, 69);
+  border-radius: 5px;
+ 
+  cursor: pointer;
+}
+input[type=submit]:active {
+  box-shadow: none;
+  transform: translate(0px, 2px);
+}
+.det form input[type=text]{
+  width: 100%;
+  
+
+  padding: 3px 7px;
+  font-size: 18px;
+  border: none;
+  border-radius: 3px;
+  background: rgb(220, 220, 220);
+
+  outline: 1px solid grey;
+}
