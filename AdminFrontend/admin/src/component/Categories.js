@@ -47,7 +47,12 @@ const Categories = () => {
 
                 ))}
                 </div>
-                <form action="" onSubmit={e => onSubmit(e, category._id, e.target.querySelector('input[type=text]').value)} >
+                <form action="" onSubmit={e => {
+                  const name = e.target.querySelector('input[type=text]').value;
+                  onSubmit(e, category._id, name);
+
+                  e.target.previousSibling.innerHTML += `<p>${name}</p>`;
+                }} >
                   <label htmlFor="">Sub Category Name</label>
                   <input type="text" />
                   <input type="submit" value="Add" />
