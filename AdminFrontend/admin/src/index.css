@@ -177,3 +177,20 @@ code {
   box-shadow: 0 -17px 0 rgb(130, 127, 98);
 
 }
+.cats{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: rgb(239, 209, 111);
+  height: 100vh;
+}
+.cc {
+  position: relative;
+  margin-left: 60px;
+  text-align: center;
+  width: 100%;
+  height: fit-content;
+  font-size: 3em;
+  margin-top: 20px;
+ 
+}
