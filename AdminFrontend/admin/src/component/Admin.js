@@ -1,8 +1,12 @@
 import React from 'react'
+import Navmenu from './Navmenu'
 
 const admin = () => {
   return (
-    <div>admin</div>
+    <div className='adminbody'>admin
+    <Navmenu />
+    </div>
+    
     
   )
 }
