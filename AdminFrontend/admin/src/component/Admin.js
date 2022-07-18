@@ -3,7 +3,7 @@ import Navmenu from './Navmenu'
 
 const admin = () => {
   return (
-    <div className='adminbody'>admin
+    <div className='adminbody'>
     <Navmenu />
     </div>
     
