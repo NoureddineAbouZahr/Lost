@@ -12,7 +12,15 @@ const Items = () => {
     const [zoom, setZoom] = useState(11);
     const [search, setSearch] = useState('');
 
-
+    useEffect(() => {
+        const getItems = async() => {
+            const res = await fetch("http://localhost:3001/api/items/getItems")
+            const data = await res.json();
+            setItem(data);
+            console.log(data)
+        };
+        getItems();
+    },[])
     return (
         <div className='items'>Items</div>
     )
