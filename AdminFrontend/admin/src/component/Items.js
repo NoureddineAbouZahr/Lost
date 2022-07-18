@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Items = () => {
     const navigate = useNavigate();
-    const [item, setItem] = useState([]);
+    const [items, setItems] = useState([]);
     const [center, setCenter] = useState([33.5571, 35.3729]);
     const [zoom, setZoom] = useState(11);
     const [search, setSearch] = useState('');
@@ -16,15 +16,25 @@ const Items = () => {
         const getItems = async () => {
             const res = await fetch("http://localhost:3001/api/items/getItems")
             const data = await res.json();
-            setItem(data);
-            console.log(data)
+            setItems(data);
+            console.log(items)
         };
         getItems();
     }, [])
     return (
         <div>
         <h2 className='ititle'>Lost Items</h2>
-        <div className='items'></div>
+        <div className='items'>
+            {items.map((item)=>{return(
+                
+                <div className='ic' key={item._id}>
+                    <p>{item.name}</p>
+                    <button className='view'>View Item</button>
+
+                    
+            </div>)
+    })}
+        </div>
         </div>
     )
 }
