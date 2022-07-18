@@ -1,13 +1,13 @@
 import React from 'react';
 import jwt from 'jwt-decode';
+import { useState } from 'react';
 /*import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {solid, regular, brands} from '@fortawesome/fontawesome-svg-core/import.macro'*/
 const Navmenu = () => {
-    const [name,setName]=useState();
-    const name=jwt(localStorage.getItem("tokeeeeen"));
+  
   return (
     <div className='sidebar'>
-        <h2>nav</h2>
+        <h2>{localStorage.getItem("name")}</h2>
         
         <ol>
             <li><a href='#'><i className=''></i>Admins</a></li>

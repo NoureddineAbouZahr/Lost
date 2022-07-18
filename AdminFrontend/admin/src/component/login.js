@@ -34,9 +34,11 @@ const Login = () => {
             data,
         }).then(function (response) {
             var role=jwt(response.data).role;
+            var name=jwt(response.data).name;
             if(role=="admin"){
             localStorage.clear();
             localStorage.setItem('tokeeeeen', response.data);
+            localStorage.setItem('name', name);
             
             
             window.location.href = "/admin";}
