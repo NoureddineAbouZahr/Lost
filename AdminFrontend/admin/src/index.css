@@ -93,7 +93,7 @@ code {
 .sidebar {
   position: absolute;
   height: 100%;
-  width: 300px;
+  width: 25%;
   background-color: rgb(167, 160, 159);
   border-radius: 0 100px 0 0;
 }
@@ -193,4 +193,14 @@ code {
   font-size: 3em;
   margin-top: 20px;
  
+}
+.items{
+  position: absolute;
+  background-color: white;
+  left: 27.5%;
+  top: 15%;
+  width: 70%;
+  height: 82.5%;
+  border-radius: 9px;
+  box-shadow:0px 0px 3px 2px grey;
 }
