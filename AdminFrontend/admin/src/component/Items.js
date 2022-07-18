@@ -17,7 +17,6 @@ const Items = () => {
             const res = await fetch("http://localhost:3001/api/items/getItems")
             const data = await res.json();
             setItems(data);
-            console.log(items)
         };
         getItems();
     }, [])
