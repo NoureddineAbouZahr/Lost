@@ -26,6 +26,7 @@ const Items = () => {
             <h2 className='ititle'>Lost Items</h2>
             <div className='items'>
                 {items.map((item) => {
+                    
                     return (
                     <div className='ic' key={item._id}>
                         <details>
@@ -33,18 +34,19 @@ const Items = () => {
                             <div className='data'>
                                 <div className='det'>
                                 <div>
-                                    <p><b>S.N: </b>{item.SerialNumber}</p>
-                                    <hr />
-                                    <p><b>Model: </b>{item.model}</p>
+                                    {item.SerialNumber?(<p><b>S.N: </b>{item.SerialNumber}</p>):(<p></p>)}
+                                    {item.SerialNumber?(<hr />):(<p></p>)}
+                                    {item.model?(<p><b>Model: </b>{item.model}</p>):(<p></p>)}
+                                    {item.brand?(<p><b>Brand: </b>{item.brand}</p>):(<p></p>)}
                                     <p><b>Color: </b>{item.color}</p>
-                                    {/* <p><b>Photo: </b>{item.pic}</p> */}
-                                    <p><b>Brand: </b>{item.brand}</p>
-                                    <hr />
-                                    <p><b>Extra: </b>{item.extraInfo}</p>
-                                    <p><b>Location:</b></p>
+                                    
+                                    {item.extraInfo?(<hr />): (<p></p>)}
+                                    {item.extraInfo?(<p><b>Extra: </b>{item.extraInfo}</p>): (<p></p>)}
+                                    
+                                    
                                 </div>
                                 <div>
-                                    <img src={logo} alt=""  />
+                                    <img src={`data:image/jpeg;base64,${item.pic}`} alt=""  />
                                 </div>
                             </div>
                             <details>

@@ -147,7 +147,7 @@ code {
 
 .sidebar ol li:hover {
   background-color: rgb(239, 209, 111);
-
+  transition: 400ms;
   border-left: 5px solid rgb(30, 32, 6);
 
 }
@@ -277,7 +277,14 @@ code {
   text-shadow: -1px 1px 0px lightgray;
 }
 .det img {
-  width: 100%;
+  width: 90%;
+}
+.det > div:nth-child(2) {
+  border: 2px solid rgb(205, 199, 199);
+  border-radius: 8px;
+}
+.det > div {
+  margin-block:15px;
 }
 
 
