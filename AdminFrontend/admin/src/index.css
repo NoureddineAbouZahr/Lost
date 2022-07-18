@@ -216,7 +216,7 @@ code {
   font-size: 2.5em;
 }
 .ic{
-  height: 70px;
+  padding: 30px;
   margin-left: 18px;
   box-shadow:0px 3px 9px 1px rgb(199, 198, 198) ;
   width: 90%;
@@ -226,7 +226,6 @@ code {
   justify-content: center;
   margin-top: 15px;
   text-transform: capitalize;
-  
  }
  .view{
   border: none;
@@ -248,7 +247,54 @@ code {
  details >summary{
   list-style: none;
   width: 100%;
+  font-weight: bold;
  }
  details{
   width: 100%;
  }
+ .ids{
+  text-align: left;
+  margin-left: 30px;
+  
+ }
+ .map{
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin: auto;
+ }
+ .det {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.det p, .det hr  {
+  text-align: left;
+  margin-left: 50%;
+  width: 50%;
+  transform: translateX(-50%);
+}
+.det b {
+  text-shadow: -1px 1px 0px lightgray;
+}
+.det img {
+  width: 100%;
+}
+
+
+details[open] summary ~ * {
+  animation: sweep .25s ease-out;
+}
+
+@keyframes sweep {
+  0%    {opacity: 0; margin-top: -10px}
+  100%  {opacity: 1; margin-top: 0px}
+}
+details details {
+  background-color: lightgray;
+  padding: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+details details summary{
+  padding: 10px;
+  text-align: left;
+}

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Map, Marker } from 'pigeon-maps';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-
+import logo from './assets/logo.png'
 
 const Items = () => {
     const navigate = useNavigate();
@@ -27,17 +27,47 @@ const Items = () => {
             <div className='items'>
                 {items.map((item) => {
                     return (
-                        <div className='ic' key={item._id}>
+                    <div className='ic' key={item._id}>
                         <details>
+                            <summary><span>{item.name}</span></summary>
+                            <div className='data'>
+                                <div className='det'>
+                                <div>
+                                    <p><b>S.N: </b>{item.SerialNumber}</p>
+                                    <hr />
+                                    <p><b>Model: </b>{item.model}</p>
+                                    <p><b>Color: </b>{item.color}</p>
+                                    {/* <p><b>Photo: </b>{item.pic}</p> */}
+                                    <p><b>Brand: </b>{item.brand}</p>
+                                    <hr />
+                                    <p><b>Extra: </b>{item.extraInfo}</p>
+                                    <p><b>Location:</b></p>
+                                </div>
+                                <div>
+                                    <img src={logo} alt=""  />
+                                </div>
+                            </div>
+                            <details>
+                                <summary>Location</summary>
+                                <div className='map'>
+                                    <Map
 
-                            <summary >                                
-                            <p>{item.name}</p>
-                            <button className='view'>View Item</button>
-                            </summary>
-                            <p></p>
+                                        center={[item.locationy, item.locationx]}
+                                        zoom={zoom}
+                                        onBoundsChanged={({ center, zoom }) => {
+                                            setCenter(center)
+                                            setZoom(zoom)
+                                        }}
+                                    >
+                                        <Marker width={50} anchor={[item.locationy, item.locationx
+                                        ]} />
+                                    </Map>
+                            </div>
+                            </details>
+                            </div>
                         </details>
-                        </div>
 
+                    </div>
                     )
                 })}
             </div>
