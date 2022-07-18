@@ -206,6 +206,7 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 
 }
 .ititle{
@@ -215,7 +216,7 @@ code {
   font-size: 2.5em;
 }
 .ic{
-  height: 50px;
+  height: 70px;
   margin-left: 18px;
   box-shadow:0px 3px 9px 1px rgb(199, 198, 198) ;
   width: 90%;
@@ -225,11 +226,13 @@ code {
   justify-content: center;
   margin-top: 15px;
   text-transform: capitalize;
+  
  }
  .view{
   border: none;
   background-color:rgb(245, 245, 224) ;
   height: 30px;
+  width: 100%;
   font-weight: 600;
   letter-spacing: 2px;
   box-shadow:0px -1px 7px -1px rgb(219, 215, 133);
@@ -241,4 +244,11 @@ code {
   box-shadow:0px 3px 9px 5px rgb(195, 196, 165) ;
   transition: 0.2s;
   cursor: pointer;
+ }
+ details >summary{
+  list-style: none;
+  width: 100%;
+ }
+ details{
+  width: 100%;
  }

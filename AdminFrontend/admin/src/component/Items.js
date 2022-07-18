@@ -23,18 +23,24 @@ const Items = () => {
     }, [])
     return (
         <div>
-        <h2 className='ititle'>Lost Items</h2>
-        <div className='items'>
-            {items.map((item)=>{return(
-                
-                <div className='ic' key={item._id}>
-                    <p>{item.name}</p>
-                    <button className='view'>View Item</button>
+            <h2 className='ititle'>Lost Items</h2>
+            <div className='items'>
+                {items.map((item) => {
+                    return (
+                        <div className='ic' key={item._id}>
+                        <details>
 
-                    
-            </div>)
-    })}
-        </div>
+                            <summary >                                
+                            <p>{item.name}</p>
+                            <button className='view'>View Item</button>
+                            </summary>
+                            <p></p>
+                        </details>
+                        </div>
+
+                    )
+                })}
+            </div>
         </div>
     )
 }
