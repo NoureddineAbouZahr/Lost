@@ -21,9 +21,12 @@ const Categories = () => {
       <div className='items'>
         {
           cats?.map((category) => (
-            <div className='ic'>
+            <div className='ic' key={category._id}>
               <details>
                 <summary>{category.name}</summary>
+                {category.subid.map(sub => (
+                  <p key={sub._id}>{sub.name}</p>
+                ))}
               </details>
             </div>
           ))
