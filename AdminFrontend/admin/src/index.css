@@ -203,4 +203,11 @@ code {
   height: 82.5%;
   border-radius: 9px;
   box-shadow:0px 0px 3px 2px grey;
+
+}
+.ititle{
+  position: absolute;
+  margin-top: 30px;
+  right: 32.5%;
+  font-size: 2.5em;
 }

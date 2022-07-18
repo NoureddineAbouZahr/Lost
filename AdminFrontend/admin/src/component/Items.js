@@ -13,16 +13,19 @@ const Items = () => {
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        const getItems = async() => {
+        const getItems = async () => {
             const res = await fetch("http://localhost:3001/api/items/getItems")
             const data = await res.json();
             setItem(data);
             console.log(data)
         };
         getItems();
-    },[])
+    }, [])
     return (
-        <div className='items'>Items</div>
+        <div>
+        <h2 className='ititle'>Lost Items</h2>
+        <div className='items'></div>
+        </div>
     )
 }
 
