@@ -6,11 +6,9 @@ import { Link } from 'react-router-dom';
 import logo from './assets/logo.png'
 
 const Items = () => {
-    const navigate = useNavigate();
     const [items, setItems] = useState([]);
     const [center, setCenter] = useState([33.5571, 35.3729]);
     const [zoom, setZoom] = useState(11);
-    const [search, setSearch] = useState('');
 
     useEffect(() => {
         const getItems = async () => {
