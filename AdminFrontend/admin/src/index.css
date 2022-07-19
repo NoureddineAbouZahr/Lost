@@ -184,13 +184,14 @@ code {
   box-shadow: 0 -17px 0 rgb(130, 127, 98);
 
 }*/
-.cats{ 
+.cats {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   background-color: rgb(239, 209, 111);
   height: 100vh;
 }
+
 .cc {
   position: relative;
   margin-left: 50%;
@@ -200,9 +201,10 @@ code {
   height: fit-content;
   font-size: 3em;
   margin-top: 20px;
- 
+
 }
-.items{
+
+.items {
   position: absolute;
   background-color: white;
   left: 27.5%;
@@ -210,24 +212,26 @@ code {
   width: 70%;
   height: 82.5%;
   border-radius: 9px;
-  box-shadow:0px 0px 3px 2px grey;
+  box-shadow: 0px 0px 3px 2px grey;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: auto;
 
 }
-.ititle{
+
+.ititle {
   position: absolute;
   margin-top: 30px;
   margin-left: 50%;
   transform: translateX(-50%) translateX(175px);
   font-size: 2.5em;
 }
-.ic{
+
+.ic {
   padding: 30px;
   margin-left: 18px;
-  box-shadow:0px 3px 9px 1px rgb(199, 198, 198) ;
+  box-shadow: 0px 3px 9px 1px rgb(199, 198, 198);
   width: 90%;
   text-align: center;
   display: flex;
@@ -235,82 +239,104 @@ code {
   justify-content: center;
   margin-top: 15px;
   text-transform: capitalize;
- }
- .view{
+}
+
+.view {
   border: none;
-  background-color:rgb(245, 245, 224) ;
+  background-color: rgb(245, 245, 224);
   height: 30px;
   width: 100%;
   font-weight: 600;
   letter-spacing: 2px;
-  box-shadow:0px -1px 7px -1px rgb(219, 215, 133);
+  box-shadow: 0px -1px 7px -1px rgb(219, 215, 133);
   transition: 0.2s;
   cursor: pointer;
 
- }
- .ic:hover{
-  box-shadow:0px 3px 9px 5px rgb(195, 196, 165) ;
+}
+
+.ic:hover {
+  box-shadow: 0px 3px 9px 5px rgb(195, 196, 165);
   transition: 0.2s;
   cursor: pointer;
- }
- details >summary{
+}
+
+details>summary {
   list-style: none;
   width: 100%;
   font-weight: bold;
- }
- details{
+}
+
+details {
   width: 100%;
- }
- .ids{
+}
+
+.ids {
   text-align: left;
   margin-left: 30px;
-  
- }
- .map{
+
+}
+
+.map {
   position: relative;
   width: 100%;
   height: 400px;
   margin: auto;
- }
- .det {
+}
+
+.det {
   display: grid;
   grid-template-columns: 50% 50%;
 }
-.det p, .det hr  {
+
+.det p,
+.det hr {
   text-align: left;
   margin-left: 50%;
   width: 50%;
   transform: translateX(-50%);
 }
+
 .det b {
   text-shadow: -1px 1px 0px lightgray;
 }
+
 .det img {
   width: 90%;
 }
-.det > div:nth-child(2) {
+
+.det>div:nth-child(2) {
   border: 2px solid rgb(205, 199, 199);
   border-radius: 8px;
 }
-.det > div {
-  margin-block:15px;
+
+.det>div {
+  margin-block: 15px;
 }
 
 
-details[open] summary ~ * {
+details[open] summary~* {
   animation: sweep .25s ease-out;
 }
 
 @keyframes sweep {
-  0%    {opacity: 0; margin-top: -10px}
-  100%  {opacity: 1; margin-top: 0px}
+  0% {
+    opacity: 0;
+    margin-top: -10px
+  }
+
+  100% {
+    opacity: 1;
+    margin-top: 0px
+  }
 }
+
 details details {
   background-color: lightgray;
   padding: 5px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
 }
-details details summary{
+
+details details summary {
   padding: 10px;
   text-align: left;
 }
@@ -321,26 +347,29 @@ details details summary{
   width: 50%;
   margin: auto;
 }
-.det form > * {
+
+.det form>* {
   margin-block: 5px;
 }
 
 input[type=submit] {
-  background-color:  rgb(220, 220, 220);
+  background-color: rgb(220, 220, 220);
   border: 0;
   padding: 10px;
   box-shadow: 0px 2px 0 rgb(73, 70, 69);
   border-radius: 5px;
- 
+
   cursor: pointer;
 }
+
 input[type=submit]:active {
   box-shadow: none;
   transform: translate(0px, 2px);
 }
-.det form input[type=text]{
+
+.det form input[type=text] {
   width: 100%;
-  
+
 
   padding: 3px 7px;
   font-size: 18px;
@@ -351,32 +380,103 @@ input[type=submit]:active {
   outline: 1px solid grey;
 }
 
+.burger {
+  display: none;
+}
+.burgerLines {
+  display: none;
+}
+
 @media only screen and (max-width: 1300px) {
   .det {
     display: flex;
     flex-direction: column-reverse;
   }
+
   .items {
     top: 7em;
     width: 90%;
     left: 5%;
   }
-  .cc, .ititle {
+
+  .cc,
+  .ititle {
     margin: 0;
     transform: none;
     text-align: center;
     width: 100%;
+    font-size: 2.5em;
   }
 
-  .det p, .det hr  {
+  .det p,
+  .det hr {
     margin-left: 0;
     width: 100%;
     transform: none;
   }
+
   .sidebar {
     transform: translateX(-100%);
+    transition: transform 200ms ease;
   }
-  .sidebar.open {
-    transform: none;
+
+  .burgerLines {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: rgb(220, 220, 220); */
+    /* box-shadow: 0 0 10px black; */
+    margin: 10px;
+
+    border-radius: 5px;
+  }
+  .burgerLines > div {
+    width: 90%;
+    height: 5px;
+    background-color: rgb(250, 250, 250);
+    transition: 300ms transform ease, 300ms opacity ease;
+  }
+  .burger {
+    margin: 10px;
+    display: block;
+    position: absolute;
+    z-index: 100;
+    width: 50px;
+    height: 50px;
+    appearance: none;
+  }
+  .burger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+  }
+  .burger:checked ~ .sidebar {
+    transform: translateX(0%);
+    transition: transform 200ms ease;
+  }
+  .burger:checked ~ .burgerLines {
+    box-shadow: none;
+  }
+  .burger:checked ~ .burgerLines > div {
+    background-color: rgb(239, 209, 111);
+  }
+  .burger:checked ~ .burgerLines > div:first-child {
+    transform: translateY(22px) translateY(-100%) rotate(-45deg);
+    transition: 300ms ease;
+  }
+  .burger:checked ~ .burgerLines > div:nth-child(2) {
+    opacity: 0;
+    transition: 200ms ease;
+  }
+  .burger:checked ~ .burgerLines > div:last-child {
+    transform: translateY(-22px) translateY(100%) rotate(45deg);
+    transition: 300ms ease;
   }
 }

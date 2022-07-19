@@ -32,8 +32,8 @@ const Categories = () => {
 
   return (
     <div className='cats'>
-      <h2 className='cc'>Categories</h2>
       <Navmenu />
+      <h2 className='cc'>Categories</h2>
       <div className='items'>
         {
           cats?.map((category) => (

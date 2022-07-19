@@ -7,7 +7,15 @@ const Navmenu = () => {
   const path = useLocation().pathname;
   
   return (
+    <div>
+    <input type="checkbox" className='burger'/>
+    <div className='burgerLines'>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <div className='sidebar'>
+      
         <h2>{localStorage.getItem("name")}</h2>
         
         <ol>
@@ -15,6 +23,9 @@ const Navmenu = () => {
             <li className={path == '/Categories' ? 'open': ''}><Link to ='/Categories'><i></i>Categories</Link></li>
           
         </ol>
+    </div>
+
+
     </div>
   )
 }
