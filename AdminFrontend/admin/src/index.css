@@ -480,3 +480,16 @@ input[type=submit]:active {
     transition: 300ms ease;
   }
 }
+.lout{
+  position: absolute;
+  width:100px;
+  padding: 12px;
+  font-weight: bold;
+  bottom: 10px;
+  transform: translateX(50%) translateX(50%);
+  border-radius: 8px;
+  background-color: #efd16f;
+  border:solid 2px rgb(220, 220, 220);
+  color: rgb(86, 83, 83);
+
+}
