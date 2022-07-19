@@ -23,6 +23,9 @@ const Navmenu = () => {
             <li className={path == '/Categories' ? 'open': ''}><Link to ='/Categories'><i></i>Categories</Link></li>
           
         </ol>
+      <button className='lout'>Log Out</button>
+    </div>
+    <div>
     </div>
 
 
