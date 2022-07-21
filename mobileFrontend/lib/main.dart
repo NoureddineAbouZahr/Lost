@@ -17,26 +17,40 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
       ),
       // home: isLogin ? Home(logindata) : Login(),
-      home: Welcome(),
+      home: const Welcome(),
     );
   }
 }
 
 class Welcome extends StatelessWidget {
+  const Welcome({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: Center(child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('Welcome'),
+          Text('Welcome', style: TextStyle(fontSize: width / 8)),
           CircleAvatar(
             backgroundImage: const AssetImage('assets/logo.png'),
-            radius: MediaQuery.of(context).size.width / 2.5,
+            radius: width / 2.5,
             backgroundColor: Colors.transparent,
           ),
-        ],
-      ),
+          SizedBox(
+            width: width / 2,
+            height: 50,
+            child: ElevatedButton(onPressed: () => {}, child: const Text('Log In')),
+          ),
+          const SizedBox(height: 15),
+          SizedBox(
+            width: width / 2,
+            height: 50,
+            child: ElevatedButton(onPressed: () => {}, child: const Text('Sign Up')),
+          ),
+          ],
+      )),
     );
   }
 }
