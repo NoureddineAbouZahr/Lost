@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './widgets/lost_button.dart';
+import './pages/signup.dart';
 
 bool isLogin = false;
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: isLogin ? Home(logindata) : Login(),
-      home: const Welcome(),
+      home: const Signup(),
     );
   }
 }
