@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lost/pages/login.dart';
+import '../utils.dart';
 import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
 import '../widgets/hyperlink.dart';
@@ -53,7 +55,9 @@ class Signup extends StatelessWidget {
                 labelText: 'Password Confirmation',
                 hintText: 'Confirm Your Password'),
             LostButton(text: 'Sign Up', onPressed: () => {}),
-            HL(text: "Log In"),
+            HL(text: "Log In",onPressed: ()=>{
+              switchPage(context,()=>const Login())
+            },),
           ],
         ),
       ),

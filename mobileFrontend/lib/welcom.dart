@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lost/pages/login.dart';
+import 'package:lost/utils.dart';
 import './widgets/lost_button.dart';
 import './pages/signup.dart';
 import './widgets/hyperlink.dart';
@@ -21,22 +23,17 @@ class Welcome extends StatelessWidget {
             radius: width / 2.5,
             backgroundColor: Colors.transparent,
           ),
-          LostButton(text: 'Log In', onPressed: () => {}),
+          LostButton(
+              text: 'Sign Up',
+              onPressed: () => {switchPage(context, () => Signup())}),
+          SizedBox(height: 20.0,),
+          LostButton(
+              text: 'Log In',
+              onPressed: () => {switchPage(context, () => Login())}),
           const SizedBox(height: 15),
-          HL(text: "Log In"),
+
         ],
       )),
     );
-  }
-}
-
-void switchPage(BuildContext context, String name) {
-  switch (name) {
-    case 'signup':
-      {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (c) => const Signup()));
-        break;
-      }
   }
 }

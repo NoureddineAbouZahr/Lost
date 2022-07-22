@@ -18,7 +18,7 @@ void initState() {
 }
 _navigatetohome()async{
   await Future.delayed(const Duration(milliseconds: 2000),(){});
-  Navigator.push(context, MaterialPageRoute(builder: (c) => const Welcome()));}
+  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const Welcome()));}
 
 
 

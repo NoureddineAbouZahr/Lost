@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lost/pages/signup.dart';
+import '../utils.dart';
 import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
 import '../widgets/hyperlink.dart';
@@ -48,21 +50,13 @@ class Login extends StatelessWidget {
             LostInput(labelText: 'Email Address', hintText: 'Enter Your Email'),
             LostInput(labelText: 'Password', hintText: 'Enter Your Password'),
 
-            LostButton(text: 'Log In', onPressed: () => {
-              switchPage(context,'login')
-            }),
-            HL(text: "Sign Up"),
+            LostButton(text: 'Log In', onPressed: () => {}),
+            HL(text: "Sign Up",onPressed: ()=>{
+              switchPage(context,()=>Signup())
+            },),
           ],
         ),
       ),
     );
-  }
-}
-void switchPage(BuildContext context,String name) {
-  switch (name) {
-    case 'signup': {
-      Navigator.push(context, MaterialPageRoute(builder: (c) => const Login()));
-      break;
-    }
   }
 }
