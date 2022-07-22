@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: isLogin ? Home(logindata) : Login(),
-      home: const Signup(),
+      home: const Welcome(),
     );
   }
 }
@@ -45,7 +45,9 @@ class Welcome extends StatelessWidget {
           LostButton(text: 'Log In', onPressed: () => {}),
 
           const SizedBox(height: 15),
-          LostButton(text: 'Sign Up', onPressed: () => {}),
+          LostButton(text: 'Sign Up', onPressed: () => {
+            Navigator.push(context, MaterialPageRoute(builder: (c) => Signup()))
+          }),
         ],
       )),
     );
