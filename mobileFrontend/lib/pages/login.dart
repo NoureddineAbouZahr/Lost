@@ -63,3 +63,14 @@ class Login extends StatelessWidget {
     );
   }
 }
+Future<http.Response> createAlbum(String title) {
+  return http.post(
+    Uri.parse(''),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      
+    }),
+  );
+}
