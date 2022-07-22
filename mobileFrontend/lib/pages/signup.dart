@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/input.dart';
+import '../widgets/lost_button.dart';
+
 class Signup extends StatelessWidget {
   const Signup({Key? key}) : super(key: key);
 
@@ -21,18 +23,39 @@ class Signup extends StatelessWidget {
             ],
           ),
         ),
-
       ),
       body: Center(
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width / 1.35,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                
-              ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(height: 25),
+            const Text(
+              'Sign Up',
+              style: TextStyle(
+                fontSize: 30.0,
+              ),
             ),
-          )),
+            const Padding(padding: EdgeInsets.only(bottom: 20)),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: const Divider(
+                color: Color(0xFFefd16f),
+                thickness: 2.0,
+              ),
+            ),
+            Padding(padding: EdgeInsets.only(bottom: 35)),
+            LostInput(labelText: 'Name', hintText: 'Enter Your Name'),
+            LostInput(labelText: 'Phone', hintText: 'Enter Your Phone Number'),
+            LostInput(labelText: 'Email Address', hintText: 'Enter Your Email'),
+            LostInput(labelText: 'Password', hintText: 'Enter Your Password'),
+            LostInput(
+                labelText: 'Password Confirmation',
+                hintText: 'Confirm Your Password'),
+            LostButton(text: 'Sign Up', onPressed: ()=>{})
+
+          ],
+        ),
+      ),
     );
   }
 }
