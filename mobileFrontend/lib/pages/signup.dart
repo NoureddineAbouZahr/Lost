@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../widgets/input.dart';
 class Signup extends StatelessWidget {
   const Signup({Key? key}) : super(key: key);
 
@@ -21,12 +21,18 @@ class Signup extends StatelessWidget {
             ],
           ),
         ),
+
       ),
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [],
-      )),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width / 1.35,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                
+              ],
+            ),
+          )),
     );
   }
 }
