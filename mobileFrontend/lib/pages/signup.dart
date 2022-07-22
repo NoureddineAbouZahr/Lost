@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
+import '../widgets/hyperlink.dart';
 
 class Signup extends StatelessWidget {
   const Signup({Key? key}) : super(key: key);
@@ -51,8 +52,8 @@ class Signup extends StatelessWidget {
             LostInput(
                 labelText: 'Password Confirmation',
                 hintText: 'Confirm Your Password'),
-            LostButton(text: 'Sign Up', onPressed: ()=>{})
-
+            LostButton(text: 'Sign Up', onPressed: () => {}),
+            HL(text: "Log In"),
           ],
         ),
       ),
