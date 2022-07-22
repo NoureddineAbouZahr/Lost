@@ -31,7 +31,7 @@ _navigatetohome()async{
         child:
         CircleAvatar(
           backgroundImage: const AssetImage('assets/logo.png'),
-          radius: width / 2.5,
+          radius: width / 2.25,
           backgroundColor: Colors.transparent,
         ),
       ),),
