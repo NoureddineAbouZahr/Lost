@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
+      debugShowCheckedModeBanner: false,
       // home: isLogin ? Home(logindata) : Login(),
       home: const Welcome(),
     );
@@ -40,21 +41,10 @@ class Welcome extends StatelessWidget {
             radius: width / 2.5,
             backgroundColor: Colors.transparent,
           ),
-          SizedBox(
-            width: width / 2,
-            height: 50,
-            child: ElevatedButton(
-                onPressed: () => {}, child: const Text('Log In')),
-          ),
+          LostButton(text: 'Log In', onPressed: () => {}),
+
           const SizedBox(height: 15),
-          SizedBox(
-            width: width / 2,
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () => {},
-              child: const Text('Sign Up'),
-            ),
-          ),
+          LostButton(text: 'Sign Up', onPressed: () => {}),
         ],
       )),
     );
