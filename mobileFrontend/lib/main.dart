@@ -46,10 +46,19 @@ class Welcome extends StatelessWidget {
 
           const SizedBox(height: 15),
           LostButton(text: 'Sign Up', onPressed: () => {
-            Navigator.push(context, MaterialPageRoute(builder: (c) => Signup()))
+            switchPage(context, 'signup')
           }),
         ],
       )),
     );
+  }
+}
+
+void switchPage(BuildContext context,String name) {
+  switch (name) {
+    case 'signup': {
+      Navigator.push(context, MaterialPageRoute(builder: (c) => const Signup()));
+      break;
+    }
   }
 }
