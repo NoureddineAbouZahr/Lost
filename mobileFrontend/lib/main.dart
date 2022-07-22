@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './widgets/lost_button.dart';
 
 bool isLogin = false;
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.grey,
       ),
       // home: isLogin ? Home(logindata) : Login(),
       home: const Welcome(),
@@ -29,7 +30,8 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Center(child: Column(
+      body: Center(
+          child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Welcome', style: TextStyle(fontSize: width / 8)),
@@ -41,15 +43,19 @@ class Welcome extends StatelessWidget {
           SizedBox(
             width: width / 2,
             height: 50,
-            child: ElevatedButton(onPressed: () => {}, child: const Text('Log In')),
+            child: ElevatedButton(
+                onPressed: () => {}, child: const Text('Log In')),
           ),
           const SizedBox(height: 15),
           SizedBox(
             width: width / 2,
             height: 50,
-            child: ElevatedButton(onPressed: () => {}, child: const Text('Sign Up')),
+            child: ElevatedButton(
+              onPressed: () => {},
+              child: const Text('Sign Up'),
+            ),
           ),
-          ],
+        ],
       )),
     );
   }
