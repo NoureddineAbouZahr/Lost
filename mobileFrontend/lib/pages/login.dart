@@ -13,6 +13,7 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    login('nour@gmail.com','nouraz123').then((response) => debugPrint('asda')).catchError((err)=>debugPrint(err.toString()));
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
@@ -52,25 +53,22 @@ class Login extends StatelessWidget {
             Padding(padding: EdgeInsets.only(bottom: 35)),
             LostInput(labelText: 'Email Address', hintText: 'Enter Your Email'),
             LostInput(labelText: 'Password', hintText: 'Enter Your Password'),
-
             LostButton(text: 'Log In', onPressed: () => {}),
-            HL(text: "Sign Up",onPressed: ()=>{
-              switchPage(context,()=>Signup())
-            },),
+            HL(
+              text: "Sign Up",
+              onPressed: () => {switchPage(context, () => Signup())},
+            ),
           ],
         ),
       ),
     );
   }
 }
-Future<http.Response> createAlbum(String title) {
-  return http.post(
-    Uri.parse(''),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: jsonEncode(<String, String>{
-      
-    }),
+
+Future<http.Response> login(String email, String password) async{
+  return await http.post(
+    Uri.parse('http://localhost:3001/api/users/login'),
+    body: jsonEncode(<String, String>{'email': email, 'password': password}),
   );
 }
+
