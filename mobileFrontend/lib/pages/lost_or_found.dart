@@ -11,6 +11,7 @@ class LostFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   double width= MediaQuery.of(context).size.width ;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -23,12 +24,13 @@ class LostFound extends StatelessWidget {
               size: 40,),
           SizedBox(width: 15,),
           SizedBox(
-              width: MediaQuery.of(context).size.width * 0.75,
               child: Column(
 
-                children: [
+                children:  [
                   SizedBox(height: 15,),
                   SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.75,
+
                     height: 50,
                     child: TextField(
                       decoration: InputDecoration(
@@ -36,7 +38,7 @@ class LostFound extends StatelessWidget {
 
 
                         prefixIcon: Icon(Icons.search),
-                          border: const OutlineInputBorder(
+                          border: OutlineInputBorder(
                               borderSide: BorderSide(width: 0)),
                           filled: true,
                           fillColor: Colors.white70,
@@ -44,7 +46,7 @@ class LostFound extends StatelessWidget {
                           hintText: 'Search'),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
                 ],
               ))
 
@@ -55,7 +57,15 @@ class LostFound extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [],
+          children:  [
+            SizedBox(height: 50,),
+            Image(
+
+              image: const AssetImage('assets/box.jpg'),
+            width:width*0.9 ,
+            ),
+            
+          ],
         ),
       ),
     );
