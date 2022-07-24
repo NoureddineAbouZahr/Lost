@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: isLogin ? Home(logindata) : Login(),
-      home: const LostFound(),
+      home: const Splash(),
     );
   }
 }

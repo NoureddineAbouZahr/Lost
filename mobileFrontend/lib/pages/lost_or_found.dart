@@ -64,7 +64,11 @@ class LostFound extends StatelessWidget {
               image: const AssetImage('assets/box.jpg'),
             width:width*0.9 ,
             ),
-            
+            SizedBox(height: 70,),
+            LostButton(text: 'Found Object', onPressed: ()=>{}),
+            SizedBox(height: 20,),
+            LostButton(text: 'Lost Object', onPressed: ()=>{})
+
           ],
         ),
       ),
