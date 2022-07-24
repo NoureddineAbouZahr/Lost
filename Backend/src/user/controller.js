@@ -29,7 +29,6 @@ async function register(req, res) {
 async function login(req, res) {
   try {
     const user = await getByEmail(req.body.email);
-    
     const validPassword = await bcrypt.compare(req.body.password, user.password);
 
     if (!user || !validPassword) return res.status(400).send('invalid credentials');

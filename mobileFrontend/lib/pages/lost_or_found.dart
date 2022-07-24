@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:lost/pages/signup.dart';
+import '../navbar.dart';
 import '../utils.dart';
 import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
@@ -71,7 +72,9 @@ class LostFound extends StatelessWidget {
 
           ],
         ),
+
       ),
+      drawer: const Nav(),
     );
   }
 }

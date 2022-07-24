@@ -72,7 +72,7 @@ class _LoginState extends State<Login> {
                   hintText: 'Enter Your Password',
                   controller: password,
                 ),
-                LostButton(text: 'Log In', onPressed: authorizeData),
+                LostButton(text: 'Log In', onPressed: () => authorizeData()),
                 HL(
                   text: "Sign Up",
                   onPressed: () => {switchPage(context, () => Signup())},
@@ -90,11 +90,12 @@ class _LoginState extends State<Login> {
       "email": email.text,
       "password": password.text
     };
-    debugPrint(params["password"]);
+    print(params);
     final response = await Services().login('users/login', params);
     print(response.body);
-    final decodedData = await jsonDecode(response.body);
-    print(decodedData);
-    if (response.statusCode == 200) {}
+
+    if (response.statusCode == 200) {
+      print('success');
+    }
   }
 }
