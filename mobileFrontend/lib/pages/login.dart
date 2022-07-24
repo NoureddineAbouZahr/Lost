@@ -85,4 +85,16 @@ class _LoginState extends State<Login> {
     );
   }
 
-  
+  authorizeData() async {
+    final params = {
+      "email": email.text,
+      "password": password.text
+    };
+    debugPrint(params["password"]);
+    final response = await Services().login('users/login', params);
+    print(response.body);
+    final decodedData = await jsonDecode(response.body);
+    print(decodedData);
+    if (response.statusCode == 200) {}
+  }
+}
