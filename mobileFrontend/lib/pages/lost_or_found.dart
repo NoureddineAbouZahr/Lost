@@ -15,15 +15,19 @@ class LostFound extends StatelessWidget {
    double width= MediaQuery.of(context).size.width ;
 
     return Scaffold(
+      drawer: const Nav(),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: AppBar(
+          leading: Builder(
+            builder: (context)=>IconButton(onPressed: (){Scaffold.of(context).openDrawer();}, icon: Icon(Icons.menu,
+            color: Color(0xffefd16f),
+            size: 30,)),
+          ),
           centerTitle: true,
           title: Row(
             children:  [
-              Icon(Icons.menu,color: Color(0xddefd16f),
-              size: 40,),
-          SizedBox(width: 15,),
+
           SizedBox(
               child: Column(
 
@@ -74,7 +78,8 @@ class LostFound extends StatelessWidget {
         ),
 
       ),
-      drawer: const Nav(),
+
+
     );
   }
 }
