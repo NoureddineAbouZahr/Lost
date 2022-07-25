@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:lost/widgets/input.dart';
 
 class SpecFound extends StatefulWidget {
   const SpecFound({Key? key}) : super(key: key);
@@ -12,7 +13,18 @@ class SpecFound extends StatefulWidget {
 }
 
 class _SpecFoundState extends State<SpecFound> {
+  TextEditingController name = new TextEditingController();
+  TextEditingController SerialNumber = new TextEditingController();
+  TextEditingController model = new TextEditingController();
+  TextEditingController color = new TextEditingController();
+  TextEditingController brand = new TextEditingController();
+  TextEditingController extraInfo = new TextEditingController();
+  TextEditingController locationx = new TextEditingController();
+  TextEditingController locationy = new TextEditingController();
+  TextEditingController status = new TextEditingController();
+
   File? image;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,9 +92,7 @@ class _SpecFoundState extends State<SpecFound> {
                     }
                 ),]),
                 SizedBox(height: 20,),
-
-
-
+                LostInput(labelText: 'Type', hintText: "Enter the type", controller: controller)
 
               ],
             ),
