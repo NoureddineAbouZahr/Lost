@@ -87,7 +87,7 @@ class _SignupState extends State<Signup> {
               hintText: 'Confirm Your Password',
               controller: cp,
             ),
-            LostButton(text: 'Sign Up', onPressed: () => {}),
+            LostButton(text: 'Sign Up',  onPressed: () => authorizeData()),
             HL(
               text: "Log In",
               onPressed: () => {switchPage(context, () => const Login())},
