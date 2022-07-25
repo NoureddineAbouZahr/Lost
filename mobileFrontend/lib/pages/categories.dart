@@ -1,11 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-
 import '../utils.dart';
-
 import 'package:http/http.dart' as http;
-
 import '../widgets/treeview.dart';
 
 class Cats extends StatefulWidget {
@@ -65,7 +61,7 @@ class _CatsState extends State<Cats> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Column(
+                  Column(
                   children: tvs,
                 )
               ],
@@ -75,7 +71,6 @@ class _CatsState extends State<Cats> {
       ),
     );
   }
-
   Future<http.Response> getCats() {
     return sendToApiGet('categories/getCategories');
   }

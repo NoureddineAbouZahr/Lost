@@ -31,7 +31,7 @@ class _TreeViewState extends State<TV> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: widget.subs.map((currentTile) =>
                 ListTile(
-                  leading: Icon(Icons.circle),
+                  leading: Icon(Icons.tag),
                   title: Text(currentTile),
                   onTap: () => widget.onSelect(currentTile),
               )).toList(),
