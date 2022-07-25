@@ -5,8 +5,22 @@ import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
 import '../widgets/hyperlink.dart';
 
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
+
+  @override
+  State<Signup> createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
+  TextEditingController email = new TextEditingController();
+  TextEditingController password = new TextEditingController();
+  TextEditingController phone = new TextEditingController();
+  TextEditingController cp = new TextEditingController();
+  TextEditingController name = new TextEditingController();
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,27 +64,27 @@ class Signup extends StatelessWidget {
             LostInput(
               labelText: 'Name',
               hintText: 'Enter Your Name',
-              controller: null,
+              controller: name,
             ),
             LostInput(
               labelText: 'Phone',
               hintText: 'Enter Your Phone Number',
-              controller: null,
+              controller: phone,
             ),
             LostInput(
               labelText: 'Email Address',
               hintText: 'Enter Your Email',
-              controller: null,
+              controller: email,
             ),
             LostInput(
               labelText: 'Password',
               hintText: 'Enter Your Password',
-              controller: null,
+              controller: password,
             ),
             LostInput(
               labelText: 'Password Confirmation',
               hintText: 'Confirm Your Password',
-              controller: null,
+              controller: cp,
             ),
             LostButton(text: 'Sign Up', onPressed: () => {}),
             HL(

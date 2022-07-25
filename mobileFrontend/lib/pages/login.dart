@@ -98,7 +98,7 @@ class _LoginState extends State<Login> {
 
     if (response.statusCode == 200) {
       ls.setItem('token', token);
-      Navigator.push(context,MaterialPageRoute(builder:(_)=> LostFound()));
+      Navigator.pushReplacement(context,MaterialPageRoute(builder:(_)=> LostFound()));
 
     }
   }
