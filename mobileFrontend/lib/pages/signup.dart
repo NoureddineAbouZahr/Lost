@@ -47,17 +47,36 @@ class Signup extends StatelessWidget {
               ),
             ),
             Padding(padding: EdgeInsets.only(bottom: 35)),
-            // LostInput(labelText: 'Name', hintText: 'Enter Your Name'),
-            // LostInput(labelText: 'Phone', hintText: 'Enter Your Phone Number'),
-            // LostInput(labelText: 'Email Address', hintText: 'Enter Your Email'),
-            // LostInput(labelText: 'Password', hintText: 'Enter Your Password'),
-            // LostInput(
-            //     labelText: 'Password Confirmation',
-            //     hintText: 'Confirm Your Password'),
+            LostInput(
+              labelText: 'Name',
+              hintText: 'Enter Your Name',
+              controller: null,
+            ),
+            LostInput(
+              labelText: 'Phone',
+              hintText: 'Enter Your Phone Number',
+              controller: null,
+            ),
+            LostInput(
+              labelText: 'Email Address',
+              hintText: 'Enter Your Email',
+              controller: null,
+            ),
+            LostInput(
+              labelText: 'Password',
+              hintText: 'Enter Your Password',
+              controller: null,
+            ),
+            LostInput(
+              labelText: 'Password Confirmation',
+              hintText: 'Confirm Your Password',
+              controller: null,
+            ),
             LostButton(text: 'Sign Up', onPressed: () => {}),
-            HL(text: "Log In",onPressed: ()=>{
-              switchPage(context,()=>const Login())
-            },),
+            HL(
+              text: "Log In",
+              onPressed: () => {switchPage(context, () => const Login())},
+            ),
           ],
         ),
       ),

@@ -9,7 +9,6 @@ final ls = LocalStorage('lost.json');
 
 const baseUrl = "http://localhost:3001/api/";
 
-
 Future<http.Response> sendToApiGet(url) {
   return http.get(Uri.parse(baseUrl + url),
       headers: {"Content-Type": "application/json"});

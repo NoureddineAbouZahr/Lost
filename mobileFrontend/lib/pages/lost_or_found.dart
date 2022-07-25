@@ -12,37 +12,40 @@ class LostFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   double width= MediaQuery.of(context).size.width ;
+    double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      drawer:  Nav(),
+      drawer: Nav(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
           leading: Builder(
-            builder: (context)=>IconButton(onPressed: (){Scaffold.of(context).openDrawer();}, icon: const Icon(Icons.menu,
-            color: Color(0xffefd16f),
-            size: 30,)),
+            builder: (context) => IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: const Icon(
+                  Icons.menu,
+                  color: Color(0xffefd16f),
+                  size: 30,
+                )),
           ),
           centerTitle: true,
           title: Row(
-            children:  [
-
-          SizedBox(
-              child: Column(
-
-                children:  [
-                  SizedBox(height: 15,),
+            children: [
+              SizedBox(
+                  child: Column(
+                children: [
+                  SizedBox(
+                    height: 15,
+                  ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.75,
-
                     height: 50,
                     child: TextField(
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10),
-
-
-                        prefixIcon: Icon(Icons.search),
+                          contentPadding: EdgeInsets.all(10),
+                          prefixIcon: Icon(Icons.search),
                           border: OutlineInputBorder(
                               borderSide: BorderSide(width: 0)),
                           filled: true,
@@ -54,7 +57,6 @@ class LostFound extends StatelessWidget {
                   SizedBox(height: 10),
                 ],
               ))
-
             ],
           ),
         ),
@@ -62,24 +64,25 @@ class LostFound extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children:  [
-            SizedBox(height: 50,),
-            Image(
-
-              image: const AssetImage('assets/box.jpg'),
-            width:width*0.9 ,
+          children: [
+            const SizedBox(
+              height: 50,
             ),
-            SizedBox(height: 70,),
-            LostButton(text: 'Found Object', onPressed: ()=>{}),
-            SizedBox(height: 20,),
-            LostButton(text: 'Lost Object', onPressed: ()=>{})
-
+            Image(
+              image: const AssetImage('assets/box.jpg'),
+              width: width * 0.9,
+            ),
+            const SizedBox(
+              height: 70,
+            ),
+            LostButton(text: 'Found Object', onPressed: () => {}),
+            const SizedBox(
+              height: 20,
+            ),
+            LostButton(text: 'Lost Object', onPressed: () => {})
           ],
         ),
-
       ),
-
-
     );
   }
 }

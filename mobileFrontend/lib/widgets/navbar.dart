@@ -12,8 +12,6 @@ class Nav extends StatefulWidget {
 class _NavState extends State<Nav> {
   @override
   Widget build(BuildContext context) {
-
-
     return Drawer(
       child: ListView(children: [
         Container(
@@ -22,8 +20,12 @@ class _NavState extends State<Nav> {
           padding: const EdgeInsets.all(25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:  [
-              Text(widget.userData['name'][0].toUpperCase()+widget.userData['name'].substring(1), style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1)),
+            children: [
+              Text(
+                  widget.userData['name'][0].toUpperCase() +
+                      widget.userData['name'].substring(1),
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1)),
               Text(widget.userData['email'])
             ],
           ),
@@ -31,14 +33,12 @@ class _NavState extends State<Nav> {
         ListTile(
           leading: const Icon(Icons.my_library_books_rounded),
           title: const Text('Posts'),
-
           onTap: () => {
-          //   if (index == 0) {
-          //      this.selected = true
-          //   }
-          //   index = 0;
-          //   }
-
+            //   if (index == 0) {
+            //      this.selected = true
+            //   }
+            //   index = 0;
+            //   }
           },
         ),
         ListTile(
