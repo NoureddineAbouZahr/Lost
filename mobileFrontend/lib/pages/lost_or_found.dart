@@ -6,6 +6,7 @@ import '../widgets/navbar.dart';
 import '../utils.dart';
 import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
+import 'categories.dart';
 
 class LostFound extends StatelessWidget {
   const LostFound({Key? key}) : super(key: key);
@@ -75,7 +76,7 @@ class LostFound extends StatelessWidget {
             const SizedBox(
               height: 70,
             ),
-            LostButton(text: 'Found Object', onPressed: () => {}),
+            LostButton(text: 'Found Object', onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>Cats()))}),
             const SizedBox(
               height: 20,
             ),

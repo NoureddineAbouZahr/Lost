@@ -8,14 +8,14 @@ import 'package:http/http.dart' as http;
 
 import '../widgets/treeview.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class Cats extends StatefulWidget {
+  const Cats({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Cats> createState() => _CatsState();
 }
 
-class _LoginState extends State<Login> {
+class _CatsState extends State<Cats> {
   bool catsLoad = false;
   List<TV> tvs = [];
 
