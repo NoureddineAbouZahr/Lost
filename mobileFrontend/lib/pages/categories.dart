@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:lost/pages/specs.dart';
 import '../services/globals.dart';
 import '../utils.dart';
 import 'package:http/http.dart' as http;
@@ -15,8 +16,6 @@ class _CatsState extends State<Cats> {
   bool catsLoad = false;
   List<TV> tvs = [];
 
-  TextEditingController email = new TextEditingController();
-  TextEditingController password = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     if (!catsLoad) {
@@ -31,6 +30,7 @@ class _CatsState extends State<Cats> {
             subs: currentCatSubs,
             onSelect: (name) {
               lastSubCategory = name;
+              switchPage(context, () => SpecFound());
             },
           ));
         });
