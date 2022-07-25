@@ -12,7 +12,7 @@ class Nav extends StatefulWidget {
 class _NavState extends State<Nav> {
   @override
   Widget build(BuildContext context) {
-    print(widget.userData);
+
 
     return Drawer(
       child: ListView(children: [
@@ -22,16 +22,24 @@ class _NavState extends State<Nav> {
           padding: const EdgeInsets.all(25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text('Nour', style: TextStyle(fontWeight: FontWeight.bold)),
-              Text('nour@gmail.com')
+            children:  [
+              Text(widget.userData['name'][0].toUpperCase()+widget.userData['name'].substring(1), style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1)),
+              Text(widget.userData['email'])
             ],
           ),
         ),
         ListTile(
           leading: const Icon(Icons.my_library_books_rounded),
           title: const Text('Posts'),
-          onTap: () => null,
+
+          onTap: () => {
+          //   if (index == 0) {
+          //      this.selected = true
+          //   }
+          //   index = 0;
+          //   }
+
+          },
         ),
         ListTile(
           leading: const Icon(Icons.chat),
