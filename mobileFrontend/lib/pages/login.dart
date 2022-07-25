@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 
-
 import 'package:flutter/material.dart';
 import 'package:lost/pages/lost_or_found.dart';
 import 'package:lost/pages/signup.dart';
@@ -22,19 +21,33 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  var cats;
-
+  bool catsLoad = false;
+  List<TV> tvs = [];
 
   TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    if (cats == null) {
-      getCats().then((a) => {
-        print(a.body)
-      });
+    if (!catsLoad) {
+      getCats().then((a) {
+        var cats = jsonDecode(a.body);
+        cats.forEach((cat) {
 
+            List<String> currentCatSubs = [];
+            cat['subid'].forEach((subcat) => currentCatSubs.add(subcat['name']));
+
+            tvs.add(TV(
+              title: cat['name'],
+              subs: currentCatSubs,
+              onSelect: (name) {},
+            ));
+        });
+
+        catsLoad = true;
+        setState(() => {});
+      });
     }
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
@@ -89,15 +102,9 @@ class _LoginState extends State<Login> {
                   text: "Sign Up",
                   onPressed: () => {switchPage(context, () => Signup())},
                 ),
-                TV(
-                    subs: [
-                      'Laptops',
-                      'Computers'
-                    ],
-                    onSelect: (name) => {
-                      debugPrint(name)
-                    }
-                ),
+                Column(
+                  children: tvs,
+                )
               ],
             ),
           ),
@@ -111,18 +118,15 @@ class _LoginState extends State<Login> {
   }
 
   authorizeData() async {
-    final params = {
-      "email": email.text,
-      "password": password.text
-    };
+    final params = {"email": email.text, "password": password.text};
     print(params);
     final response = await Services().login('users/login', params);
-    final token=response.body;
+    final token = response.body;
 
     if (response.statusCode == 200) {
       ls.setItem('token', token);
-      Navigator.pushReplacement(context,MaterialPageRoute(builder:(_)=> LostFound()));
-
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => LostFound()));
     }
   }
 }

@@ -3,8 +3,9 @@ import 'package:lost/utils.dart';
 
 class TV extends StatefulWidget {
   Function(String name) onSelect;
+  String title;
 
-  TV({Key? key, required this.subs, required this.onSelect}) : super(key: key);
+  TV({Key? key, required this.subs, required this.onSelect, required this.title}) : super(key: key);
 
   List<String> subs;
   @override
@@ -23,13 +24,14 @@ class _TreeViewState extends State<TV> {
         ExpansionPanel(
           headerBuilder: (context, isExpanded) {
             return ListTile(
-              title: Text('Click To Expand', style: TextStyle(color: Colors.black),),
+              title: Text(widget.title, style: TextStyle(color: Colors.black),),
             );
           },
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: widget.subs.map((currentTile) =>
                 ListTile(
+                  leading: Icon(Icons.circle),
                   title: Text(currentTile),
                   onTap: () => widget.onSelect(currentTile),
               )).toList(),
