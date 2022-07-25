@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
+
 import 'package:flutter/material.dart';
+import 'package:lost/pages/lost_or_found.dart';
 import 'package:lost/pages/signup.dart';
 import 'package:lost/services/services.dart';
 import '../utils.dart';
@@ -92,10 +94,12 @@ class _LoginState extends State<Login> {
     };
     print(params);
     final response = await Services().login('users/login', params);
-    print(response.body);
+    final token=response.body;
 
     if (response.statusCode == 200) {
-      print('success');
+      ls.setItem('token', token);
+      Navigator.push(context,MaterialPageRoute(builder:(_)=> LostFound()));
+
     }
   }
 }

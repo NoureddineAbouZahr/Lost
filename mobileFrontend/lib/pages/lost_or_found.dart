@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:lost/pages/signup.dart';
-import '../navbar.dart';
+import '../widgets/navbar.dart';
 import '../utils.dart';
 import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
@@ -15,12 +15,12 @@ class LostFound extends StatelessWidget {
    double width= MediaQuery.of(context).size.width ;
 
     return Scaffold(
-      drawer: const Nav(),
+      drawer:  Nav(),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+        preferredSize: const Size.fromHeight(60),
         child: AppBar(
           leading: Builder(
-            builder: (context)=>IconButton(onPressed: (){Scaffold.of(context).openDrawer();}, icon: Icon(Icons.menu,
+            builder: (context)=>IconButton(onPressed: (){Scaffold.of(context).openDrawer();}, icon: const Icon(Icons.menu,
             color: Color(0xffefd16f),
             size: 30,)),
           ),

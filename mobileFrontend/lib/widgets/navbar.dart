@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:jwt_decode/jwt_decode.dart';
+import '../utils.dart';
 
 class Nav extends StatefulWidget {
-  const Nav({Key? key}) : super(key: key);
-
+  Nav({Key? key}) : super(key: key);
+  Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
   @override
   State<Nav> createState() => _NavState();
 }
@@ -10,15 +12,14 @@ class Nav extends StatefulWidget {
 class _NavState extends State<Nav> {
   @override
   Widget build(BuildContext context) {
+    print(widget.userData);
+
     return Drawer(
       child: ListView(children: [
-
         Container(
-          decoration:   BoxDecoration(
-            color: Color(0xffefd16f),
-            boxShadow: [BoxShadow(blurRadius: 4)]
-          ),
-          padding: EdgeInsets.all(25),
+          decoration: const BoxDecoration(
+              color: Color(0xffefd16f), boxShadow: [BoxShadow(blurRadius: 4)]),
+          padding: const EdgeInsets.all(25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
@@ -27,21 +28,17 @@ class _NavState extends State<Nav> {
             ],
           ),
         ),
-
-
-
         ListTile(
-          leading: Icon(Icons.my_library_books_rounded),
-          title: Text('Posts'),
+          leading: const Icon(Icons.my_library_books_rounded),
+          title: const Text('Posts'),
           onTap: () => null,
         ),
         ListTile(
-          leading: Icon(Icons.chat),
-          title: Text('Chats'),
+          leading: const Icon(Icons.chat),
+          title: const Text('Chats'),
           onTap: () => null,
         ),
-      ]
-      ),
+      ]),
     );
   }
 }
