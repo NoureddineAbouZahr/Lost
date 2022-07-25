@@ -41,7 +41,20 @@ class _SpecFoundState extends State<SpecFound> {
             ),
             Column(
               children:  [
-                
+               
+                MaterialButton(
+                    color: const Color(0xffefd16f),
+                    child: const Text(
+                        "Pick Image from Gallery",
+                        style: TextStyle(
+                            color: Colors.white70, fontWeight: FontWeight.bold
+                        )
+                    ),
+                    onPressed:() {
+                      pickImage();
+
+                    }
+                ),
                 SizedBox(height: 20,),
 
 
