@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import '../services/globals.dart';
 import '../utils.dart';
 import 'package:http/http.dart' as http;
 import '../widgets/treeview.dart';
@@ -10,7 +11,6 @@ class Cats extends StatefulWidget {
   @override
   State<Cats> createState() => _CatsState();
 }
-
 class _CatsState extends State<Cats> {
   bool catsLoad = false;
   List<TV> tvs = [];
@@ -29,7 +29,9 @@ class _CatsState extends State<Cats> {
           tvs.add(TV(
             title: cat['name'],
             subs: currentCatSubs,
-            onSelect: (name) {},
+            onSelect: (name) {
+              lastSubCategory = name;
+            },
           ));
         });
 
