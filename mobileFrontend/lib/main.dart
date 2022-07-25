@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lost/splash.dart';
+import './widgets/treeview.dart';
 import './widgets/lost_button.dart';
 import './pages/signup.dart';
 import 'package:lost/splash.dart';import './pages/lost_or_found.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: isLogin ? Home(logindata) : Login(),
-      home: const Splash(),
+      home:  Splash(),
     );
   }
 }
