@@ -22,11 +22,19 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var cats;
+
+
   TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    // login('nour@gmail.com','nouraz123').then((response) => debugPrint('asda')).catchError((err)=>debugPrint(err.toString()));
+    if (cats == null) {
+      getCats().then((a) => {
+        print(a.body)
+      });
+
+    }
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
@@ -82,21 +90,24 @@ class _LoginState extends State<Login> {
                   onPressed: () => {switchPage(context, () => Signup())},
                 ),
                 TV(
-                  subs: [
-                    'Laptops',
-                    'Computers'
-                  ],
-                  onSelect: (name) => {
-                    debugPrint(name)
-                  }
-                )
-
+                    subs: [
+                      'Laptops',
+                      'Computers'
+                    ],
+                    onSelect: (name) => {
+                      debugPrint(name)
+                    }
+                ),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  Future<http.Response> getCats() {
+    return sendToApiGet('categories/getCategories');
   }
 
   authorizeData() async {
