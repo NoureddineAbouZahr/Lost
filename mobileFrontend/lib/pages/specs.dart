@@ -41,7 +41,20 @@ class _SpecFoundState extends State<SpecFound> {
             ),
             Column(
               children:  [
-               
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.red,
+
+                      ),
+                    borderRadius: BorderRadius.circular(5)
+                  ),
+                  child:
+                  SizedBox(
+                    height: 150,
+                    width: 150,
+                    child: image !=null ? Image.file(image!):Text('no image'),
+                  ),),
                 MaterialButton(
                     color: const Color(0xffefd16f),
                     child: const Text(
