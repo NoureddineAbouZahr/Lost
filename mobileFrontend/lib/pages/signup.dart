@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lost/pages/login.dart';
+import '../services/services.dart';
 import '../utils.dart';
 import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
@@ -95,5 +96,27 @@ class _SignupState extends State<Signup> {
         ),
       ),
     );
+  }
+
+  authorizeData() async {
+    final params = {
+      "name":name.text,
+      "phone":phone.text,
+      "email": email.text,
+      "password": password.text
+    };
+    if(password.text==cp.text){
+    print(params);
+    final response = await Services().login('users/register', params);
+    final token=response.body;
+
+    if (response.statusCode == 200) {
+      ls.setItem('token', token);
+      Navigator.pushReplacement(context,MaterialPageRoute(builder:(_)=> Login()));
+
+    }}
+    else{
+      print('password doesn\'t match');
+    }
   }
 }
