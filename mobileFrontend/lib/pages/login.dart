@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:lost/pages/lost_or_found.dart';
 import 'package:lost/pages/signup.dart';
@@ -9,9 +6,7 @@ import '../utils.dart';
 import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
 import '../widgets/hyperlink.dart';
-import 'package:http/http.dart' as http;
 
-import '../widgets/treeview.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -21,33 +16,11 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool catsLoad = false;
-  List<TV> tvs = [];
 
   TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    if (!catsLoad) {
-      getCats().then((a) {
-        var cats = jsonDecode(a.body);
-        cats.forEach((cat) {
-
-            List<String> currentCatSubs = [];
-            cat['subid'].forEach((subcat) => currentCatSubs.add(subcat['name']));
-
-            tvs.add(TV(
-              title: cat['name'],
-              subs: currentCatSubs,
-              onSelect: (name) {},
-            ));
-        });
-
-        catsLoad = true;
-        setState(() => {});
-      });
-    }
-
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
@@ -102,9 +75,7 @@ class _LoginState extends State<Login> {
                   text: "Sign Up",
                   onPressed: () => {switchPage(context, () => Signup())},
                 ),
-                Column(
-                  children: tvs,
-                )
+
               ],
             ),
           ),
@@ -113,9 +84,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Future<http.Response> getCats() {
-    return sendToApiGet('categories/getCategories');
-  }
+
 
   authorizeData() async {
     final params = {"email": email.text, "password": password.text};
