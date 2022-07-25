@@ -37,14 +37,21 @@ class _SpecFoundState extends State<SpecFound> {
           mainAxisAlignment: MainAxisAlignment.start,
           children:  [
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             Column(
               children:  [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:[
                 Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+
+                  padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
+
                       border: Border.all(
-                        color: Colors.red,
+                        color: Colors.grey,
 
                       ),
                     borderRadius: BorderRadius.circular(5)
@@ -56,23 +63,29 @@ class _SpecFoundState extends State<SpecFound> {
                     child: image !=null ? Image.file(image!):Text('no image'),
                   ),),
                 MaterialButton(
-                    color: const Color(0xffefd16f),
+                    color: Colors.grey,
+                    shape: RoundedRectangleBorder(
+                      side:const BorderSide(width: 2,color: Color(0xffefd16f)),
+                      borderRadius: BorderRadius.circular(5)
+                    ),
                     child: const Text(
-                        "Pick Image from Gallery",
+                        "Pick Image",
                         style: TextStyle(
-                            color: Colors.white70, fontWeight: FontWeight.bold
+                            color: Colors.black, fontWeight: FontWeight.bold,fontSize: 10
                         )
                     ),
                     onPressed:() {
                       pickImage();
 
                     }
-                ),
+                ),]),
                 SizedBox(height: 20,),
 
 
+
+
               ],
-            )
+            ),
 
           ],
         ),
