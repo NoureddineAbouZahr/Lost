@@ -116,7 +116,7 @@ class LItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
 children:[
                   Text('Description',
-                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,decoration: TextDecoration.underline),
+                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold, ),
                   ),
                   SizedBox(height: 10,),
                   Text(post.extra,
