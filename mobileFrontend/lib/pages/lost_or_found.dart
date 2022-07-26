@@ -82,11 +82,11 @@ class LostFound extends StatelessWidget {
             const SizedBox(
               height: 70,
             ),
-            LostButton(text: 'Found Object', onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>Cats()))}),
+            LostButton(text: 'Found Object', onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>Cats(0)))}),
             const SizedBox(
               height: 20,
             ),
-            LostButton(text: 'Lost Object', onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>Cats()))}),
+            LostButton(text: 'Lost Object', onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>Cats(1)))}),
 
             // AlertDialog(
             //   title: Text('Success'),
