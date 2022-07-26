@@ -105,8 +105,29 @@ class LItem extends StatelessWidget {
                     thickness: 3,
                     height: 50,
                   )),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+
+                children: [
+                  SizedBox(width: 20,),
+                  Column(
+
+                    crossAxisAlignment: CrossAxisAlignment.start,
+children:[
+                  Text('Description',
+                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,decoration: TextDecoration.underline),
+                  ),
+                  SizedBox(height: 10,),
+                  Text(post.extra,
+                  style: TextStyle(fontSize: 16),)])
+                ],
+              )
+
+
             ],
           ),
-        ));
+        ),
+    );
   }
 }
