@@ -89,13 +89,13 @@ class _LoginState extends State<Login> {
   authorizeData() async {
     final params = {"email": email.text, "password": password.text};
     print(params);
-    final response = await Services().login('users/login', params);
-    final token = response.body;
-
-    if (response.statusCode == 200) {
-      ls.setItem('token', token);
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => LostFound()));
+    Services().login('users/login', params).then((response)
+    {
+        final token = response.body;
+        ls.setItem('token', token);
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (_) => LostFound()));
     }
+    });
   }
 }

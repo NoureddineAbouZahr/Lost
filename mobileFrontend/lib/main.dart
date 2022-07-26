@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: isLogin ? Home(logindata) : Login(),
-      home:  SpecFound(),
+      home:  Splash(),
     );
   }
 }

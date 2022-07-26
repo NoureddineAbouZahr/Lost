@@ -7,6 +7,10 @@ import 'package:image_picker/image_picker.dart';
 // import 'package:latlong/latlong.dart';
 import 'package:lost/widgets/input.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:lost/widgets/lost_button.dart';
+
+import '../services/services.dart';
+import 'login.dart';
 
 class SpecFound extends StatefulWidget {
   const SpecFound({Key? key}) : super(key: key);
@@ -95,7 +99,7 @@ class _SpecFoundState extends State<SpecFound> {
                 Container(
                   child: Column(children: [
                     LostInput(
-                        labelText: 'Type',
+                        labelText: 'Name/Type',
                         hintText: "Enter  Name ",
                         controller: name),
                     LostInput(
@@ -111,6 +115,10 @@ class _SpecFoundState extends State<SpecFound> {
                         hintText: 'Enter Color',
                         controller: color),
                     LostInput(
+                        labelText: 'Brand',
+                        hintText: 'Enter Brand',
+                        controller: brand),
+                    LostInput(
                         labelText: 'Extra',
                         hintText: 'Extra Information',
                         controller: extraInfo),
@@ -118,30 +126,31 @@ class _SpecFoundState extends State<SpecFound> {
                 ),
               ],
             ),
-            Stack(
-              children: [
-                FlutterMap(
-                  options: MapOptions(zoom: 10.0, center: LatLng(33, 37)),
-                  layers: [
-                    TileLayerOptions(
-                      urlTemplate:
-                          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                      subdomains: ['a', 'b', 'c'],
-                    ),
-                    MarkerLayerOptions(markers: [
-                      Marker(
-                          point: LatLng(33, 37),
-                          builder: (ctx) => const Icon(
-                                Icons.location_on,
-                                color: Colors.red,
-                              ),
-                          width: 100,
-                          height: 100)
-                    ])
-                  ],
-                )
-              ],
-            )
+            LostButton(text: 'Post', onPressed: () => postItem())
+            // Stack(
+            //   children: [
+            //     FlutterMap(
+            //       options: MapOptions(zoom: 10.0, center: LatLng(33, 37)),
+            //       layers: [
+            //         TileLayerOptions(
+            //           urlTemplate:
+            //               "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            //           subdomains: ['a', 'b', 'c'],
+            //         ),
+            //         MarkerLayerOptions(markers: [
+            //           Marker(
+            //               point: LatLng(33, 37),
+            //               builder: (ctx) => const Icon(
+            //                     Icons.location_on,
+            //                     color: Colors.red,
+            //                   ),
+            //               width: 100,
+            //               height: 100)
+            //         ])
+            //       ],
+            //     )
+            //   ],
+            // )
           ],
         ),
       ]),
@@ -159,5 +168,26 @@ class _SpecFoundState extends State<SpecFound> {
     }
   }
 
-  
+  postItem() {
+    final params = {
+      "name":name.text,
+      "SerialNumber":SerialNumber.text,
+      "model":model.text,
+      "color":color.text,
+      "brand":brand.text,
+      "extraInfo":extraInfo.text,
+      "locationx":33.4,
+      "locationy":37
+    };
+    if(name.text!='') {
+      Services().login('items/addItem', params).then((value) {
+        Navigator.pop(context);
+        Navigator.pop(context);
+        print(value);
+      }).catchError(print);
+    }
+    else{
+      print('password doesn\'t match');
+    }
+  }
 }
