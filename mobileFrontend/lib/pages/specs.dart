@@ -159,15 +159,17 @@ class _SpecFoundState extends State<SpecFound> {
     );
   }
 
+  String extension = '';
   Future pickImage() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
-      final name = image.path.split('.').last;
+      extension = image.path.split('.').last;
 
       List<int> imageBytes = imageTemp.readAsBytesSync();
-      base64Image = "data:image/$name};base64,${base64Encode(imageBytes)}";
+
+      base64Image = base64Encode(imageBytes);
       setState(() => this.image = imageTemp);
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
@@ -185,7 +187,8 @@ class _SpecFoundState extends State<SpecFound> {
       "extraInfo":extraInfo.text,
       "locationx":33.4,
       "locationy":37,
-      "subid": lastSubCategoryId
+      "subid": lastSubCategoryId,
+      //"_prefixe": extension
     };
     if(name.text!='') {
       Services().login('items/addItem', params).then((value) {
