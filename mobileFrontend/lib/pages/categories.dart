@@ -33,6 +33,7 @@ class _CatsState extends State<Cats> {
             subs: currentCatSubs,
             onSelect: (name) {
               lastSubCategory = name;
+              lastSubCategoryId = cat['subid'].firstWhere((element) => element['name'].toString() == name)['_id'];
               if (widget.type == 0) {
                 switchPage(context, () => SpecFound());
               } else {

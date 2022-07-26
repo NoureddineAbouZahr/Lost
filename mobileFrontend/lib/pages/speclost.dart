@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:lost/services/globals.dart';
 import 'package:lost/utils.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:lost/widgets/lost_button.dart';
@@ -64,8 +65,7 @@ class _SpecLostState extends State<SpecLost> {
     sendToApiGet('items/getItems').then((value) {
       final items = jsonDecode(value.body);
       var filteredItems = [];
-      items.forEach((item) {
-        if (item['name'].toString().startsWith('ace')) {
+      items.forEach((item) {if (item['subid'].isNotEmpty && item['subid'][0]?['_id'].toString() == lastSubCategoryId) {
           filteredItems.add(item);
         }
       });

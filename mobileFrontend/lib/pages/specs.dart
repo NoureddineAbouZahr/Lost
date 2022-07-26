@@ -10,6 +10,7 @@ import 'package:lost/widgets/input.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:lost/widgets/lost_button.dart';
 
+import '../services/globals.dart';
 import '../services/services.dart';
 import 'login.dart';
 
@@ -183,7 +184,8 @@ class _SpecFoundState extends State<SpecFound> {
       "brand":brand.text,
       "extraInfo":extraInfo.text,
       "locationx":33.4,
-      "locationy":37
+      "locationy":37,
+      "subid": lastSubCategoryId
     };
     if(name.text!='') {
       Services().login('items/addItem', params).then((value) {
