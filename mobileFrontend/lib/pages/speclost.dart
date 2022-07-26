@@ -141,15 +141,31 @@ class Post extends StatelessWidget {
         width: width * 0.9,
         height: width * 0.45,
         child: Container(
+            margin: EdgeInsets.only(top: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  child: Image.memory(base64Decode(img64)),
                   width: width * 0.4,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: Image.memory(base64Decode(img64)).image)),
+                  ),
                 ),
-                SizedBox(width: 60),
-                Text(name),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(extra!),
+                  ],
+                )
               ],
             )));
   }
