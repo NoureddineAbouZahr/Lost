@@ -33,10 +33,10 @@ class LItem extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                  width: width ,
+                  width: width,
                   height: 300,
                   child: Container(
-                    margin: EdgeInsets.only(top:3 ),
+                    margin: EdgeInsets.only(top: 3),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
                         border: Border.all(color: Color(0xffefd16f), width: 3),
@@ -47,14 +47,14 @@ class LItem extends StatelessWidget {
                   )),
               Container(
                 child: Center(
-                  child: Text(post.name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-
-                  ),),
+                  child: Text(
+                    post.name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
-
               ),
               SizedBox(height: 30),
               Row(
@@ -63,26 +63,48 @@ class LItem extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
-                      Text('Brand:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                      Text('Color:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                      Text('Model/Type:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                      Text('S/N:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))
+                      Text('Brand:',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16)),
+                      Divider(),
+                      Text('Color:',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16)),
+                      Divider(),
+                      Text('Model/Type:',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16)),
+                      Divider(),
+                      Text('S/N:',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16))
                     ],
-
                   ),
                   const Padding(padding: EdgeInsets.symmetric(horizontal: 50)),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(post.brand == "" ? 'N/A': post.brand, style: const TextStyle(fontSize: 16)),
-                      Text(post.color == "" ? 'N/A': post.color, style: const TextStyle(fontSize: 16)),
-                      Text(post.model == "" ? 'N/A': post.model, style: const TextStyle(fontSize: 16)),
-                      Text(post.serialNumber == "" ? 'N/A': post.serialNumber, style: const TextStyle(fontSize: 16)),
+                      Text(post.brand == "" ? 'N/A' : post.brand,
+                          style: const TextStyle(fontSize: 16)),
+                      Divider(),
+                      Text(post.color == "" ? 'N/A' : post.color,
+                          style: const TextStyle(fontSize: 16)),
+                      Divider(),
+                      Text(post.model == "" ? 'N/A' : post.model,
+                          style: const TextStyle(fontSize: 16)),
+                      Divider(),
+                      Text(post.serialNumber == "" ? 'N/A' : post.serialNumber,
+                          style: const TextStyle(fontSize: 16)),
                     ],
-
                   ),
                 ],
-              )
+              ),
+              SizedBox(
+                  width: width * 0.9,
+                  child: const Divider(
+                    thickness: 3,
+                    height: 50,
+                  )),
             ],
           ),
         ));
