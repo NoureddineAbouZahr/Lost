@@ -4,12 +4,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:lost/utils.dart';
-// import 'package:latlong/latlong.dart';
 import 'package:lost/widgets/input.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:lost/widgets/lost_button.dart';
 
 import '../services/globals.dart';
@@ -130,31 +129,32 @@ class _SpecFoundState extends State<SpecFound> {
                 ),
               ],
             ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.75,height: MediaQuery.of(context).size.width * 0.75,child:  Stack(
+              children: [
+                FlutterMap(
+                    options: MapOptions(zoom: 10.0, center: LatLng(33, 37)),
+                  layers: [
+                    TileLayerOptions(
+                      urlTemplate:  "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                      userAgentPackageName: 'com.example.lost',
+                    ),
+                    MarkerLayerOptions(markers: [
+                      Marker(
+                          point: LatLng(33, 37),
+                          builder: (ctx) => const Icon(
+                            Icons.location_on,
+                            color: Colors.red,
+                          ),
+                          width: 100,
+                          height: 100)
+                    ])
+                  ],
+                )
+              ],
+            )),
+            SizedBox(height: 10,),
             LostButton(text: 'Post', onPressed: () => postItem()),
-            // Stack(
-            //   children: [
-            //     FlutterMap(
-            //       options: MapOptions(zoom: 10.0, center: LatLng(33, 37)),
-            //       layers: [
-            //         TileLayerOptions(
-            //           urlTemplate:
-            //               "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            //           subdomains: ['a', 'b', 'c'],
-            //         ),
-            //         MarkerLayerOptions(markers: [
-            //           Marker(
-            //               point: LatLng(33, 37),
-            //               builder: (ctx) => const Icon(
-            //                     Icons.location_on,
-            //                     color: Colors.red,
-            //                   ),
-            //               width: 100,
-            //               height: 100)
-            //         ])
-            //       ],
-            //     )
-            //   ],
-            // )
+
           ],
         ),
       ]),
@@ -177,6 +177,7 @@ class _SpecFoundState extends State<SpecFound> {
       print('Failed to pick image: $e');
     }
   }
+  Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
 
   postItem() {
     final params = {
@@ -190,7 +191,7 @@ class _SpecFoundState extends State<SpecFound> {
       "locationx":33.4,
       "locationy":37,
       "subid": lastSubCategoryId,
-      "user": ,
+      "user": userData['_id'],
       //"_prefixe": extension
     };
     if(name.text!='') {

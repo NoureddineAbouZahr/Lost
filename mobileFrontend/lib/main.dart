@@ -6,7 +6,7 @@ import 'package:lost/splash.dart';
 Future<FirebaseApp>? _fbApp;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  _fbApp = (await Firebase.initializeApp()) as Future<FirebaseApp>?;
+  //_fbApp = (await Firebase.initializeApp()) as Future<FirebaseApp>?;
   runApp(MyApp());
 }
 
