@@ -92,7 +92,6 @@ class _SpecLostState extends State<SpecLost> {
           children: [
             SizedBox(height: 30),
             Column(children: posts),
-            LostButton(text: 'Search', onPressed: () => null),
           ],
         ),
       ]),
@@ -140,8 +139,15 @@ class Post extends StatelessWidget {
     return SizedBox(
         width: width * 0.9,
         height: width * 0.45,
-        child: Container(
+        child: AnimatedContainer(
             margin: EdgeInsets.only(top: 10),
+            padding: EdgeInsets.all(5),
+            // , spreadRadius: 3
+            decoration: BoxDecoration(
+                boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 4)],
+                color: Colors.white,
+                border: Border.all(color: Color(0xffefd16f), width: 3)),
+            duration: const Duration(milliseconds: 500),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
