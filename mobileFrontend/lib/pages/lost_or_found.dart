@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lost/pages/signup.dart';
 import '../widgets/navbar.dart';
 import '../utils.dart';
@@ -13,9 +14,13 @@ class LostFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    
+
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      
       drawer: Nav(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -64,6 +69,7 @@ class LostFound extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
@@ -81,6 +87,17 @@ class LostFound extends StatelessWidget {
               height: 20,
             ),
             LostButton(text: 'Lost Object', onPressed: () => {})
+            ,
+            // AlertDialog(
+            //   title: Text('Success'),
+            //   content: SingleChildScrollView(
+            //     child: ListBody(
+            //       children: [
+            //         Text('Item Posted')
+            //       ],
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ),

@@ -88,10 +88,11 @@ class _LoginState extends State<Login> {
 
   authorizeData() async {
     final params = {"email": email.text, "password": password.text};
-    print(params);
     Services().login('users/login', params).then((response) {
         final token = response.body;
         ls.setItem('token', token);
+        ls.setItem('email', email.text);
+        ls.setItem('password', password.text);
         Navigator.pop(context);
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const LostFound()));
         }
