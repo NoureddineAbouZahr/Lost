@@ -24,7 +24,7 @@ class _SpecFoundState extends State<SpecFound> {
   TextEditingController status = new TextEditingController();
 
   File? image;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +44,9 @@ class _SpecFoundState extends State<SpecFound> {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
+      body: ListView(
+        children: [Column(
+
           mainAxisAlignment: MainAxisAlignment.start,
           children:  [
             SizedBox(
@@ -92,13 +93,25 @@ class _SpecFoundState extends State<SpecFound> {
                     }
                 ),]),
                 SizedBox(height: 20,),
-                LostInput(labelText: 'Type', hintText: "Enter the type", controller: controller)
+                Container(
+
+                  child:Column(
+                    children:[
+                LostInput(labelText: 'Type', hintText: "Enter  Name ", controller: name),
+                LostInput(labelText: 'Serial Number', hintText: 'Enter  S.N', controller: SerialNumber),
+                LostInput(labelText: 'Model', hintText: 'Enter  Model', controller: model),
+                LostInput(labelText: 'Color', hintText: 'Enter Color', controller: color),
+                LostInput(labelText: 'Extra', hintText: 'Extra Information', controller: extraInfo),
+                ]  ),
+
+                ),
+
 
               ],
             ),
 
           ],
-        ),
+        ),]
       ),
     );
   }
