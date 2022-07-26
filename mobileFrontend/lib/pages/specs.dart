@@ -149,13 +149,30 @@ decoration: BoxDecoration(
                           builder: (ctx) => const Icon(
                             Icons.location_on,
                             color: Colors.red,
+                            size: 40,
                           ),
                           width: 100,
                           height: 100)
                     ])
                   ],
-                )
-              ],
+                ),
+                Padding(padding: const EdgeInsets.symmetric(vertical: 3.0,horizontal: 16.0),
+                child:
+                Column(
+                  children: [
+                    Card(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.location_on_outlined),
+                          hintText: "Search for Location",
+                          contentPadding: EdgeInsets.all(16.0),
+
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                )],
             )),
             SizedBox(height: 10,),
             LostButton(text: 'Post', onPressed: () => postItem()),
