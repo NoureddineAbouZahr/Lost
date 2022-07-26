@@ -112,8 +112,7 @@ class _SpecLostState extends State<SpecLost> {
     }).catchError(print);
   }
 }
-
-class Post extends StatelessWidget {
+class Post extends StatefulWidget {
   final String img64;
   final String name;
   final String? extra;
@@ -134,45 +133,57 @@ class Post extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<Post> createState() => _PostState();
+}
+
+class _PostState extends State<Post> {
+  double spreadRadius = 0;
+
+  @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return SizedBox(
-        width: width * 0.9,
-        height: width * 0.45,
-        child: AnimatedContainer(
-            margin: EdgeInsets.only(top: 10),
-            padding: EdgeInsets.all(5),
-            // , spreadRadius: 3
-            decoration: BoxDecoration(
-                boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 4)],
-                color: Colors.white,
-                border: Border.all(color: Color(0xffefd16f), width: 3)),
-            duration: const Duration(milliseconds: 500),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: width * 0.4,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: Image.memory(base64Decode(img64)).image)),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+    return GestureDetector(
+      onTap: () {
+        setState(() => spreadRadius = 2 );
+      },
+      child: SizedBox(
+          width: width * 0.9,
+          height: width * 0.45,
+          child: AnimatedContainer(
+              margin: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.all(5),
+              // , spreadRadius: 3
+              decoration: BoxDecoration(
+                  boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 4, spreadRadius: spreadRadius)],
+                  color: Colors.white,
+                  border: Border.all(color: Color(0xffefd16f), width: 3)),
+              duration: const Duration(milliseconds: 100),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: width * 0.4,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.memory(base64Decode(widget.img64)).image)),
                     ),
-                    Text(extra!),
-                  ],
-                )
-              ],
-            )));
+                  ),
+                  SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.name,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(widget.extra!),
+                    ],
+                  )
+                ],
+              ))),
+    );
   }
 }
