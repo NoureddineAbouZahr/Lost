@@ -4,7 +4,6 @@ import 'package:lost/utils.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:lost/widgets/lost_button.dart';
 
-
 class SpecLost extends StatefulWidget {
   const SpecLost({Key? key}) : super(key: key);
 
@@ -61,18 +60,8 @@ class _SpecLostState extends State<SpecLost> {
   }
 
   getItem() {
-    final params = {
-      "name": name.text,
-      "SerialNumber": SerialNumber.text,
-      "model": model.text,
-      "color": color.text,
-      "brand": brand.text,
-      "extraInfo": extraInfo.text,
-    };
-    if (name.text != '') {
-      sendToApiGet('items/getItems').then((value) {
-        print(value.body);
-      }).catchError(print);
-    }
+    sendToApiGet('items/getItems').then((value) {
+      print(value.body);
+    }).catchError(print);
   }
 }
