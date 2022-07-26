@@ -163,9 +163,10 @@ class _SpecFoundState extends State<SpecFound> {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
+      final name = image.path.split('.').last;
 
       List<int> imageBytes = imageTemp.readAsBytesSync();
-      base64Image = base64Encode(imageBytes);
+      base64Image = "data:image/$name};base64,${base64Encode(imageBytes)}";
       setState(() => this.image = imageTemp);
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
