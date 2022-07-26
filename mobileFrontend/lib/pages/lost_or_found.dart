@@ -86,8 +86,8 @@ class LostFound extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            LostButton(text: 'Lost Object', onPressed: () => {})
-            ,
+            LostButton(text: 'Lost Object', onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>Cats()))}),
+
             // AlertDialog(
             //   title: Text('Success'),
             //   content: SingleChildScrollView(
