@@ -117,11 +117,11 @@ class _SpecLostState extends State<SpecLost> {
 class Post extends StatefulWidget {
   final String img64;
   final String name;
-  final String? extra;
-  final String? serialNumber;
-  final String? model;
-  final String? color;
-  final String? brand;
+  final String extra;
+  final String serialNumber;
+  final String model;
+  final String color;
+  final String brand;
 
   const Post(
       {Key? key,
@@ -182,7 +182,7 @@ class _PostState extends State<Post> {
                         widget.name,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text(widget.extra!),
+                      Text(widget.extra),
                     ],
                   )
                 ],

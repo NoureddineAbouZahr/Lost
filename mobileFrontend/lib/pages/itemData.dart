@@ -56,9 +56,31 @@ class LItem extends StatelessWidget {
                 ),
 
               ),
+              SizedBox(height: 30),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text('Brand:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                      Text('Color:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                      Text('Model/Type:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                      Text('S/N:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))
+                    ],
+
+                  ),
+                  const Padding(padding: EdgeInsets.symmetric(horizontal: 50)),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(post.brand == "" ? 'N/A': post.brand, style: const TextStyle(fontSize: 16)),
+                      Text(post.color == "" ? 'N/A': post.color, style: const TextStyle(fontSize: 16)),
+                      Text(post.model == "" ? 'N/A': post.model, style: const TextStyle(fontSize: 16)),
+                      Text(post.serialNumber == "" ? 'N/A': post.serialNumber, style: const TextStyle(fontSize: 16)),
+                    ],
+
+                  ),
                 ],
               )
             ],
