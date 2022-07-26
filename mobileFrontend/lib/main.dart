@@ -1,18 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:lost/pages/specs.dart';
 import 'package:lost/splash.dart';
-import './widgets/treeview.dart';
-import './widgets/lost_button.dart';
-import './pages/signup.dart';
-import 'package:lost/splash.dart';import './pages/lost_or_found.dart';
 
-bool isLogin = false;
-void main() {
-  runApp(const MyApp());
+Future<FirebaseApp>? _fbApp;
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  _fbApp = (await Firebase.initializeApp()) as Future<FirebaseApp>?;
+  runApp(MyApp());
 }
 
+// FirebaseDatabase.instance.ref('messages').onChildAdded.listen((event) {});
+
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: isLogin ? Home(logindata) : Login(),
-      home:  Splash(),
+      home: Splash(),
     );
   }
 }
