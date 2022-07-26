@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:lost/pages/speclost.dart';
 import 'package:lost/pages/specs.dart';
 import '../services/globals.dart';
 import '../utils.dart';
@@ -7,11 +8,13 @@ import 'package:http/http.dart' as http;
 import '../widgets/treeview.dart';
 
 class Cats extends StatefulWidget {
-  const Cats({Key? key}) : super(key: key);
+  const Cats(this.type, {Key? key}) : super(key: key);
+  final int type;
 
   @override
   State<Cats> createState() => _CatsState();
 }
+
 class _CatsState extends State<Cats> {
   bool catsLoad = false;
   List<TV> tvs = [];
@@ -30,7 +33,12 @@ class _CatsState extends State<Cats> {
             subs: currentCatSubs,
             onSelect: (name) {
               lastSubCategory = name;
-              switchPage(context, () => SpecFound());
+              if (widget.type == 0) {
+                switchPage(context, () => SpecFound());
+              } else {
+                switchPage(context, () => SpecLost());
+
+              }
             },
           ));
         });
@@ -63,7 +71,7 @@ class _CatsState extends State<Cats> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                  Column(
+                Column(
                   children: tvs,
                 )
               ],
@@ -73,6 +81,7 @@ class _CatsState extends State<Cats> {
       ),
     );
   }
+
   Future<http.Response> getCats() {
     return sendToApiGet('categories/getCategories');
   }

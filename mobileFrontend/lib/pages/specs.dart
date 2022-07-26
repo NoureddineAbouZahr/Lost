@@ -166,7 +166,6 @@ class _SpecFoundState extends State<SpecFound> {
 
       List<int> imageBytes = imageTemp.readAsBytesSync();
       base64Image = base64Encode(imageBytes);
-
       setState(() => this.image = imageTemp);
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
@@ -191,8 +190,6 @@ class _SpecFoundState extends State<SpecFound> {
         Navigator.pop(context);
       }).catchError(print);
     }
-    else{
-      print('password doesn\'t match');
-    }
+
   }
 }
