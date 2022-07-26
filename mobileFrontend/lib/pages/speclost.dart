@@ -7,6 +7,8 @@ import 'package:lost/utils.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:lost/widgets/lost_button.dart';
 
+import 'itemData.dart';
+
 class SpecLost extends StatefulWidget {
   const SpecLost({Key? key}) : super(key: key);
 
@@ -145,6 +147,7 @@ class _PostState extends State<Post> {
     return GestureDetector(
       onTap: () {
         setState(() => spreadRadius = 2 );
+        Navigator.push(context, MaterialPageRoute(builder: (c)=>LItem(post:widget)));
       },
       child: SizedBox(
           width: width * 0.9,
