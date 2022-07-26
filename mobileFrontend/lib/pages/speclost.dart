@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:lost/utils.dart';
@@ -61,7 +62,14 @@ class _SpecLostState extends State<SpecLost> {
 
   getItem() {
     sendToApiGet('items/getItems').then((value) {
-      print(value.body);
+      final items = jsonDecode(value.body);
+      var filteredItems = [];
+      items.forEach((item) {
+        if (item['name'].toString().startsWith('ace')) {
+          filteredItems.add(item);
+        }
+      });
+      print(filteredItems);
     }).catchError(print);
   }
 }
