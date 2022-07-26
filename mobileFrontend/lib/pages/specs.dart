@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _SpecFoundState extends State<SpecFound> {
   TextEditingController locationx = new TextEditingController();
   TextEditingController locationy = new TextEditingController();
   TextEditingController status = new TextEditingController();
-
+  String base64Image = "";
   LatLng point = LatLng(33, 37);
 
   File? image;
@@ -126,7 +127,7 @@ class _SpecFoundState extends State<SpecFound> {
                 ),
               ],
             ),
-            LostButton(text: 'Post', onPressed: () => postItem())
+            LostButton(text: 'Post', onPressed: () => postItem()),
             // Stack(
             //   children: [
             //     FlutterMap(
@@ -162,6 +163,10 @@ class _SpecFoundState extends State<SpecFound> {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) return;
       final imageTemp = File(image.path);
+
+      List<int> imageBytes = imageTemp.readAsBytesSync();
+      base64Image = base64Encode(imageBytes);
+
       setState(() => this.image = imageTemp);
     } on PlatformException catch (e) {
       print('Failed to pick image: $e');
@@ -171,6 +176,7 @@ class _SpecFoundState extends State<SpecFound> {
   postItem() {
     final params = {
       "name":name.text,
+      "pic": base64Image,
       "SerialNumber":SerialNumber.text,
       "model":model.text,
       "color":color.text,
@@ -183,7 +189,6 @@ class _SpecFoundState extends State<SpecFound> {
       Services().login('items/addItem', params).then((value) {
         Navigator.pop(context);
         Navigator.pop(context);
-        print(value);
       }).catchError(print);
     }
     else{
