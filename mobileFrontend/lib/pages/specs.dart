@@ -129,10 +129,15 @@ class _SpecFoundState extends State<SpecFound> {
                 ),
               ],
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.75,height: MediaQuery.of(context).size.width * 0.75,child:  Stack(
+            Container(width: MediaQuery.of(context).size.width * 0.95,height: MediaQuery.of(context).size.width * 0.75,
+decoration: BoxDecoration(
+  border: Border.all(color: Color(0xffefd16f),
+  width: 3)
+),
+                child:  Stack(
               children: [
                 FlutterMap(
-                    options: MapOptions(zoom: 10.0, center: LatLng(33, 37)),
+                    options: MapOptions(zoom: 10.0, center: LatLng(33.5, 35.37)),
                   layers: [
                     TileLayerOptions(
                       urlTemplate:  "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -140,7 +145,7 @@ class _SpecFoundState extends State<SpecFound> {
                     ),
                     MarkerLayerOptions(markers: [
                       Marker(
-                          point: LatLng(33, 37),
+                          point: LatLng(33.5, 35.37),
                           builder: (ctx) => const Icon(
                             Icons.location_on,
                             color: Colors.red,
