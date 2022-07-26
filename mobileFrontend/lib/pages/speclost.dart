@@ -182,7 +182,7 @@ class _PostState extends State<Post> {
                         widget.name,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text(widget.extra),
+                      SizedBox(width: width * 0.4,child: Flexible(child: Text(widget.extra, style: TextStyle(overflow: TextOverflow.clip))),)
                     ],
                   )
                 ],
