@@ -19,7 +19,7 @@ void initState() {
   super.initState();
   _navigatetohome();
 }
-_navigatetohome()async{
+_navigatetohome() async{
   await ls.ready;
   // ls.clear();
   String? email = ls.getItem('email');
@@ -35,7 +35,8 @@ _navigatetohome()async{
     }
     ).catchError(print);
   } else {
-    await Future.delayed(const Duration(milliseconds: 2000),(){});
+    await Future.delayed(const Duration(seconds: 2),(){});
+
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const Welcome()));}
 }
 
@@ -44,6 +45,7 @@ _navigatetohome()async{
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      //backgroundColor: MainCol,
       body:Center(
       child: Container(
         child:

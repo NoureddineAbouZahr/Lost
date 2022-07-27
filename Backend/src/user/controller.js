@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken');
 
 async function get(req, res) {
   try {
-    if (req.query.id) {
-      const id = req.query.id;
+    if (req.body.id) {
+      const id = req.body.id;
       const result = await getById(id);
       return res.send(result);
     }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:lost/utils.dart';
@@ -15,21 +16,13 @@ class Messasge {
 class Conversation extends StatefulWidget {
   final String thisId;
   final String thatId;
-  String thisUser = '';
   String thatUser = '';
   List<Messasge> messages = [];
 
 // FirebaseDatabase.instance.ref('messages').onChildAdded.listen((event) {});
 
 
-  Conversation({Key? key, required String this.thisId, required String this.thatId}) {
-    // sendToApiPost('user/get', {'id': thisId}).then((value) {
-    //   thisUser = jsonDecode(value.body)['name'].toString();
-    // });
-    sendToApiPost('user/get', {'id': thatId}).then((value) {
-      thatUser = jsonDecode(value.body)['name'].toString();
-    });
-  }
+  Conversation({Key? key, required String this.thisId, required String this.thatId});
 
   @override
   State<Conversation> createState() => _ConversationState();
@@ -38,18 +31,20 @@ class Conversation extends StatefulWidget {
 class _ConversationState extends State<Conversation> {
   @override
   Widget build(BuildContext context) {
-    if (widget.thatUser == '' ) {
-      setState((){});
-      return const Text('. . .');
+    if (widget.thatUser == '') {
+      sendToApiPost('users/get', {'id': widget.thatId.toString()}).then((value) {
+        widget.thatUser = jsonDecode(value.body)['name'].toString();
+        setState((){});
+      }).catchError(print);
     }
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: AppBar(
-          centerTitle: true,
-          title: Text(widget.thatUser),
+          title: Text(widget.thatUser.toUpperCase()),
         ),
       ),
+      body: Column(),
     );
   }
 }
