@@ -48,7 +48,7 @@ class _LItemState extends State<LItem> {
         ),
       ),
       body: Center(
-        child: Column(
+        child: ListView(
           children: [
             SizedBox(
                 width: width,
@@ -143,7 +143,22 @@ class _LItemState extends State<LItem> {
                       child: Text(widget.post.extra,
                           style: const TextStyle(
                               fontSize: 16, overflow: TextOverflow.clip))),),
-                  Text('Location: '+location)
+
+                  SizedBox(
+                      width: width * 0.9,
+                      child: const Divider(
+                        thickness: 3,
+                        height: 50,
+                      )),
+                  Text('Location:',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20
+                    ),
+
+                  ),
+                  Text(location)
+
                 ])
               ],
             )
