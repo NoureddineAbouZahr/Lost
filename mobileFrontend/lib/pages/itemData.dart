@@ -217,7 +217,10 @@ class _LItemState extends State<LItem> {
         ),
       ),
       floatingActionButton: userData['_id'].toString() == widget.post.user.toString() ? Container(): FloatingActionButton(onPressed: () {
-          
+          Navigator.pop(context);
+          Navigator.pop(context);
+          Navigator.pop(context);
+          switchPage(context, () => Conversation(thisId: userData['_id'], thatId: widget.post.user));
       },child: const Icon(Icons.message,color: Color(0xff666666),),),
     );
   }
