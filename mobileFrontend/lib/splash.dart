@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lost/pages/lost_or_found.dart';
 import 'package:lost/services/services.dart';
 import 'package:lost/utils.dart';
-import 'main.dart';
 import './welcom.dart';
 
 
@@ -21,7 +20,6 @@ void initState() {
 }
 _navigatetohome() async{
   await ls.ready;
-  // ls.clear();
   String? email = ls.getItem('email');
   String? password = ls.getItem('password');
   if (email != null && password != null) {
@@ -31,7 +29,7 @@ _navigatetohome() async{
         final token = response.body;
         ls.setItem('token', token);
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const LostFound()));
-      } finally {}
+      } catch(e) {print('stop messing around asshole');}
     }
     ).catchError(print);
   } else {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jwt_decode/jwt_decode.dart';
+import 'package:lost/pages/userchats.dart';
 import 'package:lost/pages/userposts.dart';
 import 'package:lost/welcom.dart';
 import '../utils.dart';
@@ -45,7 +46,10 @@ class _NavState extends State<Nav> {
         ListTile(
           leading: const Icon(Icons.chat),
           title: const Text('Chats'),
-          onTap: () => null,
+          onTap: () => {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (c) => UserChats()))
+          },
         ),
 
         Expanded(
@@ -59,7 +63,6 @@ class _NavState extends State<Nav> {
                     ls.clear().then((value) =>
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Welcome()))
                     );
-
                   },
                 ),)))
       ]),
