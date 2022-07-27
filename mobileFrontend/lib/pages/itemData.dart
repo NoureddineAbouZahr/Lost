@@ -1,13 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:lost/pages/speclost.dart';
 
 class LItem extends StatefulWidget {
   final Post post;
 
-   LItem({Key? key, required this.post}) : super(key: key);
+  LItem({Key? key, required this.post}) : super(key: key);
 
   @override
   State<LItem> createState() => _LItemState();
@@ -17,15 +19,20 @@ class _LItemState extends State<LItem> {
   String location = '';
 
   Future<void> setuplocation() async {
-    List<Placemark> placemarks = await placemarkFromCoordinates(widget.post.locationy, widget.post.locationx);
-    location = placemarks.first.country! + ' , '+ placemarks.first.locality! + ' , Street: '+ placemarks.first.street!;
+    List<Placemark> placemarks = await placemarkFromCoordinates(
+        widget.post.locationy, widget.post.locationx);
+    location = placemarks.first.country! +
+        ' , ' +
+        placemarks.first.locality! +
+        ' , Street: ' +
+        placemarks.first.street!;
   }
 
   @override
   Widget build(BuildContext context) {
     if (location.isEmpty) {
       setuplocation().then((v) {
-        setState(() { });
+        setState(() {});
       });
     }
     double width = MediaQuery.of(context).size.width;
@@ -60,7 +67,8 @@ class _LItemState extends State<LItem> {
                       border: Border.all(color: Color(0xffefd16f), width: 3),
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: Image.memory(base64Decode(widget.post.img64)).image)),
+                          image: Image.memory(base64Decode(widget.post.img64))
+                              .image)),
                 )),
             Container(
               child: Center(
@@ -110,14 +118,17 @@ class _LItemState extends State<LItem> {
                     Text(widget.post.model == "" ? 'N/A' : widget.post.model,
                         style: const TextStyle(fontSize: 16)),
                     Divider(),
-                    Text(widget.post.serialNumber == "" ? 'N/A' : widget.post.serialNumber,
+                    Text(
+                        widget.post.serialNumber == ""
+                            ? 'N/A'
+                            : widget.post.serialNumber,
                         style: const TextStyle(fontSize: 16)),
                   ],
                 ),
               ],
             ),
             SizedBox(
-                width: width * 0.9,
+                width: width * 0.45,
                 child: const Divider(
                   thickness: 3,
                   height: 50,
@@ -139,33 +150,68 @@ class _LItemState extends State<LItem> {
                   const SizedBox(
                     height: 10,
                   ),
-                  SizedBox(width: width * 0.9,child: Flexible(
-                      child: Text(widget.post.extra,
-                          style: const TextStyle(
-                              fontSize: 16, overflow: TextOverflow.clip))),),
-
+                  SizedBox(
+                    width: width * 0.9,
+                    child: Flexible(
+                        child: Text(widget.post.extra,
+                            style: const TextStyle(
+                                fontSize: 16, overflow: TextOverflow.clip))),
+                  ),
                   SizedBox(
                       width: width * 0.9,
                       child: const Divider(
                         thickness: 3,
                         height: 50,
                       )),
-                  Text('Location:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
-                    ),
-
+                  Text(
+                    'Location:',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Text(location)
-
+                  Text(location),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: MediaQuery.of(context).size.width * 0.9,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Color(0xffefd16f), width: 3)),
+                      child: Stack(
+                        children: [
+                          FlutterMap(
+                            options: MapOptions(
+                                zoom: 10.0,
+                                center: LatLng(widget.post.locationy,
+                                    widget.post.locationx)),
+                            layers: [
+                              TileLayerOptions(
+                                urlTemplate:
+                                    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                                userAgentPackageName: 'com.example.lost',
+                              ),
+                              MarkerLayerOptions(markers: [
+                                Marker(
+                                    point: LatLng(widget.post.locationy,
+                                        widget.post.locationx),
+                                    builder: (ctx) => const Icon(
+                                          Icons.location_on,
+                                          color: Colors.red,
+                                          size: 40,
+                                        ),
+                                    width: 100,
+                                    height: 100)
+                              ])
+                            ],
+                          ),
+                        ],
+                      ))  ,
+                  SizedBox(height: 20,)
                 ])
               ],
             )
           ],
         ),
       ),
-
     );
   }
 }
