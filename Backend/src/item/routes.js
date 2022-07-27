@@ -4,7 +4,7 @@ const router = Router();
 
 router.post('/addItem', add);
 router.get('/getItems', get);
-router.get('/userItems', getbyUser);
+router.post('/userItems', getbyUser);
 router.delete('/removeItem', removeItem);
 
 module.exports = router;

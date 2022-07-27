@@ -8,12 +8,15 @@ import 'package:jwt_decode/jwt_decode.dart';
 import 'package:lost/pages/speclost.dart';
 import 'package:lost/services/globals.dart';
 import 'package:lost/utils.dart';
+import 'package:lost/pages/speclost.dart';
+
 import 'package:latlong2/latlong.dart';
 import 'package:lost/widgets/lost_button.dart';
 
 import 'itemData.dart';
 
 class MyPosts extends StatefulWidget {
+
   const MyPosts({Key? key}) : super(key: key);
 
   @override
@@ -21,13 +24,11 @@ class MyPosts extends StatefulWidget {
 }
 
 class _MyPostsState extends State<MyPosts> {
-  String base64Image = "";
-  LatLng point = LatLng(33, 37);
 
-  File? image;
 
   List<Post> posts = [];
   bool addedPosts = false;
+
   @override
   Widget build(BuildContext context) {
     print(posts);
@@ -45,7 +46,9 @@ class _MyPostsState extends State<MyPosts> {
                 brand: item['brand'],
                 extra: item['extraInfo'],
                 locationy: item['locationy'],
-                locationx: item['locationx']));
+                locationx: item['locationx'],
+                self: true
+            ));
           });
         });
       });
@@ -75,16 +78,39 @@ class _MyPostsState extends State<MyPosts> {
             Column(children: posts),
           ],
         ),
+
+
       ]),
+
     );
   }
 
-  Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
-
-  getItem(Function(dynamic) cb) {
-    sendToApiPost('items/userItems', {'user': userData['_id']}).then((value) {
-      final items = jsonDecode(value.body);
-      cb(items);
-    }).catchError(print);
-  }
+//   Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
+//
+//   getItem(Function(dynamic) cb) {
+//     sendToApiPost('items/userItems', {'user': userData['_id']}).then((value) {
+// print(value.body);
+//       final items = jsonDecode(value.body);
+//
+//       cb(items);
+//     }).catchError(print);
+//   }
+// }
 }
+Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
+
+
+getItem(Function(dynamic) cb) {
+  sendToApiGet('items/getItems').then((value) {
+    final items = jsonDecode(value.body);
+    var filteredItems = [];
+    items.forEach((item) {
+      if (item['user'].toString() == userData['_id']) {
+        print(item);
+        filteredItems.add(item);
+      }
+    });
+    cb(filteredItems);
+  }).catchError(print);
+}
+

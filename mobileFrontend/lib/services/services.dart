@@ -6,5 +6,9 @@ class Services {
     return sendToApiPost(url, params);
   }
 
+  Future<http.Response> gets(url, params) {
+    return sendToApiGet(url);
+  }
+
 
 }
