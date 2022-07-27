@@ -29,19 +29,26 @@ class Conversation extends StatefulWidget {
   void send(String content) {
 
     print(content);
-    db.child('chats/'+ID()).set({
+    db.child('chats/$dbId/messages/${ID()}').set({
       'owner': thisId,
       'content': content
     });
-    // FirebaseDatabase.instance.ref().push().child('/messages').set({
-    //   "content": content,
-    //   "owner": thisId
-    // }).then((_) => print('Added')).catchError((error) => print('Add failed: $error'));
   }
 
 
-  Conversation(
-      {Key? key, required this.thisId, required this.thatId});
+  Conversation({Key? key, required this.thisId, required this.thatId});
+
+  String dbId = "";
+  void updateDBId(){
+    final ids = [thisId, thatId];
+    ids.sort();
+
+    dbId = ids[0]+','+ids[1];
+
+    db.child('chats/'+dbId).update({
+      'between': ids
+    });
+  }
 
   @override
   State<Conversation> createState() => _ConversationState();
@@ -56,8 +63,10 @@ class _ConversationState extends State<Conversation> {
       sendToApiPost('users/get', {'id': widget.thatId.toString()})
           .then((value) {
         widget.thatUser = jsonDecode(value.body)['name'].toString();
+        widget.updateDBId();
         setState(() {});
       }).catchError(print);
+
     }
 
     double width = MediaQuery.of(context).size.width;
