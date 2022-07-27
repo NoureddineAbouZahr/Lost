@@ -48,7 +48,7 @@ class _SpecLostState extends State<SpecLost> {
                 model: item['model'],
                 color: item['color'],
                 brand: item['brand'],
-                extra: item['extraInfo']));
+                extra: item['extraInfo'], locationy: item['locationy'], locationx: item['locationx']));
           });
         });
       });
@@ -122,6 +122,8 @@ class Post extends StatefulWidget {
   final String model;
   final String color;
   final String brand;
+  final double locationx;
+  final double locationy;
 
   const Post(
       {Key? key,
@@ -131,7 +133,7 @@ class Post extends StatefulWidget {
       required this.model,
       required this.color,
       required this.brand,
-      required this.extra})
+      required this.extra, required this.locationx, required this.locationy})
       : super(key: key);
 
   @override

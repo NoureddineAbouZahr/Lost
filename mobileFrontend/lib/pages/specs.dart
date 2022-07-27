@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jwt_decode/jwt_decode.dart';
@@ -34,7 +33,6 @@ class _SpecFoundState extends State<SpecFound> {
   TextEditingController status = new TextEditingController();
   String base64Image = "";
   LatLng point = LatLng(33.5, 35.37);
-  List<Placemark>? location = [];
 
   File? image;
 
@@ -141,12 +139,8 @@ class _SpecFoundState extends State<SpecFound> {
                       options:
                           MapOptions(
                               onTap: (tp,p) async{
-
-                                //location = await placemarkFromCoordinates(p.latitude, p.longitude);
-
                                 setState((){
                                   point=p;
-
                                 }
                                 );
                               },
@@ -173,35 +167,35 @@ class _SpecFoundState extends State<SpecFound> {
                         ])
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 3.0, horizontal: 16.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Card(
-                            child: TextField(
-                              decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.location_on_outlined),
-                                hintText: "Search for Location",
-                                contentPadding: EdgeInsets.all(16.0),
-                              ),
-                            ),
-                          ),
-                          Card(
-                            child: Padding(
-                              padding: EdgeInsets.all(16.0),
-                              child: Text(
-                                '',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(
+                    //       vertical: 3.0, horizontal: 16.0),
+                    //   child: Column(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: const [
+                    //       Card(
+                    //         child: TextField(
+                    //           decoration: InputDecoration(
+                    //             prefixIcon: Icon(Icons.location_on_outlined),
+                    //             hintText: "Search for Location",
+                    //             contentPadding: EdgeInsets.all(16.0),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       Card(
+                    //         child: Padding(
+                    //           padding: EdgeInsets.all(16.0),
+                    //           child: Text(
+                    //             '',
+                    //             style: TextStyle(
+                    //               fontWeight: FontWeight.bold,
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // )
                   ],
                 )),
             const SizedBox(

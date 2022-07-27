@@ -1,15 +1,33 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:lost/pages/speclost.dart';
 
-class LItem extends StatelessWidget {
+class LItem extends StatefulWidget {
   final Post post;
 
-  const LItem({Key? key, required this.post}) : super(key: key);
+   LItem({Key? key, required this.post}) : super(key: key);
+
+  @override
+  State<LItem> createState() => _LItemState();
+}
+
+class _LItemState extends State<LItem> {
+  String location = '';
+
+  Future<void> setuplocation() async {
+    List<Placemark> placemarks = await placemarkFromCoordinates(widget.post.locationy, widget.post.locationx);
+    location = placemarks.first.country! + ' , '+ placemarks.first.locality! + ' , Street: '+ placemarks.first.street!;
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (location.isEmpty) {
+      setuplocation().then((v) {
+        setState(() { });
+      });
+    }
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -42,12 +60,12 @@ class LItem extends StatelessWidget {
                       border: Border.all(color: Color(0xffefd16f), width: 3),
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: Image.memory(base64Decode(post.img64)).image)),
+                          image: Image.memory(base64Decode(widget.post.img64)).image)),
                 )),
             Container(
               child: Center(
                 child: Text(
-                  post.name,
+                  widget.post.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -83,16 +101,16 @@ class LItem extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(post.brand == "" ? 'N/A' : post.brand,
+                    Text(widget.post.brand == "" ? 'N/A' : widget.post.brand,
                         style: const TextStyle(fontSize: 16)),
                     Divider(),
-                    Text(post.color == "" ? 'N/A' : post.color,
+                    Text(widget.post.color == "" ? 'N/A' : widget.post.color,
                         style: const TextStyle(fontSize: 16)),
                     Divider(),
-                    Text(post.model == "" ? 'N/A' : post.model,
+                    Text(widget.post.model == "" ? 'N/A' : widget.post.model,
                         style: const TextStyle(fontSize: 16)),
                     Divider(),
-                    Text(post.serialNumber == "" ? 'N/A' : post.serialNumber,
+                    Text(widget.post.serialNumber == "" ? 'N/A' : widget.post.serialNumber,
                         style: const TextStyle(fontSize: 16)),
                   ],
                 ),
@@ -122,9 +140,10 @@ class LItem extends StatelessWidget {
                     height: 10,
                   ),
                   SizedBox(width: width * 0.9,child: Flexible(
-                      child: Text(post.extra,
+                      child: Text(widget.post.extra,
                           style: const TextStyle(
-                              fontSize: 16, overflow: TextOverflow.clip))),)
+                              fontSize: 16, overflow: TextOverflow.clip))),),
+                  Text('Location: '+location)
                 ])
               ],
             )
