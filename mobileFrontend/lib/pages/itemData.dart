@@ -212,6 +212,7 @@ class _LItemState extends State<LItem> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {  },child: Icon(Icons.message,color: Color(0xffefd16f),),),
     );
   }
 }
