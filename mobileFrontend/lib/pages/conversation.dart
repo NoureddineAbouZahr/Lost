@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -15,20 +16,27 @@ import 'package:lost/utils.dart';
 //   toJson() {}
 // }
 
+DatabaseReference lostdb = FirebaseDatabase.instance.ref();
+String ID() {
+  return (0xffffff * Random().nextInt(1000)).round().toRadixString(16);
+}
 class Conversation extends StatefulWidget {
   final String thisId;
   final String thatId;
   String thatUser = '';
 
-  send(String content) {
+  static final db = FirebaseDatabase.instance.ref();
+  void send(String content) {
 
-    FirebaseFirestore.instance.collection('messages').add({
-      "content": content,
-      "owner": thisId
-    })
-        .then((_) => print('Added'))
-        .catchError((error) => print('Add failed: $error'));
-
+    print(content);
+    db.child('chats/'+ID()).set({
+      'owner': thisId,
+      'content': content
+    });
+    // FirebaseDatabase.instance.ref().push().child('/messages').set({
+    //   "content": content,
+    //   "owner": thisId
+    // }).then((_) => print('Added')).catchError((error) => print('Add failed: $error'));
   }
 
 
