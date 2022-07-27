@@ -3,10 +3,10 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lost/splash.dart';
 
-Future<FirebaseApp>? _fbApp;
+FirebaseApp? fbApp;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //_fbApp = (await Firebase.initializeApp()) as Future<FirebaseApp>?;
+  fbApp = await Firebase.initializeApp();
   runApp(MyApp());
 }
 

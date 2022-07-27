@@ -16,6 +16,8 @@ async function get(req, res) {
     console.log(error);
   }
 }
+
+
 async function register(req, res) {
   try {
     const salt = await bcrypt.genSalt(10);

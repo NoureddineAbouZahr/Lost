@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 class LostInput extends StatelessWidget {
   String labelText;
   String hintText;
+  bool dp ;
   TextEditingController controller;
 
   LostInput(
       {Key? key,
       required this.labelText,
       required this.hintText,
-      required this.controller})
+      required this.controller,
+      this.dp=false
+      })
       : super(key: key);
 
   @override
@@ -22,6 +25,7 @@ class LostInput extends StatelessWidget {
               height: 55,
               child: TextField(
                 controller: controller,
+                obscureText: dp,
                 decoration: InputDecoration(
                     border: const OutlineInputBorder(
                         borderSide: BorderSide(width: 50)),

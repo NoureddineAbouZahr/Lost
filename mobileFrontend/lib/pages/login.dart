@@ -64,11 +64,13 @@ class _LoginState extends State<Login> {
                   labelText: 'Email Address',
                   hintText: 'Enter Your Email',
                   controller: email,
+                  
                 ),
                 LostInput(
+
                   labelText: 'Password',
                   hintText: 'Enter Your Password',
-                  controller: password,
+                  controller: password, dp: true,
                 ),
                 LostButton(text: 'Log In', onPressed: () => authorizeData()),
                 HL(

@@ -45,7 +45,8 @@ class _SignupState extends State<Signup> {
         ),
       ),
       body: Center(
-        child: Column(
+        child:ListView(children: [
+         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 25),
@@ -83,11 +84,13 @@ class _SignupState extends State<Signup> {
               labelText: 'Password',
               hintText: 'Enter Your Password',
               controller: password,
+              dp: true,
             ),
             LostInput(
               labelText: 'Password Confirmation',
               hintText: 'Confirm Your Password',
               controller: cp,
+              dp: true,
             ),
             LostButton(text: 'Sign Up',  onPressed: () => authorizeData()),
             HL(
@@ -97,7 +100,7 @@ class _SignupState extends State<Signup> {
 
           ],
         ),
-      ),
+      ])),
     );
   }
 
