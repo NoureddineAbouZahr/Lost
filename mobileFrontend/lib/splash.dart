@@ -23,15 +23,16 @@ _navigatetohome()async{
   await ls.ready;
   String? email = ls.getItem('email');
   String? password = ls.getItem('password');
-  print(email);
   if (email != null && password != null) {
     final params = {"email": email, "password": password};
     Services().login('users/login', params).then((response) {
-      final token = response.body;
-      ls.setItem('token', token);
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const LostFound()));
+      try {
+        final token = response.body;
+        ls.setItem('token', token);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const LostFound()));
+      } finally {}
     }
-    );
+    ).catchError(print);
   } else {
     await Future.delayed(const Duration(milliseconds: 2000),(){});
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const Welcome()));}

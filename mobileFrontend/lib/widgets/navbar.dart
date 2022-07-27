@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:lost/pages/userposts.dart';
+import 'package:lost/welcom.dart';
 import '../utils.dart';
 
 class Nav extends StatefulWidget {
@@ -46,14 +47,20 @@ class _NavState extends State<Nav> {
           title: const Text('Chats'),
           onTap: () => null,
         ),
+
         Expanded(
             child: Align(
                 alignment: FractionalOffset.bottomCenter,
-                child: ListTile(
-                  leading: const Icon(Icons.logout),
-                  title: const Text('Log Out'),
-                  onTap: () => null,
-                )))
+                child: Container(color: Colors.black12,child: ListTile(
+                  leading:  Transform.scale(child: Icon(Icons.logout,),scaleX: -1,),
+                  title: const Text('Log Out',),
+                  onTap: () {
+                    ls.clear().then((value) =>
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Welcome()))
+                    );
+
+                  },
+                ),)))
       ]),
     );
   }
