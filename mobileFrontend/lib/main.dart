@@ -1,18 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lost/splash.dart';
 
-FirebaseApp? fbApp;
-Future<void> main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  fbApp = await Firebase.initializeApp();
+  await Firebase.initializeApp(options: FirebaseOptions(appId: '1:458363857813:android:2b0b5ecaea565cb877e49c', messagingSenderId: '458363857813', projectId: 'lost-11058', apiKey: 'AIzaSyDmQMIih1RfeaAr5BzW2doFrQsJfNtDuhA'));
   runApp(MyApp());
 }
 
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
+
 
   // This widget is the root of your application.
   @override

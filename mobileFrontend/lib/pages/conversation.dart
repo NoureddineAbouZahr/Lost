@@ -1,36 +1,47 @@
 import 'dart:convert';
-import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:lost/main.dart';
 import 'package:lost/utils.dart';
 
-class Messasge {
-  final String user;
-  final String content;
-
-  const Messasge({Key? key, required this.content, required this.user});
-
-  toJson() {}
-}
+// class Messasge {
+//   final String owner;
+//   final String content;
+//
+//   const Messasge({Key? key, required this.content, required this.owner});
+//
+//   toJson() {}
+// }
 
 class Conversation extends StatefulWidget {
   final String thisId;
   final String thatId;
   String thatUser = '';
-  List<Messasge> messages = [];
 
-// FirebaseDatabase.instance.ref('messages').onChildAdded.listen((event) {});
+  send(String content) {
+
+    FirebaseFirestore.instance.collection('messages').add({
+      "content": content,
+      "owner": thisId
+    })
+        .then((_) => print('Added'))
+        .catchError((error) => print('Add failed: $error'));
+
+  }
+
 
   Conversation(
-      {Key? key, required String this.thisId, required String this.thatId});
+      {Key? key, required this.thisId, required this.thatId});
 
   @override
   State<Conversation> createState() => _ConversationState();
 }
 
 class _ConversationState extends State<Conversation> {
+  TextEditingController content = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     if (widget.thatUser == '') {
@@ -40,6 +51,7 @@ class _ConversationState extends State<Conversation> {
         setState(() {});
       }).catchError(print);
     }
+
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(
@@ -68,11 +80,14 @@ class _ConversationState extends State<Conversation> {
                                       Border.all(width: 1, color: Colors.white),
                                   borderRadius:
                                       const BorderRadius.all(Radius.circular(12))),
-                              child: TextFormField(onFieldSubmitted: (i) {},
-                              decoration: InputDecoration(
-                                hintText: '    message',
+                              child: TextFormField(
+                                controller: content,
+                                //onFieldSubmitted: (i) {},
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(10),
+                                  hintText: 'message',
 
-                              ),),
+                                ),),
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -83,7 +98,9 @@ class _ConversationState extends State<Conversation> {
                                     borderRadius: BorderRadius.circular(100),
                                     color: MainCol),
                                 child: IconButton(
-                                    onPressed: () {}, icon: Icon(Icons.send))),
+                                    onPressed: () {
+                                      widget.send(content.text);
+                                    }, icon: Icon(Icons.send))),
                           )
                         ],
                       ))))
