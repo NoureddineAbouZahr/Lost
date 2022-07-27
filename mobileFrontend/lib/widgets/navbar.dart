@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jwt_decode/jwt_decode.dart';
+import 'package:lost/pages/userposts.dart';
 import '../utils.dart';
 
 class Nav extends StatefulWidget {
@@ -34,11 +35,7 @@ class _NavState extends State<Nav> {
           leading: const Icon(Icons.my_library_books_rounded),
           title: const Text('Posts'),
           onTap: () => {
-            //   if (index == 0) {
-            //      this.selected = true
-            //   }
-            //   index = 0;
-            //   }
+            Navigator.push(context, MaterialPageRoute(builder: (c)=>MyPosts()))
           },
         ),
         ListTile(

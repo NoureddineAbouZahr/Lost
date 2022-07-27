@@ -17,17 +17,8 @@ class SpecLost extends StatefulWidget {
 }
 
 class _SpecLostState extends State<SpecLost> {
-  TextEditingController name = new TextEditingController();
-  TextEditingController SerialNumber = new TextEditingController();
-  TextEditingController model = new TextEditingController();
-  TextEditingController color = new TextEditingController();
-  TextEditingController brand = new TextEditingController();
-  TextEditingController extraInfo = new TextEditingController();
-  TextEditingController locationx = new TextEditingController();
-  TextEditingController locationy = new TextEditingController();
-  TextEditingController status = new TextEditingController();
   String base64Image = "";
-  LatLng point = LatLng(33, 37);
+  LatLng point = LatLng(33.1, 37.1);
 
   File? image;
 
@@ -48,7 +39,9 @@ class _SpecLostState extends State<SpecLost> {
                 model: item['model'],
                 color: item['color'],
                 brand: item['brand'],
-                extra: item['extraInfo'], locationy: item['locationy'], locationx: item['locationx']));
+                extra: item['extraInfo'],
+                locationy: item['locationy'],
+                locationx: item['locationx']));
           });
         });
       });
@@ -114,6 +107,7 @@ class _SpecLostState extends State<SpecLost> {
     }).catchError(print);
   }
 }
+
 class Post extends StatefulWidget {
   final String img64;
   final String name;
@@ -133,7 +127,9 @@ class Post extends StatefulWidget {
       required this.model,
       required this.color,
       required this.brand,
-      required this.extra, required this.locationx, required this.locationy})
+      required this.extra,
+      required this.locationx,
+      required this.locationy})
       : super(key: key);
 
   @override
@@ -148,8 +144,9 @@ class _PostState extends State<Post> {
     double width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
-        setState(() => spreadRadius = 2 );
-        Navigator.push(context, MaterialPageRoute(builder: (c)=>LItem(post:widget)));
+        setState(() => spreadRadius = 2);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (c) => LItem(post: widget)));
       },
       child: SizedBox(
           width: width * 0.9,
@@ -159,7 +156,12 @@ class _PostState extends State<Post> {
               padding: EdgeInsets.all(5),
               // , spreadRadius: 3
               decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 4, spreadRadius: spreadRadius)],
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 4,
+                        spreadRadius: spreadRadius)
+                  ],
                   color: Colors.white,
                   border: Border.all(color: Color(0xffefd16f), width: 3)),
               duration: const Duration(milliseconds: 100),
@@ -172,7 +174,8 @@ class _PostState extends State<Post> {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: Image.memory(base64Decode(widget.img64)).image)),
+                              image: Image.memory(base64Decode(widget.img64))
+                                  .image)),
                     ),
                   ),
                   SizedBox(width: 10),
@@ -184,7 +187,12 @@ class _PostState extends State<Post> {
                         widget.name,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(width: width * 0.4,child: Flexible(child: Text(widget.extra, style: TextStyle(overflow: TextOverflow.clip))),)
+                      SizedBox(
+                        width: width * 0.4,
+                        child: Flexible(
+                            child: Text(widget.extra,
+                                style: TextStyle(overflow: TextOverflow.clip))),
+                      )
                     ],
                   )
                 ],

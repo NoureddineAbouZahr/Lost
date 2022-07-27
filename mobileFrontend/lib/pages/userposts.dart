@@ -13,23 +13,14 @@ import 'package:lost/widgets/lost_button.dart';
 
 import 'itemData.dart';
 
-class SpecLost extends StatefulWidget {
-  const SpecLost({Key? key}) : super(key: key);
+class MyPosts extends StatefulWidget {
+  const MyPosts({Key? key}) : super(key: key);
 
   @override
-  State<SpecLost> createState() => _SpecLostState();
+  State<MyPosts> createState() => _MyPostsState();
 }
 
-class _SpecLostState extends State<SpecLost> {
-  TextEditingController name = new TextEditingController();
-  TextEditingController SerialNumber = new TextEditingController();
-  TextEditingController model = new TextEditingController();
-  TextEditingController color = new TextEditingController();
-  TextEditingController brand = new TextEditingController();
-  TextEditingController extraInfo = new TextEditingController();
-  TextEditingController locationx = new TextEditingController();
-  TextEditingController locationy = new TextEditingController();
-  TextEditingController status = new TextEditingController();
+class _MyPostsState extends State<MyPosts> {
   String base64Image = "";
   LatLng point = LatLng(33, 37);
 
@@ -91,7 +82,7 @@ class _SpecLostState extends State<SpecLost> {
   Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
 
   getItem(Function(dynamic) cb) {
-    sendToApiPost('items/userItems', {'user':userData['_id']}).then((value) {
+    sendToApiPost('items/userItems', {'user': userData['_id']}).then((value) {
       final items = jsonDecode(value.body);
       cb(items);
     }).catchError(print);
