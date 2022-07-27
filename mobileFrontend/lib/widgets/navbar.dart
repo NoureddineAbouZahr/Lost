@@ -52,8 +52,9 @@ class _NavState extends State<Nav> {
             child: Align(
                 alignment: FractionalOffset.bottomCenter,
                 child: Container(color: Colors.black12,child: ListTile(
-                  leading:  Transform.scale(child: Icon(Icons.logout,),scaleX: -1,),
-                  title: const Text('Log Out',),
+                  leading:  Transform.scale(child: Icon(Icons.logout,color: Colors.red,),scaleX: -1,),
+                  title: const Text('Log Out',
+                  style: TextStyle(color:Colors.red),),
                   onTap: () {
                     ls.clear().then((value) =>
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Welcome()))
