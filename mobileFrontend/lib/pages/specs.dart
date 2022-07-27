@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jwt_decode/jwt_decode.dart';
@@ -13,7 +14,6 @@ import 'package:lost/widgets/lost_button.dart';
 
 import '../services/globals.dart';
 import '../services/services.dart';
-import 'login.dart';
 
 class SpecFound extends StatefulWidget {
   const SpecFound({Key? key}) : super(key: key);
@@ -33,7 +33,8 @@ class _SpecFoundState extends State<SpecFound> {
   TextEditingController locationy = new TextEditingController();
   TextEditingController status = new TextEditingController();
   String base64Image = "";
-  LatLng point = LatLng(33, 37);
+  LatLng point = LatLng(33.5, 35.37);
+  List<Placemark>? location = [];
 
   File? image;
 
@@ -129,54 +130,84 @@ class _SpecFoundState extends State<SpecFound> {
                 ),
               ],
             ),
-            Container(width: MediaQuery.of(context).size.width * 0.95,height: MediaQuery.of(context).size.width * 0.75,
-decoration: BoxDecoration(
-  border: Border.all(color: Color(0xffefd16f),
-  width: 3)
-),
-                child:  Stack(
-              children: [
-                FlutterMap(
-                    options: MapOptions(zoom: 10.0, center: LatLng(33.5, 35.37)),
-                  layers: [
-                    TileLayerOptions(
-                      urlTemplate:  "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                      userAgentPackageName: 'com.example.lost',
-                    ),
-                    MarkerLayerOptions(markers: [
-                      Marker(
-                          point: LatLng(33.5, 35.37),
-                          builder: (ctx) => const Icon(
-                            Icons.location_on,
-                            color: Colors.red,
-                            size: 40,
-                          ),
-                          width: 100,
-                          height: 100)
-                    ])
-                  ],
-                ),
-                Padding(padding: const EdgeInsets.symmetric(vertical: 3.0,horizontal: 16.0),
-                child:
-                Column(
+            Container(
+                width: MediaQuery.of(context).size.width * 0.95,
+                height: MediaQuery.of(context).size.width * 0.75,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xffefd16f), width: 3)),
+                child: Stack(
                   children: [
-                    Card(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.location_on_outlined),
-                          hintText: "Search for Location",
-                          contentPadding: EdgeInsets.all(16.0),
+                    FlutterMap(
+                      options:
+                          MapOptions(
+                              onTap: (tp,p) async{
 
+                                //location = await placemarkFromCoordinates(p.latitude, p.longitude);
+
+                                setState((){
+                                  point=p;
+
+                                }
+                                );
+                              },
+
+                              zoom: 10.0,
+                              center: LatLng(33.5, 35.37)
+                          ),
+                      layers: [
+                        TileLayerOptions(
+                          urlTemplate:
+                              "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                          userAgentPackageName: 'com.example.lost',
                         ),
-                      ),
+                        MarkerLayerOptions(markers: [
+                          Marker(
+                              point: point,
+                              builder: (ctx) => const Icon(
+                                    Icons.location_on,
+                                    color: Colors.red,
+                                    size: 40,
+                                  ),
+                              width: 100,
+                              height: 100)
+                        ])
+                      ],
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 3.0, horizontal: 16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Card(
+                            child: TextField(
+                              decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.location_on_outlined),
+                                hintText: "Search for Location",
+                                contentPadding: EdgeInsets.all(16.0),
+                              ),
+                            ),
+                          ),
+                          Card(
+                            child: Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: Text(
+                                '',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
                   ],
-                ),
-                )],
-            )),
-            SizedBox(height: 10,),
+                )),
+            const SizedBox(
+              height: 10,
+            ),
             LostButton(text: 'Post', onPressed: () => postItem()),
-
           ],
         ),
       ]),
@@ -199,29 +230,29 @@ decoration: BoxDecoration(
       print('Failed to pick image: $e');
     }
   }
+
   Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
 
   postItem() {
     final params = {
-      "name":name.text,
+      "name": name.text,
       "pic": base64Image,
-      "SerialNumber":SerialNumber.text,
-      "model":model.text,
-      "color":color.text,
-      "brand":brand.text,
-      "extraInfo":extraInfo.text,
-      "locationx":33.4,
-      "locationy":37,
+      "SerialNumber": SerialNumber.text,
+      "model": model.text,
+      "color": color.text,
+      "brand": brand.text,
+      "extraInfo": extraInfo.text,
+      "locationx": point.longitude,
+      "locationy": point.latitude,
       "subid": lastSubCategoryId,
       "user": userData['_id'],
       //"_prefixe": extension
     };
-    if(name.text!='') {
+    if (name.text != '') {
       Services().login('items/addItem', params).then((value) {
         Navigator.pop(context);
         Navigator.pop(context);
       }).catchError(print);
     }
-
   }
 }

@@ -42,7 +42,7 @@ dependencies:
   flutter_treeview: ^1.0.7+1
   image_picker: ^0.8.5+3
   flutter_map: ^2.1.1
-  geocoder: ^0.2.1
+  geocoding: ^2.0.4
   tuple: ^2.0.0
   latlong: ^0.6.1
   positioned_tap_detector_2: ^1.0.4
