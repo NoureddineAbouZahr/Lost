@@ -14,8 +14,10 @@ class _NavState extends State<Nav> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(children: [
+      child: Column(children: [
         Container(
+          margin: EdgeInsets.only(top:35),
+          width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
               color: Color(0xffefd16f), boxShadow: [BoxShadow(blurRadius: 4)]),
           padding: const EdgeInsets.all(25),
@@ -35,7 +37,8 @@ class _NavState extends State<Nav> {
           leading: const Icon(Icons.my_library_books_rounded),
           title: const Text('Posts'),
           onTap: () => {
-            Navigator.push(context, MaterialPageRoute(builder: (c)=>MyPosts()))
+            Navigator.push(
+                context, MaterialPageRoute(builder: (c) => MyPosts()))
           },
         ),
         ListTile(
@@ -43,6 +46,14 @@ class _NavState extends State<Nav> {
           title: const Text('Chats'),
           onTap: () => null,
         ),
+        Expanded(
+            child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: ListTile(
+                  leading: const Icon(Icons.logout),
+                  title: const Text('Log Out'),
+                  onTap: () => null,
+                )))
       ]),
     );
   }
