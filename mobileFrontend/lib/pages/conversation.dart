@@ -67,6 +67,11 @@ class _ConversationState extends State<Conversation> {
         setState(() {});
       }).catchError(print);
 
+      return Scaffold(
+        body: Center(
+          child: SizedBox(child: CircularProgressIndicator(color: Colors.black),width: 100,height: 100,),
+        ),
+      );
     }
 
     double width = MediaQuery.of(context).size.width;
