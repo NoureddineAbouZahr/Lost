@@ -129,7 +129,7 @@ class _SpecFoundState extends State<SpecFound> {
               ],
             ),
             Container(
-                width: MediaQuery.of(context).size.width * 0.95,
+                width: MediaQuery.of(context).size.width * 0.9,
                 height: MediaQuery.of(context).size.width * 0.75,
                 decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffefd16f), width: 3)),

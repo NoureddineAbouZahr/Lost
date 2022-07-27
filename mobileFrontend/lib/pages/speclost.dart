@@ -42,6 +42,7 @@ class _SpecLostState extends State<SpecLost> {
                 extra: item['extraInfo'],
                 locationy: item['locationy'],
                 locationx: item['locationx'],
+                user: item['user'],
                 self: false
             ));
           });
@@ -122,9 +123,12 @@ class Post extends StatefulWidget {
   final double locationy;
   final bool self;
 
+  final String user;
+
   const Post(
       {Key? key,
-      required this.img64,
+        required this.img64,
+        required this.user,
       required this.name,
       required this.serialNumber,
       required this.model,
@@ -166,7 +170,8 @@ class _PostState extends State<Post> {
                         spreadRadius: spreadRadius)
                   ],
                   color: Colors.white,
-                  border: Border.all(color: Color(0xffefd16f), width: 3)),
+              //    border: Border.all(color: Color(0xffefd16f), width: 3)
+              ),
               duration: const Duration(milliseconds: 100),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,

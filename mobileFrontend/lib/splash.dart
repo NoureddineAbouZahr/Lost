@@ -21,6 +21,7 @@ void initState() {
 }
 _navigatetohome()async{
   await ls.ready;
+  // ls.clear();
   String? email = ls.getItem('email');
   String? password = ls.getItem('password');
   if (email != null && password != null) {

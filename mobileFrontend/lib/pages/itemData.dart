@@ -3,8 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:lost/pages/conversation.dart';
 import 'package:lost/pages/speclost.dart';
+import 'package:lost/utils.dart';
 
 class LItem extends StatefulWidget {
   final Post post;
@@ -36,6 +39,7 @@ class _LItemState extends State<LItem> {
       });
     }
     double width = MediaQuery.of(context).size.width;
+    Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
 
     return Scaffold(
       appBar: PreferredSize(
@@ -212,7 +216,9 @@ class _LItemState extends State<LItem> {
           ],
         ),
       ),
-      floatingActionButton: widget.post.self ? Container(): FloatingActionButton(onPressed: () {  },child: Icon(Icons.message,color: Color(0xffefd16f),),),
+      floatingActionButton: userData['_id'].toString() == widget.post.user.toString() ? Container(): FloatingActionButton(onPressed: () {
+          
+      },child: const Icon(Icons.message,color: Color(0xff666666),),),
     );
   }
 }

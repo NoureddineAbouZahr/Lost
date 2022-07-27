@@ -18,7 +18,7 @@ class LostInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: MediaQuery.of(context).size.width * 0.75,
+        width: MediaQuery.of(context).size.width * 0.9,
         child: Column(
           children: [
             SizedBox(

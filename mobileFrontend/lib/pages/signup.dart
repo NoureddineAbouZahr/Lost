@@ -111,16 +111,16 @@ class _SignupState extends State<Signup> {
       "email": email.text,
       "password": password.text
     };
-    if(password.text==cp.text){
-    print(params);
-    final response = await Services().login('users/register', params);
-    final token=response.body;
+    if(password.text==cp.text && name.text != '' && phone.text != '' && email.text != '' && password.text != ''){
+      print(params);
+      final response = await Services().login('users/register', params);
+      final token=response.body;
 
-    if (response.statusCode == 200) {
-      ls.setItem('token', token);
-      Navigator.pushReplacement(context,MaterialPageRoute(builder:(_)=> Login()));
+      if (response.statusCode == 200) {
+        ls.setItem('token', token);
+        Navigator.pushReplacement(context,MaterialPageRoute(builder:(_)=> Login()));
 
-    }}
+      }}
     else{
       print('password doesn\'t match');
     }

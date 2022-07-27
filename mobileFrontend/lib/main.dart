@@ -10,7 +10,6 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-// FirebaseDatabase.instance.ref('messages').onChildAdded.listen((event) {});
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: MainCol,
       ),
       debugShowCheckedModeBanner: false,
       // home: isLogin ? Home(logindata) : Login(),
@@ -30,4 +29,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
+MaterialColor MainCol = MaterialColor(0xffefd16f, <int, Color>{
+  50: Color(0xffd3b966),
+  100: Color(0xffd2b762),
+  200: Color(0xffeccd67),
+  300: Color(0xffefd16f),
+  400: Color(0xfff1d168),
+  500: Color(0xfffadd80),
+  600: Color(0xffefd47c),
+  700: Color(0xffefd16f),
+  800: Color(0xfff1d477),
+  900: Color(0xffefd16f),
+});
 

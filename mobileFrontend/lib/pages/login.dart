@@ -64,7 +64,7 @@ class _LoginState extends State<Login> {
                   labelText: 'Email Address',
                   hintText: 'Enter Your Email',
                   controller: email,
-                  
+
                 ),
                 LostInput(
 
@@ -90,6 +90,9 @@ class _LoginState extends State<Login> {
 
   authorizeData() async {
     final params = {"email": email.text, "password": password.text};
+    if (email.text == '' || password.text == '') {
+      return;
+    }
     Services().login('users/login', params).then((response) {
         final token = response.body;
         ls.setItem('token', token);

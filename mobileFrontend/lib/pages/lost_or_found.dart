@@ -32,7 +32,7 @@ class LostFound extends StatelessWidget {
                 },
                 icon: const Icon(
                   Icons.menu,
-                  color: Color(0xffefd16f),
+                  // color: Color(0xffefd16f),
                   size: 30,
                 )),
           ),
@@ -68,7 +68,7 @@ class LostFound extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            LostButton(text: 'Lost Object', onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>Cats(1)))}),
+            LostButton(text: 'Lost Object', secondary:true,onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>Cats(1)))}),
 
             // AlertDialog(
             //   title: Text('Success'),

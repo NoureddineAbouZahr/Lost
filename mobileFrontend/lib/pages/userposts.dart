@@ -47,6 +47,7 @@ class _MyPostsState extends State<MyPosts> {
                 extra: item['extraInfo'],
                 locationy: item['locationy'],
                 locationx: item['locationx'],
+                user: item['user'],
                 self: true
             ));
           });

@@ -32,6 +32,7 @@ class Welcome extends StatelessWidget {
           ),
           LostButton(
               text: 'Log In',
+              secondary: true,
               onPressed: () => {switchPage(context, () => Login())}),
           const SizedBox(height: 15),
         ],
