@@ -76,7 +76,7 @@ class _MyPostsState extends State<MyPosts> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 30),
-            Column(children: posts),
+            (posts.isEmpty ? Center(child: SizedBox(child: CircularProgressIndicator(color: Colors.black),width: 100,height: 100)) : Column(children: posts)),
           ],
         ),
 
@@ -86,17 +86,6 @@ class _MyPostsState extends State<MyPosts> {
     );
   }
 
-//   Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
-//
-//   getItem(Function(dynamic) cb) {
-//     sendToApiPost('items/userItems', {'user': userData['_id']}).then((value) {
-// print(value.body);
-//       final items = jsonDecode(value.body);
-//
-//       cb(items);
-//     }).catchError(print);
-//   }
-// }
 }
 Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
 
