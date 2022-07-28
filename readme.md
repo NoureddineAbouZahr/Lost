@@ -97,3 +97,12 @@
 <br><br>
 > Now to connect to the data base you should run the command  `node index.js`
 
+<ul>  
+   <li>
+   Then to run the admin app change directory to the admin folder the run the `npm start` command in the command prompt
+   </li>
+   <li>
+   <img src="./Readme/runadmin.jpg"/>
+   </li>
+   
+</ul>
