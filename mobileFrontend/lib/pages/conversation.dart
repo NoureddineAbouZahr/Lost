@@ -11,7 +11,9 @@ class MessageBubble extends StatelessWidget {
   final String content;
   final bool self;
 
-  const MessageBubble({Key? key, required this.content, required this.self})
+  final String id;
+
+  const MessageBubble({Key? key, required this.content, required this.self, required this.id})
       : super(key: key);
 
   @override
@@ -71,7 +73,7 @@ class Conversation extends StatefulWidget {
   Conversation({Key? key, required this.thisId, required this.thatId});
 
   String dbId = "";
-  void updateDBId(Function(dynamic) cb) {
+  void updateDBId(Function(dynamic, bool) cb) {
     final ids = [thisId, thatId];
     ids.sort();
 
@@ -81,10 +83,11 @@ class Conversation extends StatefulWidget {
 
     String lastMID = '';
     db.child('chats/$dbId/messages/').onChildAdded.listen((event) {
+      print(event.type);
+      if (event.type != DatabaseEventType.childAdded) return;
       dynamic msg = event.snapshot.value;
-      if (lastMID == msg['id']) return;
-      if (thisId == msg['owner']) return;
-      cb(msg);
+      if (lastMID.toString() == msg['id'].toString()) return;
+      cb(msg, thisId.toString() == msg['owner'].toString());
 
       lastMID = msg['id'];
     });
@@ -104,20 +107,25 @@ class _ConversationState extends State<Conversation> {
       sendToApiPost('users/get', {'id': widget.thatId.toString()})
           .then((value) {
         widget.thatUser = jsonDecode(value.body)['name'].toString();
-        widget.updateDBId((msg) {
-          messages.add(MessageBubble(content: msg['content'], self: false));
-          setState((){});
+        widget.updateDBId((msg, self) {
+          if (messages.where((element) => element.id == msg['id'].toString()).isEmpty) {
+            messages.add(MessageBubble(content: msg['content'], self: self, id: msg['id'],));
+            setState((){});
+          }
         });
 
         Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
         db.child('chats/${widget.dbId}/messages').get().then((snapshot) {
           dynamic messagesl = (snapshot.value ?? []);
-          print(messagesl);
+          String lastMID = '';
           messagesl.forEach((msg) {
+            if (lastMID == msg['id']) return;
+            lastMID = msg['id'];
+
             try {
               messages.add(MessageBubble(
                   content: msg['content'],
-                  self: userData['_id'] == msg['owner']));
+                  self: userData['_id'] == msg['owner'], id: msg['id']));
             } catch (e) {}
           });
 
@@ -189,9 +197,10 @@ class _ConversationState extends State<Conversation> {
                             color: MainCol),
                         child: IconButton(
                             onPressed: () {
+                              if (content.text == '') return;
                               widget.send(content.text);
-                              messages.add(MessageBubble(
-                                  content: content.text, self: true));
+                              // messages.add(MessageBubble(
+                              //     content: content.text, self: true));
                               content.clear();
                               setState(() {});
                             },
