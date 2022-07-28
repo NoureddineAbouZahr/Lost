@@ -104,5 +104,9 @@
    <li>
    <img src="./Readme/runadmin.jpg"/>
    </li>
+     <li>
+   Then to run the mobile app you hove to open folder mobile app in android studio and connect your phone with usb debugging to install the app the update in utils the ip address of the local host to get access to database
+   </li>
+  
    
 </ul>
