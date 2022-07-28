@@ -65,21 +65,18 @@
    
    <tr>
      <td><img src="./Readme/sc1.jpeg"/></td>
-     <td><img src="./Readme/sc2.jpeg"/></td>
-     
-  
+     <td><img src="./Readme/sc2.jpeg"/></td> 
+     </tr> 
    
    <tr>
      <td><img src="./Readme/sc5.jpeg"/></td>
-     <td><img src="./Readme/sc6.jpeg"/></td>
-     
+     <td><img src="./Readme/sc6.jpeg"/></td>     
    </tr>
    
    
    <tr>
      <td><img src="./Readme/sc7.jpeg"/></td>
-     <td><img src="./Readme/sc4.jpeg"/></td>
-     
+     <td><img src="./Readme/sc4.jpeg"/></td>     
    </tr>   
    <tr>
     <td><img src="./Readme/sc3.jpeg"/></td>
