@@ -14,7 +14,7 @@
    <tr>Implementation</tr>
    <tr>
        <td>Login Page</td>
-    <td>Chosing what are you doing</td>
+    <td>Choosing what are you doing</td>
    </tr>
    
    <tr>
@@ -23,6 +23,16 @@
      
    </tr>
    <tr>
+       <td>Choosing Category</td>
+    <td>Passing Specs of found object</td>
+   </tr>
+   
+   <tr>
+     <td><img src="./Readme/three.png"/></td>
+     <td><img src="./Readme/four.png"/></td>
+     
+   </tr>
+   
       
       
 </table>
