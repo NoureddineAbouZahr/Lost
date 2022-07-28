@@ -47,7 +47,9 @@ class MessageBubble extends StatelessWidget {
 }
 
 final db = FirebaseDatabase.instance.ref();
-
+String ID() {
+  return (0xffffff * Random().nextInt(1000)).round().toRadixString(16);
+}
 class Conversation extends StatefulWidget {
   final String thisId;
   final String thatId;
@@ -57,9 +59,12 @@ class Conversation extends StatefulWidget {
     final lastIndex = db.child('chats/$dbId/lastIndex');
     final newIndex = (((await lastIndex.get()).value ?? -1) as int) + 1;
 
+    DateTime date = DateTime.now();
+    String dates = "${date.day}/${date.month}-${date.hour}:${date.minute}";
+
     db
         .child('chats/$dbId/messages/$newIndex')
-        .set({'owner': thisId, 'content': content});
+        .set({'owner': thisId, 'content': content, 'id': ID(), 'date': dates});
     lastIndex.set(newIndex);
   }
 
