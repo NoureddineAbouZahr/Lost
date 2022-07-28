@@ -18,9 +18,9 @@ class MessageBubble extends StatelessWidget {
     return SizedBox(width: width, child: Row(
 
             mainAxisAlignment: self ?MainAxisAlignment.end : MainAxisAlignment.start,
-            children:[ Container(child: Text(content),padding: EdgeInsets.all(14),decoration: BoxDecoration(
+            children:[ Container(child: Text(content),padding: EdgeInsets.all(12),decoration: BoxDecoration(
                 color: MainCol,borderRadius: BorderRadius.circular(10)
-            ),margin: !self ? EdgeInsets.only(left: 10):EdgeInsets.only(right: 10),)]
+            ),margin: !self ? EdgeInsets.only(left: 10 ,bottom: 10):EdgeInsets.only(right: 10, bottom: 10),)]
     ));
   }
 }
@@ -93,12 +93,18 @@ class _ConversationState extends State<Conversation> {
       ),
       body: Column(
         children: [
-          Expanded(child: Column(
+          Expanded(child: ListView(reverse: true,children: [Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+
+              children: const [
+                MessageBubble(content: 'hi', self: false),
                 MessageBubble(content: 'Hello', self: true),
                 MessageBubble(content: 'Ahlan', self: false),
-          ])),
+                MessageBubble(content: 'Ahlan', self: true),
+                MessageBubble(content: 'Ahlan', self: false),
+
+              ])])),
+          SizedBox(height: 15,),
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.only(bottom: 1),
