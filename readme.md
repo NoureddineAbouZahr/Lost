@@ -52,3 +52,6 @@
        For storing the database, the app uses MongoDb for items and firebase for the realtime chat
       </li>
       <li>
+      </ul>
+      <br><br>
+> Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
