@@ -15,6 +15,7 @@ async function addItem(body) {
         status,
         subid,
         user,
+        extension
     } = body;
     const item = new Item({
         name,
@@ -29,6 +30,7 @@ async function addItem(body) {
         status,
         subid,
         user,
+        extension
     });
     return await item.save();
 }

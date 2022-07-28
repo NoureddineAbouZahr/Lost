@@ -240,7 +240,7 @@ class _SpecFoundState extends State<SpecFound> {
       "locationy": point.latitude,
       "subid": lastSubCategoryId,
       "user": userData['_id'],
-      //"_prefixe": extension
+      "extension": extension
     };
     if (name.text != '') {
       Services().login('items/addItem', params).then((value) {

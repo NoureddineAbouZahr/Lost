@@ -35,6 +35,9 @@ locationy:{
 status:{
     type:Number,
 },
+extension:{
+    type:String,
+},
 subid:[{
 type:mongoose.Types.ObjectId,
 ref:'Sub'
