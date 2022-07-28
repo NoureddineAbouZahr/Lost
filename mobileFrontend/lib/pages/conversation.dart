@@ -12,22 +12,40 @@ class MessageBubble extends StatelessWidget {
   final String content;
   final bool self;
 
-  const MessageBubble({Key? key, required this.content, required this.self}) : super(key: key);
+  const MessageBubble({Key? key, required this.content, required this.self})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return SizedBox(width: width, child: Row(
-
-            mainAxisAlignment: self ?MainAxisAlignment.end : MainAxisAlignment.start,
-            children:[ Container(child: Text(content),padding: EdgeInsets.all(12),decoration: BoxDecoration(
-                color: MainCol,borderRadius: BorderRadius.circular(10)
-            ),margin: !self ? EdgeInsets.only(left: 10 ,bottom: 10):EdgeInsets.only(right: 10, bottom: 10),)]
-    ));
+    return SizedBox(
+        width: width,
+        child: Row(
+            mainAxisAlignment:
+                self ? MainAxisAlignment.end : MainAxisAlignment.start,
+            children: [
+              Container(
+                constraints: BoxConstraints(maxWidth: width * 0.75),
+                child: Flexible(
+                    child: Text(content,
+                        style: TextStyle(
+                            color: self ? Color(0xff333333) : MainCol))),
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                    color: self ? MainCol : Color(0xff333333),
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [BoxShadow(blurRadius: 4, offset: Offset.fromDirection(pi/2, 3))]
+                ),
+                margin: !self
+                    ? EdgeInsets.only(left: 10, bottom: 10)
+                    : EdgeInsets.only(right: 10, bottom: 10),
+              )
+            ]));
   }
 }
 
 final db = FirebaseDatabase.instance.ref();
+
 class Conversation extends StatefulWidget {
   final String thisId;
   final String thatId;
@@ -37,28 +55,22 @@ class Conversation extends StatefulWidget {
     final lastIndex = db.child('chats/$dbId/lastIndex');
     final newIndex = (((await lastIndex.get()).value ?? -1) as int) + 1;
 
-    db.child('chats/$dbId/messages/$newIndex').set({
-      'owner': thisId,
-      'content': content
-    });
+    db
+        .child('chats/$dbId/messages/$newIndex')
+        .set({'owner': thisId, 'content': content});
     lastIndex.set(newIndex);
-
   }
-
 
   Conversation({Key? key, required this.thisId, required this.thatId});
 
   String dbId = "";
-  void updateDBId(){
+  void updateDBId() {
     final ids = [thisId, thatId];
     ids.sort();
 
-    dbId = ids[0]+','+ids[1];
+    dbId = ids[0] + ',' + ids[1];
 
-    db.child('chats/'+dbId).update({
-      'between': ids
-    });
-
+    db.child('chats/' + dbId).update({'between': ids});
   }
 
   @override
@@ -83,10 +95,10 @@ class _ConversationState extends State<Conversation> {
           print(messagesl);
           messagesl.forEach((msg) {
             try {
-              messages.add(MessageBubble(content: msg['content'], self: userData['_id'] == msg['owner']));
-
+              messages.add(MessageBubble(
+                  content: msg['content'],
+                  self: userData['_id'] == msg['owner']));
             } catch (e) {}
-
           });
 
           setState(() {});
@@ -98,11 +110,14 @@ class _ConversationState extends State<Conversation> {
 
       return const Scaffold(
         body: Center(
-          child: SizedBox(child: CircularProgressIndicator(color: Colors.black),width: 100,height: 100,),
+          child: SizedBox(
+            child: CircularProgressIndicator(color: Colors.black),
+            width: 100,
+            height: 100,
+          ),
         ),
       );
     }
-
 
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -114,12 +129,13 @@ class _ConversationState extends State<Conversation> {
       ),
       body: Column(
         children: [
-          Expanded(child: ListView(reverse: true,children: [Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-
-              children: messages
-          )])),
-          SizedBox(height: 15,),
+          Expanded(
+              child: ListView(reverse: true, children: [
+            Column(mainAxisAlignment: MainAxisAlignment.end, children: messages)
+          ])),
+          SizedBox(
+            height: 15,
+          ),
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.only(bottom: 1),
@@ -131,18 +147,17 @@ class _ConversationState extends State<Conversation> {
                     width: width - 90,
                     child: Container(
                       decoration: BoxDecoration(
-                          border:
-                          Border.all(width: 1, color: Colors.white),
+                          border: Border.all(width: 1, color: Colors.white),
                           borderRadius:
-                          const BorderRadius.all(Radius.circular(12))),
+                              const BorderRadius.all(Radius.circular(12))),
                       child: TextFormField(
                         controller: content,
                         //onFieldSubmitted: (i) {},
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(10),
                           hintText: 'message',
-
-                        ),),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -155,10 +170,12 @@ class _ConversationState extends State<Conversation> {
                         child: IconButton(
                             onPressed: () {
                               widget.send(content.text);
-                              messages.add(MessageBubble(content: content.text, self: true));
+                              messages.add(MessageBubble(
+                                  content: content.text, self: true));
                               content.clear();
-                              setState((){});
-                            }, icon: Icon(Icons.send))),
+                              setState(() {});
+                            },
+                            icon: Icon(Icons.send))),
                   )
                 ],
               ))
