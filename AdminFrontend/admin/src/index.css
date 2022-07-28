@@ -71,7 +71,8 @@ code {
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  top: 22%;
+  top: 19%;
+  right: 47%;
   opacity: 0.95;
 
 }
@@ -81,7 +82,8 @@ code {
   height: 80px;
   margin-top: 10px;
   position: absolute;
-  top: 22.5%;
+  top: 12.5%;
+  right: -6.5%;
 
 }
 
@@ -389,7 +391,9 @@ input[type=submit]:active {
 .burgerLines {
   display: none;
 }
+logo{
 
+}
 @media only screen and (max-width: 1300px) {
   .det {
     display: flex;
@@ -398,22 +402,14 @@ input[type=submit]:active {
   .lgo {
     width: 110px;
     height: 80px;
-    left: -6%;
     margin-top: 10px;
-    position: relative;
-    top: 10%;
+    position: absolute;
+    top: 12.5%;
   
   }
-  .logo {
-    background-color: rgb(167, 160, 159);
-    position: absolute;
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-    top: 20.5%;
-    right:35%;
-    opacity: 0.95;
-  
+  .logo{
+    transform: translateX(100%)
+    translateX(-85%);
   }
   
   .form-inner{
