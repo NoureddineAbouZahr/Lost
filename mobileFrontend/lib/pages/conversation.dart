@@ -71,14 +71,23 @@ class Conversation extends StatefulWidget {
   Conversation({Key? key, required this.thisId, required this.thatId});
 
   String dbId = "";
-  void updateDBId() {
+  void updateDBId(Function(dynamic) cb) {
     final ids = [thisId, thatId];
     ids.sort();
 
     dbId = ids[0] + ',' + ids[1];
 
     db.child('chats/' + dbId).update({'between': ids});
-    db.child('chats/' + dbId+'/messages/').onChildAdded.listen((event) {print(event.snapshot.value);});
+
+    String lastMID = '';
+    db.child('chats/$dbId/messages/').onChildAdded.listen((event) {
+      dynamic msg = event.snapshot.value;
+      if (lastMID == msg['id']) return;
+      if (thisId == msg['owner']) return;
+      cb(msg);
+
+      lastMID = msg['id'];
+    });
   }
 
   @override
@@ -95,7 +104,10 @@ class _ConversationState extends State<Conversation> {
       sendToApiPost('users/get', {'id': widget.thatId.toString()})
           .then((value) {
         widget.thatUser = jsonDecode(value.body)['name'].toString();
-        widget.updateDBId();
+        widget.updateDBId((msg) {
+          messages.add(MessageBubble(content: msg['content'], self: false));
+          setState((){});
+        });
 
         Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
         db.child('chats/${widget.dbId}/messages').get().then((snapshot) {
