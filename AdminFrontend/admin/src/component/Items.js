@@ -43,7 +43,7 @@ const Items = () => {
                                     
                                 </div>
                                 <div>
-                                    <img src={`data:image/jpeg;base64,${item.pic}`} alt=""  />
+                                    <img src={`data:image/${item.extension || 'jpg'};base64,${item.pic}`} alt=""  />
                                 </div>
                             </div>
                             <details>
