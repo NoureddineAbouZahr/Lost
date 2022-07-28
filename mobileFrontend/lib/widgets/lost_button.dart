@@ -8,7 +8,10 @@ class LostButton extends StatelessWidget {
   bool secondary;
 
   LostButton(
-      {Key? key, required String this.text, required Function this.onPressed, this.secondary = false})
+      {Key? key,
+      required String this.text,
+      required Function this.onPressed,
+      this.secondary = false})
       : super(key: key);
 
   @override
@@ -19,12 +22,19 @@ class LostButton extends StatelessWidget {
         height: 50,
         child: ElevatedButton(
           onPressed: () => onPressed(),
-          child: Text(text.toUpperCase(), style: TextStyle(color: !secondary ? Color(0xff333333) : MainCol, fontSize: 20, fontWeight: FontWeight.bold),),
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(!secondary ? MainCol : Color(0xff333333)),
+              backgroundColor: MaterialStateProperty.all(
+                  !secondary ? MainCol : Color(0xff333333)),
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(5),
               ))),
+          child: Text(
+            text.toUpperCase(),
+            style: TextStyle(
+                color: !secondary ? Color(0xff333333) : MainCol,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+          ),
         ));
   }
 }

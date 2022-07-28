@@ -16,7 +16,6 @@ import 'package:lost/widgets/lost_button.dart';
 import 'itemData.dart';
 
 class MyPosts extends StatefulWidget {
-
   const MyPosts({Key? key}) : super(key: key);
 
   @override
@@ -24,8 +23,6 @@ class MyPosts extends StatefulWidget {
 }
 
 class _MyPostsState extends State<MyPosts> {
-
-
   List<Post> posts = [];
   bool addedPosts = false;
 
@@ -48,8 +45,7 @@ class _MyPostsState extends State<MyPosts> {
                 locationy: item['locationy'],
                 locationx: item['locationx'],
                 user: item['user'],
-                self: true
-            ));
+                self: true));
           });
         });
       });
@@ -76,19 +72,21 @@ class _MyPostsState extends State<MyPosts> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 30),
-            (posts.isEmpty ? Center(child: SizedBox(child: CircularProgressIndicator(color: Colors.black),width: 100,height: 100)) : Column(children: posts)),
+            (posts.isEmpty
+                ? Center(
+                    child: SizedBox(
+                        child: CircularProgressIndicator(color: Colors.black),
+                        width: 100,
+                        height: 100))
+                : Column(children: posts)),
           ],
         ),
-
-
       ]),
-
     );
   }
-
 }
-Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
 
+Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
 
 getItem(Function(dynamic) cb) {
   sendToApiGet('items/getItems').then((value) {
@@ -103,4 +101,3 @@ getItem(Function(dynamic) cb) {
     cb(filteredItems);
   }).catchError(print);
 }
-

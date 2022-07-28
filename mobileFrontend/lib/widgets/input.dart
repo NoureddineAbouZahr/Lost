@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class LostInput extends StatelessWidget {
   String labelText;
   String hintText;
-  bool dp ;
+  bool dp;
   TextEditingController controller;
 
   LostInput(
@@ -11,8 +11,7 @@ class LostInput extends StatelessWidget {
       required this.labelText,
       required this.hintText,
       required this.controller,
-      this.dp=false
-      })
+      this.dp = false})
       : super(key: key);
 
   @override

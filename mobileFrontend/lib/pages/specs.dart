@@ -136,18 +136,14 @@ class _SpecFoundState extends State<SpecFound> {
                 child: Stack(
                   children: [
                     FlutterMap(
-                      options:
-                          MapOptions(
-                              onTap: (tp,p) async{
-                                setState((){
-                                  point=p;
-                                }
-                                );
-                              },
-
-                              zoom: 10.0,
-                              center: LatLng(33.5, 35.37)
-                          ),
+                      options: MapOptions(
+                          onTap: (tp, p) async {
+                            setState(() {
+                              point = p;
+                            });
+                          },
+                          zoom: 10.0,
+                          center: LatLng(33.5, 35.37)),
                       layers: [
                         TileLayerOptions(
                           urlTemplate:

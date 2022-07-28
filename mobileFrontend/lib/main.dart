@@ -4,14 +4,17 @@ import 'package:lost/splash.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: FirebaseOptions(appId: '1:458363857813:android:2b0b5ecaea565cb877e49c', messagingSenderId: '458363857813', projectId: 'lost-11058', apiKey: 'AIzaSyDmQMIih1RfeaAr5BzW2doFrQsJfNtDuhA'));
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          appId: '1:458363857813:android:2b0b5ecaea565cb877e49c',
+          messagingSenderId: '458363857813',
+          projectId: 'lost-11058',
+          apiKey: 'AIzaSyDmQMIih1RfeaAr5BzW2doFrQsJfNtDuhA'));
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-
 
   // This widget is the root of your application.
   @override
@@ -40,4 +43,3 @@ MaterialColor MainCol = MaterialColor(0xffefd16f, <int, Color>{
   800: Color(0xfff1d477),
   900: Color(0xffefd16f),
 });
-

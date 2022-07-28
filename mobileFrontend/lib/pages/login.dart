@@ -45,14 +45,14 @@ class _LoginState extends State<Login> {
                 Container(
                     margin: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width * 0.05),
-                    child: Align(
+                    child: const Align(
                         alignment: Alignment.centerLeft,
                         child:
                             Text('Log In', style: TextStyle(fontSize: 30.0)))),
                 Container(
                     margin: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width * 0.05),
-                    child: Align(
+                    child: const Align(
                         alignment: Alignment.centerLeft,
                         child: Text('With your existing account',
                             style: TextStyle(fontSize: 20.0)))),
