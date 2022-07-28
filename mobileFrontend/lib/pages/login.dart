@@ -44,22 +44,21 @@ class _LoginState extends State<Login> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 25),
-                const Text(
-                  'Log In',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                  ),
-                ),
-                const Padding(padding: EdgeInsets.only(bottom: 20)),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: const Divider(
-                    color: Color(0xFFefd16f),
-                    thickness: 2.0,
-                  ),
-                ),
-                Padding(padding: EdgeInsets.only(bottom: 35)),
+                const SizedBox(height: 25),
+                Container(
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.05),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Log In', style: TextStyle(fontSize: 30.0)))),
+                Container(
+                    margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.05),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('With your existing account', style: TextStyle(fontSize: 20.0)))),
+
+                Padding(padding: EdgeInsets.only(bottom: 20)),
                 LostInput(
                   labelText: 'Email Address',
                   hintText: 'Enter Your Email',

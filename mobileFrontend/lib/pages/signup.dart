@@ -52,13 +52,13 @@ class _SignupState extends State<Signup> {
                     left: MediaQuery.of(context).size.width * 0.05),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('Sign Up', style: TextStyle(fontSize: 30.0)))),
+                    child: Text('Register', style: TextStyle(fontSize: 30.0)))),
             Container(
                 margin: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.05),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('With your existing account', style: TextStyle(fontSize: 20.0)))),
+                    child: Text('A new account', style: TextStyle(fontSize: 20.0)))),
 
             const Padding(padding: EdgeInsets.only(bottom: 20)),
             LostInput(
@@ -88,13 +88,11 @@ class _SignupState extends State<Signup> {
               controller: cp,
               dp: true,
             ),
-            LostButton(text: 'Register', onPressed: () => authorizeData()),
-            SizedBox(height: 10),
-            LostButton(
-                secondary: true,
-                text: 'Log In',
-                onPressed: () => Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (c) => Login()))),
+            Align(child: Column(children: [
+              LostButton(text: 'Register', onPressed: () => authorizeData()),
+              SizedBox(height: 10),
+              LostButton(secondary: true, text: 'Log In', onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Login())))
+            ]), alignment: Alignment.bottomCenter,)
           ],
         ),
       ])),
