@@ -20,12 +20,12 @@ DatabaseReference lostdb = FirebaseDatabase.instance.ref();
 String ID() {
   return (0xffffff * Random().nextInt(1000)).round().toRadixString(16);
 }
+final db = FirebaseDatabase.instance.ref();
 class Conversation extends StatefulWidget {
   final String thisId;
   final String thatId;
   String thatUser = '';
 
-  static final db = FirebaseDatabase.instance.ref();
   void send(String content) {
 
     print(content);

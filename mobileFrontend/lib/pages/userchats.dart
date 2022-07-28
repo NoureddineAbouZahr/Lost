@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import './conversation.dart';
 
 class UserChats extends StatefulWidget {
   const UserChats({Key? key}) : super(key: key);
@@ -10,8 +12,19 @@ class UserChats extends StatefulWidget {
 }
 
 class _UserChatsState extends State<UserChats> {
+  List<UserTile> tiles = [ UserTile(username: 'asd', userid: 'asd') ];
+
   @override
   Widget build(BuildContext context) {
+
+    db.child('chats')..get().then((snapshot) {
+      dynamic chats = (snapshot.value ?? {});
+      chats.forEach((key, value) {
+        print(key);
+      });
+
+    }).catchError(print);
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
@@ -29,23 +42,7 @@ class _UserChatsState extends State<UserChats> {
           ),
         ),
       ),
-      body: ListView(children: [
-        UserTile(username: 'Ahmad', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-        UserTile(username: 'Nour', userid: 'ok'),
-      ]),
+      body: ListView(children: tiles),
     );
   }
 }
