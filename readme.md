@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./readme/Group1.svg"/>
+
 </div>
 
 <div align="center">
@@ -13,12 +13,14 @@
  <table align="center" style="text-align: center;">
    <tr>Implementation</tr>
    <tr>
-      
-      <td>Login Page</td>
+       <td>Login Page</td>
+    <td>Chosing what are you doing</td>
    </tr>
    
    <tr>
-     <td><img src="./Readme/one"/></td>
+     <td><img src="./Readme/one.png"/></td>
+     <td><img src="./Readme/2.png"/></td>
+     
    </tr>
    <tr>
       
