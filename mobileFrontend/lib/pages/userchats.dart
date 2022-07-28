@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:jwt_decode/jwt_decode.dart';
+import 'package:lost/utils.dart';
 import './conversation.dart';
 
 class UserChats extends StatefulWidget {
@@ -12,18 +14,40 @@ class UserChats extends StatefulWidget {
 }
 
 class _UserChatsState extends State<UserChats> {
-  List<UserTile> tiles = [ UserTile(username: 'asd', userid: 'asd') ];
+  List<UserTile> tiles = [];
+  Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
+  bool hasLoaded = false;
 
+  int index = 0;
+  int targetLength = 0;
   @override
   Widget build(BuildContext context) {
 
-    db.child('chats')..get().then((snapshot) {
-      dynamic chats = (snapshot.value ?? {});
-      chats.forEach((key, value) {
-        print(key);
-      });
+    if (!hasLoaded) {
+      db.child('chats').get().then((snapshot) async {
+        dynamic chats = (snapshot.value ?? {});
 
-    }).catchError(print);
+        targetLength = chats.length;
+        chats.forEach((chatId, chat) {
+          bool isOwner = chatId.contains(userData['_id']);
+
+          if (isOwner) {
+            int notMyIdIndex = (chat['between'].indexOf(userData['_id']) + 1) % 2;
+            String notMyId = chat['between'][notMyIdIndex];
+            sendToApiPost('users/get', {'id': notMyId}).then((response) {
+              dynamic user = jsonDecode(response.body);
+
+              tiles.add(UserTile(username: user['name'].toString(), userid: notMyId));
+              index++;
+              setState(() =>{hasLoaded = true});
+            });
+          } else {
+            index++;
+          }
+
+        });
+      }).catchError(print);
+    }
 
     return Scaffold(
       appBar: PreferredSize(
@@ -42,7 +66,7 @@ class _UserChatsState extends State<UserChats> {
           ),
         ),
       ),
-      body: ListView(children: tiles),
+      body: targetLength == index ? ListView(children: [Column(children: tiles)]): Center(child: SizedBox(child: CircularProgressIndicator(color: Colors.black),width: 100,height: 100)),
     );
   }
 }
