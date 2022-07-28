@@ -22,9 +22,6 @@ class _SignupState extends State<Signup> {
   TextEditingController cp = new TextEditingController();
   TextEditingController name = new TextEditingController();
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,26 +42,25 @@ class _SignupState extends State<Signup> {
         ),
       ),
       body: Center(
-        child:ListView(children: [
-         Column(
+          child: ListView(children: [
+        Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(height: 25),
-            const Text(
-              'Sign Up',
-              style: TextStyle(
-                fontSize: 30.0,
-              ),
-            ),
+            const SizedBox(height: 25),
+            Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.05),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('Sign Up', style: TextStyle(fontSize: 30.0)))),
+            Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.05),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('With your existing account', style: TextStyle(fontSize: 20.0)))),
+
             const Padding(padding: EdgeInsets.only(bottom: 20)),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.9,
-              child: const Divider(
-                color: Color(0xFFefd16f),
-                thickness: 2.0,
-              ),
-            ),
-            Padding(padding: EdgeInsets.only(bottom: 35)),
             LostInput(
               labelText: 'Name',
               hintText: 'Enter Your Name',
@@ -92,12 +88,13 @@ class _SignupState extends State<Signup> {
               controller: cp,
               dp: true,
             ),
-            LostButton(text: 'Sign Up',  onPressed: () => authorizeData()),
-            HL(
-              text: "Log In",
-              onPressed: () => {switchPage(context, () => const Login())},
-            ),
-
+            LostButton(text: 'Register', onPressed: () => authorizeData()),
+            SizedBox(height: 10),
+            LostButton(
+                secondary: true,
+                text: 'Log In',
+                onPressed: () => Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (c) => Login()))),
           ],
         ),
       ])),
@@ -106,22 +103,26 @@ class _SignupState extends State<Signup> {
 
   authorizeData() async {
     final params = {
-      "name":name.text,
-      "phone":phone.text,
+      "name": name.text,
+      "phone": phone.text,
       "email": email.text,
       "password": password.text
     };
-    if(password.text==cp.text && name.text != '' && phone.text != '' && email.text != '' && password.text != ''){
+    if (password.text == cp.text &&
+        name.text != '' &&
+        phone.text != '' &&
+        email.text != '' &&
+        password.text != '') {
       print(params);
       final response = await Services().login('users/register', params);
-      final token=response.body;
+      final token = response.body;
 
       if (response.statusCode == 200) {
         ls.setItem('token', token);
-        Navigator.pushReplacement(context,MaterialPageRoute(builder:(_)=> Login()));
-
-      }}
-    else{
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => Login()));
+      }
+    } else {
       print('password doesn\'t match');
     }
   }

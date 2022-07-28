@@ -67,17 +67,13 @@ class _LoginState extends State<Login> {
 
                 ),
                 LostInput(
-
                   labelText: 'Password',
                   hintText: 'Enter Your Password',
                   controller: password, dp: true,
                 ),
                 LostButton(text: 'Log In', onPressed: () => authorizeData()),
-                HL(
-                  text: "Sign Up",
-                  onPressed: () => {switchPage(context, () => Signup())},
-                ),
-
+                SizedBox(height: 10),
+                LostButton(secondary: true, text: 'Register', onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (c)=>Signup()))),
               ],
             ),
           ),
@@ -93,14 +89,14 @@ class _LoginState extends State<Login> {
     if (email.text == '' || password.text == '') {
       return;
     }
-    Services().login('users/login', params).then((response) {
+    Services().login('users/login', params).then((response) async {
         final token = response.body;
-        ls.setItem('token', token);
-        ls.setItem('email', email.text);
-        ls.setItem('password', password.text);
+        await ls.setItem('token', token);
+        await ls.setItem('email', email.text);
+        await ls.setItem('password', password.text);
         Navigator.pop(context);
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const LostFound()));
         }
-    );
+    ).catchError(print);
   }
 }

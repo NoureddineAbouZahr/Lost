@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lost/pages/lost_or_found.dart';
 import 'package:lost/services/services.dart';
 import 'package:lost/utils.dart';
-import './welcom.dart';
+import 'package:lost/pages/login.dart';
 
 
 class Splash extends StatefulWidget {
@@ -20,23 +20,21 @@ void initState() {
 }
 _navigatetohome() async{
   await ls.ready;
-  ls.clear();
-  String? email = ls.getItem('email');
-  String? password = ls.getItem('password');
+  // ls.clear();
+  String? email = await ls.getItem('email');
+  String? password = await ls.getItem('password');
   if (email != null && password != null) {
     final params = {"email": email, "password": password};
-    Services().login('users/login', params).then((response) {
-      try {
-        final token = response.body;
-        ls.setItem('token', token);
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const LostFound()));
-      } catch(e) {print('stop messing around asshole');}
+    Services().login('users/login', params).then((response) async {
+      final token = response.body;
+      await ls.setItem('token', token);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const LostFound()));
     }
     ).catchError(print);
   } else {
     await Future.delayed(const Duration(seconds: 2),(){});
 
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const Welcome()));}
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Login()));}
 }
 
 
