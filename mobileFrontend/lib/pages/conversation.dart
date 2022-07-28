@@ -6,11 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:lost/main.dart';
 import 'package:lost/utils.dart';
 
+class MessageBubble extends StatelessWidget {
+  final String content;
+  final bool self;
 
-DatabaseReference lostdb = FirebaseDatabase.instance.ref();
-String ID() {
-  return (0xffffff * Random().nextInt(1000)).round().toRadixString(16);
+  const MessageBubble({Key? key, required this.content, required this.self}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return SizedBox(width: width, child: Row(
+
+            mainAxisAlignment: self ?MainAxisAlignment.end : MainAxisAlignment.start,
+            children:[ Container(child: Text(content),padding: EdgeInsets.all(14),decoration: BoxDecoration(
+                color: MainCol,borderRadius: BorderRadius.circular(10)
+            ),margin: !self ? EdgeInsets.only(left: 10):EdgeInsets.only(right: 10),)]
+    ));
+  }
 }
+
 final db = FirebaseDatabase.instance.ref();
 class Conversation extends StatefulWidget {
   final String thisId;
@@ -62,7 +76,7 @@ class _ConversationState extends State<Conversation> {
         setState(() {});
       }).catchError(print);
 
-      return Scaffold(
+      return const Scaffold(
         body: Center(
           child: SizedBox(child: CircularProgressIndicator(color: Colors.black),width: 100,height: 100,),
         ),
@@ -79,48 +93,51 @@ class _ConversationState extends State<Conversation> {
       ),
       body: Column(
         children: [
-          Expanded(
-              child: Align(
-                  alignment: FractionalOffset.bottomCenter,
-                  child: Container(
-                      padding: EdgeInsets.all(10),
-                      margin: EdgeInsets.only(bottom: 1),
-                      color: Color(0xffe6e6e6),
-                      child: Row(
-                        children: [
-                          const SizedBox(width: 10),
-                          SizedBox(
-                            width: width - 90,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border:
-                                      Border.all(width: 1, color: Colors.white),
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(12))),
-                              child: TextFormField(
-                                controller: content,
-                                //onFieldSubmitted: (i) {},
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(10),
-                                  hintText: 'message',
+          Expanded(child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                MessageBubble(content: 'Hello', self: true),
+                MessageBubble(content: 'Ahlan', self: false),
+          ])),
+          Container(
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(bottom: 1),
+              color: Color(0xffe6e6e6),
+              child: Row(
+                children: [
+                  const SizedBox(width: 10),
+                  SizedBox(
+                    width: width - 90,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border:
+                          Border.all(width: 1, color: Colors.white),
+                          borderRadius:
+                          const BorderRadius.all(Radius.circular(12))),
+                      child: TextFormField(
+                        controller: content,
+                        //onFieldSubmitted: (i) {},
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
+                          hintText: 'message',
 
-                                ),),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          SizedBox(
-                            width: 50,
-                            child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    color: MainCol),
-                                child: IconButton(
-                                    onPressed: () {
-                                      widget.send(content.text);
-                                    }, icon: Icon(Icons.send))),
-                          )
-                        ],
-                      ))))
+                        ),),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  SizedBox(
+                    width: 50,
+                    child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: MainCol),
+                        child: IconButton(
+                            onPressed: () {
+                              widget.send(content.text);
+                            }, icon: Icon(Icons.send))),
+                  )
+                ],
+              ))
         ],
       ),
     );
