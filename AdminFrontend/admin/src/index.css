@@ -395,6 +395,27 @@ input[type=submit]:active {
     display: flex;
     flex-direction: column-reverse;
   }
+  .lgo {
+    width: 110px;
+    height: 80px;
+    left: -6%;
+    margin-top: 10px;
+    position: relative;
+    top: 10%;
+  
+  }
+  .logo {
+    background-color: rgb(167, 160, 159);
+    position: absolute;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    top: 20.5%;
+    right:35%;
+    opacity: 0.95;
+  
+  }
+  
   .form-inner{
     width: 300px;
 

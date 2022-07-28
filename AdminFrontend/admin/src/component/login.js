@@ -51,12 +51,12 @@ const Login = () => {
 
     return (
         <div className="loginBody">
-            <div className="logo">
-            </div>
-            <img src={logo} alt="logo" className="lgo" />
             <form action="" className="lgn-container" onSubmit={onSubmit}>
 
                 <div className="form-inner">
+            <div className="logo">
+            <img src={logo} alt="logo" className="lgo" />
+            </div>
 
                     <div className='hc'>
                     </div>
