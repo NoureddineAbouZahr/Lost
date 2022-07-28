@@ -302,6 +302,8 @@ details {
 
 .det img {
   width: 90%;
+  height: 400PX;
+    object-fit: cover;
 }
 
 .det>div:nth-child(2) {
