@@ -6,8 +6,8 @@ import 'package:localstorage/localstorage.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 
 final ls = LocalStorage('lost.json');
-
-const baseUrl = "http://192.168.0.127:3001/api/";
+//192.168.0.127
+const baseUrl = "http://192.168.0.125:3001/api/";
 
 Future<http.Response> sendToApiGet(url) {
   return http.get(Uri.parse(baseUrl + url),

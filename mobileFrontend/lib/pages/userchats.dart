@@ -20,6 +20,7 @@ class _UserChatsState extends State<UserChats> {
 
   int index = 0;
   int targetLength = 0;
+
   @override
   Widget build(BuildContext context) {
 
@@ -83,13 +84,16 @@ class UserTile extends StatelessWidget {
   final String userid;
   final String username;
 
-  const UserTile({Key? key, required this.username, required this.userid})
+   UserTile({Key? key, required this.username, required this.userid})
       : super(key: key);
+
+  Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (c)=>Conversation(thisId: userData['_id'], thatId: userid)));
       },
       title: Container(
         child: Row(

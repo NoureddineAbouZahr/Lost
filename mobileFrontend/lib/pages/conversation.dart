@@ -1,20 +1,11 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lost/main.dart';
 import 'package:lost/utils.dart';
 
-// class Messasge {
-//   final String owner;
-//   final String content;
-//
-//   const Messasge({Key? key, required this.content, required this.owner});
-//
-//   toJson() {}
-// }
 
 DatabaseReference lostdb = FirebaseDatabase.instance.ref();
 String ID() {
@@ -26,13 +17,16 @@ class Conversation extends StatefulWidget {
   final String thatId;
   String thatUser = '';
 
-  void send(String content) {
+  void send(String content) async {
+    final lastIndex = db.child('chats/$dbId/lastIndex');
+    final newIndex = (((await lastIndex.get()).value ?? -1) as int) + 1;
 
-    print(content);
-    db.child('chats/$dbId/messages/${ID()}').set({
+    db.child('chats/$dbId/messages/$newIndex').set({
       'owner': thisId,
       'content': content
     });
+    lastIndex.set(newIndex);
+
   }
 
 
@@ -48,6 +42,7 @@ class Conversation extends StatefulWidget {
     db.child('chats/'+dbId).update({
       'between': ids
     });
+
   }
 
   @override
