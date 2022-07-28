@@ -3,7 +3,9 @@ import 'dart:math';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:lost/main.dart';
+import 'package:lost/pages/userposts.dart';
 import 'package:lost/utils.dart';
 
 class MessageBubble extends StatelessWidget {
@@ -66,6 +68,7 @@ class Conversation extends StatefulWidget {
 class _ConversationState extends State<Conversation> {
   TextEditingController content = TextEditingController();
 
+  List<MessageBubble> messages = [];
   @override
   Widget build(BuildContext context) {
     if (widget.thatUser == '') {
@@ -73,7 +76,16 @@ class _ConversationState extends State<Conversation> {
           .then((value) {
         widget.thatUser = jsonDecode(value.body)['name'].toString();
         widget.updateDBId();
-        setState(() {});
+
+        Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
+        db.child('chats/${widget.dbId}/messages').get().then((snapshot) async {
+          dynamic messagesl = (snapshot.value ?? []);
+          messagesl.forEach((msg) {
+            messages.add(MessageBubble(content: msg['content'], self: userData['_id'] == msg['owner']));
+          });
+
+          setState(() {});
+        });
       }).catchError(print);
 
       return const Scaffold(
@@ -82,6 +94,7 @@ class _ConversationState extends State<Conversation> {
         ),
       );
     }
+
 
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -96,14 +109,8 @@ class _ConversationState extends State<Conversation> {
           Expanded(child: ListView(reverse: true,children: [Column(
               mainAxisAlignment: MainAxisAlignment.end,
 
-              children: const [
-                MessageBubble(content: 'hi', self: false),
-                MessageBubble(content: 'Hello', self: true),
-                MessageBubble(content: 'Ahlan', self: false),
-                MessageBubble(content: 'Ahlan', self: true),
-                MessageBubble(content: 'Ahlan', self: false),
-
-              ])])),
+              children: messages
+          )])),
           SizedBox(height: 15,),
           Container(
               padding: EdgeInsets.all(10),
