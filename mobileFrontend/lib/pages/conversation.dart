@@ -13,7 +13,8 @@ class MessageBubble extends StatelessWidget {
 
   final String id;
 
-  const MessageBubble({Key? key, required this.content, required this.self, required this.id})
+  const MessageBubble(
+      {Key? key, required this.content, required this.self, required this.id})
       : super(key: key);
 
   @override
@@ -52,6 +53,7 @@ final db = FirebaseDatabase.instance.ref();
 String ID() {
   return (0xffffff * Random().nextInt(1000)).round().toRadixString(16);
 }
+
 class Conversation extends StatefulWidget {
   final String thisId;
   final String thatId;
@@ -108,9 +110,15 @@ class _ConversationState extends State<Conversation> {
           .then((value) {
         widget.thatUser = jsonDecode(value.body)['name'].toString();
         widget.updateDBId((msg, self) {
-          if (messages.where((element) => element.id == msg['id'].toString()).isEmpty) {
-            messages.add(MessageBubble(content: msg['content'], self: self, id: msg['id'],));
-            setState((){});
+          if (messages
+              .where((element) => element.id == msg['id'].toString())
+              .isEmpty) {
+            messages.add(MessageBubble(
+              content: msg['content'],
+              self: self,
+              id: msg['id'],
+            ));
+            setState(() {});
           }
         });
 
@@ -125,7 +133,8 @@ class _ConversationState extends State<Conversation> {
             try {
               messages.add(MessageBubble(
                   content: msg['content'],
-                  self: userData['_id'] == msg['owner'], id: msg['id']));
+                  self: userData['_id'] == msg['owner'],
+                  id: msg['id']));
             } catch (e) {}
           });
 
@@ -181,11 +190,11 @@ class _ConversationState extends State<Conversation> {
                       child: TextFormField(
                         controller: content,
                         onFieldSubmitted: (i) {
-                            if (content.text == '') return;
-                            widget.send(content.text);
-                            content.clear();
-                            setState(() {});
-                          },
+                          if (content.text == '') return;
+                          widget.send(content.text);
+                          content.clear();
+                          setState(() {});
+                        },
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(10),
                           hintText: 'message',

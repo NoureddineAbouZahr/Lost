@@ -179,7 +179,8 @@ class _LItemState extends State<LItem> {
                       width: MediaQuery.of(context).size.width * 0.9,
                       height: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xffefd16f), width: 3)),
+                          border:
+                              Border.all(color: Color(0xffefd16f), width: 3)),
                       child: Stack(
                         children: [
                           FlutterMap(
@@ -208,20 +209,34 @@ class _LItemState extends State<LItem> {
                             ],
                           ),
                         ],
-                      ))  ,
-                  SizedBox(height: 20,)
+                      )),
+                  SizedBox(
+                    height: 20,
+                  )
                 ])
               ],
             )
           ],
         ),
       ),
-      floatingActionButton: userData['_id'].toString() == widget.post.user.toString() ? Container(): FloatingActionButton(onPressed: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-          Navigator.pop(context);
-          switchPage(context, () => Conversation(thisId: userData['_id'], thatId: widget.post.user));
-      },child: const Icon(Icons.message,color: Color(0xff666666),),),
+      floatingActionButton:
+          userData['_id'].toString() == widget.post.user.toString()
+              ? Container()
+              : FloatingActionButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    switchPage(
+                        context,
+                        () => Conversation(
+                            thisId: userData['_id'], thatId: widget.post.user));
+                  },
+                  child: const Icon(
+                    Icons.message,
+                    color: Color(0xff666666),
+                  ),
+                ),
     );
   }
 }

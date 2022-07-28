@@ -43,8 +43,7 @@ class _SpecLostState extends State<SpecLost> {
                 locationy: item['locationy'],
                 locationx: item['locationx'],
                 user: item['user'],
-                self: false
-            ));
+                self: false));
           });
         });
       });
@@ -89,7 +88,13 @@ class _SpecLostState extends State<SpecLost> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 30),
-            (posts.isEmpty ? Center(child: SizedBox(child: CircularProgressIndicator(color: Colors.black),width: 100,height: 100)) : Column(children: posts)),
+            (posts.isEmpty
+                ? Center(
+                    child: SizedBox(
+                        child: CircularProgressIndicator(color: Colors.black),
+                        width: 100,
+                        height: 100))
+                : Column(children: posts)),
           ],
         ),
       ]),
@@ -127,8 +132,8 @@ class Post extends StatefulWidget {
 
   const Post(
       {Key? key,
-        required this.img64,
-        required this.user,
+      required this.img64,
+      required this.user,
       required this.name,
       required this.serialNumber,
       required this.model,
@@ -136,7 +141,8 @@ class Post extends StatefulWidget {
       required this.brand,
       required this.extra,
       required this.locationx,
-      required this.locationy, required this.self})
+      required this.locationy,
+      required this.self})
       : super(key: key);
 
   @override
@@ -163,14 +169,14 @@ class _PostState extends State<Post> {
               padding: EdgeInsets.all(5),
               // , spreadRadius: 3
               decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 4,
-                        spreadRadius: spreadRadius)
-                  ],
-                  color: Colors.white,
-              //    border: Border.all(color: Color(0xffefd16f), width: 3)
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 4,
+                      spreadRadius: spreadRadius)
+                ],
+                color: Colors.white,
+                //    border: Border.all(color: Color(0xffefd16f), width: 3)
               ),
               duration: const Duration(milliseconds: 100),
               child: Row(
