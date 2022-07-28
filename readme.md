@@ -32,6 +32,16 @@
      <td><img src="./Readme/four.png"/></td>
      
    </tr>
+   <tr>
+       <td>Similar Items</td>
+    <td>Item Data</td>
+   </tr>
+   
+   <tr>
+     <td><img src="./Readme/five.png"/></td>
+     <td><img src="./Readme/six.png"/></td>
+     
+   </tr>
    
       
       
