@@ -5,7 +5,6 @@ import 'package:lost/services/services.dart';
 import '../utils.dart';
 import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
-import '../widgets/hyperlink.dart';
 
 
 class Login extends StatefulWidget {
@@ -93,7 +92,6 @@ class _LoginState extends State<Login> {
         await ls.setItem('token', token);
         await ls.setItem('email', email.text);
         await ls.setItem('password', password.text);
-        Navigator.pop(context);
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const LostFound()));
         }
     ).catchError(print);

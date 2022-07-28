@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jwt_decode/jwt_decode.dart';
+import 'package:lost/pages/login.dart';
 import 'package:lost/pages/userchats.dart';
 import 'package:lost/pages/userposts.dart';
 import 'package:lost/welcom.dart';
@@ -61,7 +62,7 @@ class _NavState extends State<Nav> {
                   style: TextStyle(color:Colors.red),),
                   onTap: () {
                     ls.clear().then((value) =>
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Welcome()))
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Login()))
                     );
                   },
                 ),)))

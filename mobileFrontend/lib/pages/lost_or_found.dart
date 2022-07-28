@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:lost/pages/signup.dart';
 import '../widgets/navbar.dart';
 import '../utils.dart';
@@ -14,13 +15,11 @@ class LostFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    
+    Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
 
     double width = MediaQuery.of(context).size.width;
-
+    String name =  userData['name'][0].toUpperCase() + userData['name'].substring(1);
     return Scaffold(
-      
       drawer: Nav(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -54,11 +53,23 @@ class LostFound extends StatelessWidget {
 
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 20),
+            Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.05),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Welcome, $name!", style: TextStyle(fontSize: 30.0)))),
+            Container(
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.05),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('How can we help you today?', style: TextStyle(fontSize: 20.0)))),
+            const SizedBox(height: 20),
+
             Image(
-              image: const AssetImage('assets/box.jpg'),
+              image: const AssetImage('assets/box.png'),
               width: width * 0.9,
             ),
             const SizedBox(
