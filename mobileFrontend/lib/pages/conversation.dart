@@ -78,15 +78,23 @@ class _ConversationState extends State<Conversation> {
         widget.updateDBId();
 
         Map<String, dynamic> userData = Jwt.parseJwt(ls.getItem('token'));
-        db.child('chats/${widget.dbId}/messages').get().then((snapshot) async {
+        db.child('chats/${widget.dbId}/messages').get().then((snapshot) {
           dynamic messagesl = (snapshot.value ?? []);
+          print(messagesl);
           messagesl.forEach((msg) {
-            messages.add(MessageBubble(content: msg['content'], self: userData['_id'] == msg['owner']));
+            try {
+              messages.add(MessageBubble(content: msg['content'], self: userData['_id'] == msg['owner']));
+
+            } catch (e) {}
+
           });
 
           setState(() {});
         });
-      }).catchError(print);
+      }).catchError((error) {
+        setState(() {});
+        print('error');
+      });
 
       return const Scaffold(
         body: Center(
@@ -147,6 +155,9 @@ class _ConversationState extends State<Conversation> {
                         child: IconButton(
                             onPressed: () {
                               widget.send(content.text);
+                              messages.add(MessageBubble(content: content.text, self: true));
+                              content.clear();
+                              setState((){});
                             }, icon: Icon(Icons.send))),
                   )
                 ],
