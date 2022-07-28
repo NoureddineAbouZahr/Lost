@@ -55,3 +55,34 @@
       </ul>
       <br><br>
 > Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+
+<table align="center" style="text-align: center;">
+   <tr>Implementation</tr>
+   <tr>
+       <td>Landing Page</td>
+    <td>Choosing what are you doing</td>
+   </tr>
+   
+   <tr>
+     <td><img src="./Readme/sc1.jpeg"/></td>
+     <td><img src="./Readme/sc2.jpeg"/></td>
+     
+  
+   
+   <tr>
+     <td><img src="./Readme/sc5.jpeg"/></td>
+     <td><img src="./Readme/sc6.jpeg"/></td>
+     
+   </tr>
+   
+   
+   <tr>
+     <td><img src="./Readme/sc7.jpeg"/></td>
+     <td><img src="./Readme/sc4.jpeg"/></td>
+     
+   </tr>   
+   <tr>
+    <td><img src="./Readme/sc3.jpeg"/></td>
+   </tr>   
+      
+</table>
