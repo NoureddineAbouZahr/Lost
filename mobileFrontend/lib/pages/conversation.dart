@@ -180,7 +180,12 @@ class _ConversationState extends State<Conversation> {
                               const BorderRadius.all(Radius.circular(12))),
                       child: TextFormField(
                         controller: content,
-                        //onFieldSubmitted: (i) {},
+                        onFieldSubmitted: (i) {
+                            if (content.text == '') return;
+                            widget.send(content.text);
+                            content.clear();
+                            setState(() {});
+                          },
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(10),
                           hintText: 'message',
@@ -199,8 +204,6 @@ class _ConversationState extends State<Conversation> {
                             onPressed: () {
                               if (content.text == '') return;
                               widget.send(content.text);
-                              // messages.add(MessageBubble(
-                              //     content: content.text, self: true));
                               content.clear();
                               setState(() {});
                             },
