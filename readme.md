@@ -41,8 +41,14 @@
      <td><img src="./Readme/five.png"/></td>
      <td><img src="./Readme/six.png"/></td>
      
-   </tr>
-   
-      
+   </tr>      
       
 </table>
+<ul>  
+   <li>
+      This project uses the Flutter app development framework. Flutter is a cross-platform hybrid app development platform which allows us to use a single codebase for apps on mobile, desktop, and the web.
+   </li>
+   <li>
+       For storing the database, the app uses MongoDb for items and firebase for the realtime chat
+      </li>
+      <li>
