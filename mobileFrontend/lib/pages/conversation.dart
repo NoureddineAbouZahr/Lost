@@ -5,7 +5,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:lost/main.dart';
-import 'package:lost/pages/userposts.dart';
 import 'package:lost/utils.dart';
 
 class MessageBubble extends StatelessWidget {
@@ -34,8 +33,11 @@ class MessageBubble extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: self ? MainCol : Color(0xff333333),
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [BoxShadow(blurRadius: 4, offset: Offset.fromDirection(pi/2, 3))]
-                ),
+                    boxShadow: [
+                      BoxShadow(
+                          blurRadius: 4,
+                          offset: Offset.fromDirection(pi / 2, 3))
+                    ]),
                 margin: !self
                     ? EdgeInsets.only(left: 10, bottom: 10)
                     : EdgeInsets.only(right: 10, bottom: 10),
@@ -71,6 +73,7 @@ class Conversation extends StatefulWidget {
     dbId = ids[0] + ',' + ids[1];
 
     db.child('chats/' + dbId).update({'between': ids});
+    db.child('chats/' + dbId+'/messages/').onChildAdded.listen((event) {print(event.snapshot.value);});
   }
 
   @override
