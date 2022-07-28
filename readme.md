@@ -94,3 +94,6 @@
    </tr> 
       
 </table>
+<br><br>
+> Now to connect to the data base you should run the command  `node index.js`
+
