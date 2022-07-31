@@ -10,15 +10,22 @@ import 'package:lost/utils.dart';
 class MessageBubble extends StatelessWidget {
   final String content;
   final bool self;
+  final int date;
 
   final String id;
 
   const MessageBubble(
-      {Key? key, required this.content, required this.self, required this.id})
+      {Key? key,
+      required this.content,
+      required this.self,
+      required this.id,
+      required this.date})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final tzDate = DateTime.fromMillisecondsSinceEpoch(date);
+
     final width = MediaQuery.of(context).size.width;
     return SizedBox(
         width: width,
@@ -28,13 +35,9 @@ class MessageBubble extends StatelessWidget {
             children: [
               Container(
                 constraints: BoxConstraints(maxWidth: width * 0.75),
-                child: Flexible(
-                    child: Text(content,
-                        style: TextStyle(
-                            color: self ? Color(0xff333333) : MainCol))),
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 12),
                 decoration: BoxDecoration(
-                    color: self ? MainCol : Color(0xff333333),
+                    color: self ? MainCol : const Color(0xff333333),
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
@@ -42,10 +45,18 @@ class MessageBubble extends StatelessWidget {
                           offset: Offset.fromDirection(pi / 2, 3))
                     ]),
                 margin: !self
-                    ? EdgeInsets.only(left: 10, bottom: 10)
-                    : EdgeInsets.only(right: 10, bottom: 10),
-              )
-            ]));
+                    ? const EdgeInsets.only(left: 10, bottom: 10)
+                    : const EdgeInsets.only(right: 10, bottom: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                  SizedBox(child: Flexible(child: Text(content, style: TextStyle(color: self ? Color(0xff333333) : MainCol)))),
+                  Text(tzDate.hour.toString()+":"+tzDate.minute.toString(), style: TextStyle(fontSize: 10,color: Color(0xbb202020)),)
+                ],),
+              ),
+
+
+        ]));
   }
 }
 
@@ -63,12 +74,10 @@ class Conversation extends StatefulWidget {
     final lastIndex = db.child('chats/$dbId/lastIndex');
     final newIndex = (((await lastIndex.get()).value ?? -1) as int) + 1;
 
-    DateTime date = DateTime.now();
-    String dates = "${date.day}/${date.month}-${date.hour}:${date.minute}";
-
+    int date = DateTime.now().millisecondsSinceEpoch;
     db
         .child('chats/$dbId/messages/$newIndex')
-        .set({'owner': thisId, 'content': content, 'id': ID(), 'date': dates});
+        .set({'owner': thisId, 'content': content, 'id': ID(), 'date': date});
     lastIndex.set(newIndex);
   }
 
@@ -110,11 +119,13 @@ class _ConversationState extends State<Conversation> {
         widget.thatUser = jsonDecode(value.body)['name'].toString();
         widget.updateDBId((msg, self) {
           if (messages
-              .where((element) => element.id == msg['id'].toString()).isEmpty) {
+              .where((element) => element.id == msg['id'].toString())
+              .isEmpty) {
             messages.add(MessageBubble(
               content: msg['content'],
               self: self,
               id: msg['id'],
+              date: msg['date'],
             ));
             setState(() {});
           }
@@ -132,6 +143,7 @@ class _ConversationState extends State<Conversation> {
               messages.add(MessageBubble(
                   content: msg['content'],
                   self: userData['_id'] == msg['owner'],
+                  date: msg['date'],
                   id: msg['id']));
             } catch (e) {}
           });
