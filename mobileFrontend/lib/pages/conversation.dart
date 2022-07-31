@@ -85,7 +85,6 @@ class Conversation extends StatefulWidget {
 
     String lastMID = '';
     db.child('chats/$dbId/messages/').onChildAdded.listen((event) {
-      print(event.type);
       if (event.type != DatabaseEventType.childAdded) return;
       dynamic msg = event.snapshot.value;
       if (lastMID.toString() == msg['id'].toString()) return;
@@ -111,8 +110,7 @@ class _ConversationState extends State<Conversation> {
         widget.thatUser = jsonDecode(value.body)['name'].toString();
         widget.updateDBId((msg, self) {
           if (messages
-              .where((element) => element.id == msg['id'].toString())
-              .isEmpty) {
+              .where((element) => element.id == msg['id'].toString()).isEmpty) {
             messages.add(MessageBubble(
               content: msg['content'],
               self: self,
@@ -144,7 +142,6 @@ class _ConversationState extends State<Conversation> {
         setState(() {});
         print('error');
       });
-
       return const Scaffold(
         body: Center(
           child: SizedBox(

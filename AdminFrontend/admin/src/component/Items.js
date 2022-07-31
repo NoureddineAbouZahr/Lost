@@ -12,7 +12,7 @@ const Items = () => {
 
     useEffect(() => {
         const getItems = async () => {
-            const res = await fetch("http://localhost:3001/api/items/getItems")
+            const res = await fetch("http://localhost:3001/api/items/getItems");
             const data = await res.json();
             setItems(data);
         };
@@ -35,11 +35,9 @@ const Items = () => {
                                     {item.SerialNumber?(<hr />):(<p></p>)}
                                     {item.model?(<p><b>Model: </b>{item.model}</p>):(<p></p>)}
                                     {item.brand?(<p><b>Brand: </b>{item.brand}</p>):(<p></p>)}
-                                    <p><b>Color: </b>{item.color}</p>
-                                    
+                                    <p><b>Color: </b>{item.color}</p>                                    
                                     {item.extraInfo?(<hr />): (<p></p>)}
-                                    {item.extraInfo?(<p><b>Extra: </b>{item.extraInfo}</p>): (<p></p>)}
-                                    
+                                    {item.extraInfo?(<p><b>Extra: </b>{item.extraInfo}</p>): (<p></p>)}                                
                                     
                                 </div>
                                 <div>
@@ -50,14 +48,12 @@ const Items = () => {
                                 <summary>Location</summary>
                                 <div className='map'>
                                     <Map
-
                                         center={[item.locationy, item.locationx]}
                                         zoom={zoom}
                                         onBoundsChanged={({ center, zoom }) => {
                                             setCenter(center)
                                             setZoom(zoom)
-                                        }}
-                                    >
+                                        }}                                   >
                                         <Marker width={50} anchor={[item.locationy, item.locationx
                                         ]} />
                                     </Map>
@@ -65,7 +61,6 @@ const Items = () => {
                             </details>
                             </div>
                         </details>
-
                     </div>
                     )
                 })}

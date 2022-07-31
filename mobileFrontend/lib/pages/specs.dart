@@ -240,9 +240,9 @@ class _SpecFoundState extends State<SpecFound> {
     };
     if (name.text != '') {
       Services().login('items/addItem', params).then((value) {
-        Navigator.pop(context);
-        Navigator.pop(context);
       }).catchError(print);
+      Navigator.pop(context);
+      Navigator.pop(context);
     }
   }
 }

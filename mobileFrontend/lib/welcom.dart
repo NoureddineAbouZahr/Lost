@@ -5,7 +5,7 @@ import 'package:lost/widgets/treeview.dart';
 import './widgets/lost_button.dart';
 import './pages/signup.dart';
 import './widgets/hyperlink.dart';
-import 'package:lost/splash.dart';
+import 'package:lost/pages/splash.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);

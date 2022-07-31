@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:lost/splash.dart';
+import 'package:lost/pages/splash.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
