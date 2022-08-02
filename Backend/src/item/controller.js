@@ -47,9 +47,9 @@ async function get(req, res) {
 
 async function removeItem(req, res) {
     try {
-        const item = await Item.findOne({ _id: req.query.id });
+        const item = await Item.deleteOne({ _id: req.body});
 
-        const deleteResult = await item.remove();
+        // const deleteResult = await item.remove();
 
         return res.send('item removed');
     }
