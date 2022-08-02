@@ -67,8 +67,8 @@
       <img src="./Readme/sc1.jpeg" width="100%"/>
     </div>
     <div style="width: 35%;">
-      <h1 style="text-align: center; width: 100%;">Login</h1>
-      <img src="./Readme/sc2.jpeg" width="100%"/>
+      <h1 style="text-align: center; width: 50%;">Login</h1>
+      <img src="./Readme/sc2.jpeg" width="50%"/>
     </div>
    </div>   
   </tr> 
