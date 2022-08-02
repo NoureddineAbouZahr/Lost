@@ -9,6 +9,9 @@ class Services {
   Future<http.Response> gets(url, params) {
     return sendToApiGet(url);
   }
+  Future<http.Response> deleteItem(url, params) {
+    return sendToApidelete(url,params);
+  }
 
 
 
