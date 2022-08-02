@@ -58,30 +58,54 @@
 
 <table align="center" style="text-align: center;">
    <tr>Implementation</tr>
-   <tr>
-       <td>Landing Page</td>
-    <td>Choosing what are you doing</td>
-   </tr>
+ 
    
    <tr>
-    <div style="display:flex;justify-content:space-evenly">
-    <img src="./Readme/sc1.jpeg" width="25%"/>
-    <img src="./Readme/sc2.jpeg" width="25%"/>
+    <div style="display:flex;justify-content:space-evenly;">
+    <div style="width: 35%;">
+      <h1 style="text-align: center; width: 100%;">Welcome</h1>
+      <img src="./Readme/sc1.jpeg" width="100%"/>
+    </div>
+    <div style="width: 35%;">
+      <h1 style="text-align: center; width: 100%;">Login</h1>
+      <img src="./Readme/sc2.jpeg" width="100%"/>
+    </div>
    </div>   
   </tr> 
    
    <tr>
-     <td><img src="./Readme/sc5.jpeg"/></td>
-     <td><img src="./Readme/sc6.jpeg"/></td>     
+    <div style="display:flex;justify-content:space-evenly;">
+      <div style="width: 35%;">
+        <h1 style="text-align: center; width: 100%;">Welcome</h1>
+        <img src="./Readme/sc5.jpeg" width="100%"/>
+      </div>
+      <div style="width: 35%;">
+        <h1 style="text-align: center; width: 100%;">Login</h1>
+        <img src="./Readme/sc4.jpeg" width="100%"/>
+      </div>
+     </div>     
    </tr>
    
    
    <tr>
-     <td><img src="./Readme/sc7.jpeg"/></td>
-     <td><img src="./Readme/sc4.jpeg"/></td>     
+    <div style="display:flex;justify-content:space-evenly;">
+      <div style="width: 35%;">
+        <h1 style="text-align: center; width: 100%;">Categories</h1>
+        <img src="./Readme/sc6.jpeg" width="100%"/>
+      </div>
+      <div style="width: 35%;">
+        <h1 style="text-align: center; width: 100%;">Item Data</h1>
+        <img src="./Readme/sc7.jpeg" width="100%"/>
+      </div>
+     </div>          
    </tr>   
    <tr>
-    <td><img src="./Readme/sc3.jpeg"/></td>
+    <div style="display:flex;justify-content:space-evenly;">
+      <div style="width: 35%;">
+        <h1 style="text-align: center; width: 105%;">Chat with the finder</h1>
+        <img src="./Readme/sc3.jpeg" width="100%"/>
+      </div>
+     </div>     
    </tr>  
    <tr>
    <td>
