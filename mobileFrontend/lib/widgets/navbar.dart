@@ -3,7 +3,7 @@ import 'package:jwt_decode/jwt_decode.dart';
 import 'package:lost/pages/login.dart';
 import 'package:lost/pages/userchats.dart';
 import 'package:lost/pages/userposts.dart';
-import 'package:lost/welcom.dart';
+import 'package:lost/pages/welcom.dart';
 import '../utils.dart';
 
 class Nav extends StatefulWidget {

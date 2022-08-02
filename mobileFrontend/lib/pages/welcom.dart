@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lost/pages/login.dart';
 import 'package:lost/utils.dart';
 import 'package:lost/widgets/treeview.dart';
-import './widgets/lost_button.dart';
-import './pages/signup.dart';
-import './widgets/hyperlink.dart';
+import '../widgets/lost_button.dart';
+import 'signup.dart';
+import '../widgets/hyperlink.dart';
 import 'package:lost/pages/splash.dart';
 
 class Welcome extends StatelessWidget {
