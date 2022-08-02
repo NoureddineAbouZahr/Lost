@@ -19,6 +19,12 @@ Future<http.Response> sendToApiPost(url, params) {
       headers: {"Content-Type": "application/json"}, body: jsonEncode(params));
 }
 
+Future<http.Response> sendToApidelete(url, params) {
+  return http.delete(Uri.parse(baseUrl + url),
+      headers: {"Content-Type": "application/json"}, body: jsonEncode(params));
+}
+
+
 void switchPage(BuildContext context, Function() f) {
   Navigator.push(context, MaterialPageRoute(builder: (c) => f()));
 }

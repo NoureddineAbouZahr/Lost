@@ -157,9 +157,9 @@ class _ConversationState extends State<Conversation> {
       return const Scaffold(
         body: Center(
           child: SizedBox(
-            child: CircularProgressIndicator(color: Colors.black),
             width: 100,
             height: 100,
+            child: CircularProgressIndicator(color: Colors.black),
           ),
         ),
       );
