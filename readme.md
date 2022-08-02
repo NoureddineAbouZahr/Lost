@@ -88,12 +88,12 @@
    
    
    <tr>
-    <div style="display:flex;justify-content:space-evenly;">
-      <div style="width: 35%;">
+    <div style="display:flex;justify-content:space-evenly;flex-direction:row">
+      <div style="width: 25%;">
         <h1 style="text-align: center; width: 100%;">Categories</h1>
         <img src="./Readme/sc6.jpeg" width="100%"/>
       </div>
-      <div style="width: 35%;">
+      <div style="width: 25%;">
         <h1 style="text-align: center; width: 100%;">Item Data</h1>
         <img src="./Readme/sc7.jpeg" width="100%"/>
       </div>
