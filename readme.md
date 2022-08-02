@@ -54,7 +54,7 @@
       <li>
       </ul>
       <br><br>
-> Uing the above mentioned tecch stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app
 
 <table align="center" style="text-align: center;">
    <tr>Implementation</tr>
@@ -64,9 +64,11 @@
    </tr>
    
    <tr>
-     <td><img src="./Readme/sc1.jpeg"/></td>
-     <td><img src="./Readme/sc2.jpeg"/></td> 
-     </tr> 
+    <div style="display:flex;justify-content:space-evenly">
+    <img src="./Readme/sc1.jpeg" width="25%"/>
+    <img src="./Readme/sc2.jpeg" width="25%"/>
+   </div>   
+  </tr> 
    
    <tr>
      <td><img src="./Readme/sc5.jpeg"/></td>
