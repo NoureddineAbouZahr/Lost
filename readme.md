@@ -61,14 +61,14 @@
  
    
    <tr>
-    <div style="display:flex;justify-content:space-evenly;">
+    <div style="display:flex;justify-content:space-around; flex-direction: row;">
     <div style="width: 25%;">
       <h1 style="text-align: center; width: 100%;">Welcome</h1>
-      <img src="./Readme/sc1.jpeg" width="35%"/>
+      <img src="./Readme/sc1.jpeg" width="100%"/>
     </div>
     <div style="width: 35%;">
       <h1 style="text-align: center; width: 100%;">Login</h1>
-      <img src="./Readme/sc2.jpeg" width="35%"/>
+      <img src="./Readme/sc2.jpeg" width="100%"/>
     </div>
    </div>   
   </tr> 
