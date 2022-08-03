@@ -1,19 +1,28 @@
 <div align="center">
   <img src="./Readme/title.png" alt="">
+  
+  > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
+**[PROJECT PHILOSOPHY](#project-philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech-stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how-to-run)**
 </div>
-<br>
-  > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available. 
-  **[PROJECT PHILOSOPHY](#project-philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech-stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how-to-run)**
-<br><br>
+
 
 <div align="center">
   <img id="project-philosophy" src="./Readme/ph.png"/>
 </div>
-<br>
+
   > Lost is a lost and found application that will help people who had found an object to publish this object with its
   specifications, and users who have lost their stuff can find them with application by showin similar items.
-  <br><br>
+  
+  ### User Stories
+  - As a user, I found a lost Item and want to publish it to reach its owner.
+  - As a user, I want to search for my lost item and check if my item is    published.
+  - As a user, I want to contact the person who published my lost item to get it back.
 
+  <br><br>  
+
+  <div align="center">
+    <img id="project-philosophy" src="./Readme/wf.png"/>
+  </div>
 
 <table align="center" style="text-align: center;">
   <tr>Implementation</tr>
