@@ -5,6 +5,7 @@
   > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available. 
   **[PROJECT PHILOSOPHY](#project-philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech-stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how-to-run)**
 <br><br>
+
 <div align="center">
   <img id="project-philosophy" src="./Readme/ph.png"/>
 </div>
