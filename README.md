@@ -1,13 +1,18 @@
 <div align="center">
   <img src="./Readme/title.png" alt="">
 </div>
+<br>
+  > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available. 
+  **[PROJECT PHILOSOPHY](#project-philosophy) • [WIREFRAMES](#wireframes) • [TECH STACK](#tech-stack) • [IMPLEMENTATION](#implementation) • [HOW TO RUN?](#how-to-run)**
+<br><br>
+
 <div align="center">
-  > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space
-  available.
-  <br>
+  <img id="project-philosophy" src="./Readme/ph.png"/>
+</div>
+<br>
   > Lost is a lost and found application that will help people who had found an object to publish this object with its
   specifications, and users who have lost their stuff can find them with application by showin similar items.
-</div>
+  <br><br>
 
 
 <table align="center" style="text-align: center;">
