@@ -21,7 +21,7 @@
   <br><br>  
 
   <div align="center">
-    <img id="project-philosophy" src="./Readme/wf.png"/>
+    <img id="wireframes" src="./Readme/wf.png"/>
   </div>
   > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
@@ -73,7 +73,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 </table>
 
 <div align="center">
-<img id="project-philosophy" src="./Readme/tech.png"/>
+<img id="tech-stack" src="./Readme/tech.png"/>
   </div>
 
 <ul>
@@ -92,7 +92,9 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app.
-
+<div align="center">
+<img id="implementation" src="./Readme/implement.png"/>
+  </div>
 <table align="center" style="text-align: center;">
   <tr>
     <td>
@@ -164,6 +166,10 @@ Note that i didn't use any styling library or theme, all from scratch and using 
   </tr>
 </table>
 <br><br>
+
+<div align="center">
+  <img id="how-to-run" src="./Readme/run.png"/>
+    </div>
 
 ### Installation
  >Download the repository as zib than exctract it or clone it
