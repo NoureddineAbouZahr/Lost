@@ -165,19 +165,30 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 </table>
 <br><br>
 
-> Now to connect to the data base you should run the command `node index.js`
+### Installation
+ >Download the repository as zib than exctract it or clone it
+ ```sh
+   git clone https://github.com/NoureddineAbouZahr/Lost.git
+   ```
 
-<ul>
-  <li>
-    Then to run the admin app change directory to the admin folder the run the `npm start` command in the command prompt
-  </li>
-  <li>
-    <img src="./Readme/runadmin.jpg" />
-  </li>
-  <li>
-    Then to run the mobile app you hove to open folder mobile app in android studio and connect your phone with usb
+   > In the AdminFrontend directory  to install all packages and the same as in the Backend directory
+   ```sh 
+   npm install
+   ```
+   >Rename .env.sample to .env and set your secret token and the MongoDB URI to get connected 
+
+
+### Run the applications
+
+> Now to connect to the data base you should run the command 
+```sh
+node index.js
+```
+
+
+> Then to run the admin app change directory to the admin folder the runthe    
+```sh
+npm start
+ ```  
+>Then to run the mobile app you hove to open folder mobile app in android studio and connect your phone with usb
     debugging to install the app the update in utils the ip address of the local host to get access to database and change the ip address to your local ip adress
-  </li>
-
-
-</ul>
