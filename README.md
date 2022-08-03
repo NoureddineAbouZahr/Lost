@@ -25,13 +25,12 @@
   </div>
 
 <table align="center" style="text-align: center;">
-  <tr>Implementation</tr>
   <tr>
     <td>
-      <h1>Login Page</h1>
+      <h2>Login Page</h2>
     </td>
     <td>
-      <h1>Choosing what are you doing</h1>
+      <h2>Choosing what are you doing</h2>
     </td>
   </tr>
 
@@ -42,10 +41,10 @@
   </tr>
   <tr>
     <td>
-      <h1>Choosing Category</h1>
+      <h2>Choosing Category</h2>
     </td>
     <td>
-      <h1>Passing Specs of found object</h1>
+      <h2>Passing Specs of found object</h2>
     </td>
   </tr>
 
@@ -56,10 +55,10 @@
   </tr>
   <tr>
     <td>
-      <h1>Similar Items</h1>
+      <h2>Similar Items</h2>
     </td>
     <td>
-      <h1>Item Data</h1>
+      <h2>Item Data</h2>
     </td>
   </tr>
 
@@ -89,10 +88,10 @@ implementation of the app is shown as below, these are screenshots from the real
   <tr>Some Screenshots of the implemented design in the mobile application</tr>
   <tr>
     <td>
-      <h1>Login</h1>
+      <h2>Login</h2>
     </td>
     <td>
-      <h1>Register</h1>
+      <h2>Register</h2>
     </td>
 
   <tr>
@@ -105,10 +104,10 @@ implementation of the app is shown as below, these are screenshots from the real
   </tr>
   <tr>
     <td>
-      <h1>Welcome</h1>
+      <h2>Welcome</h2>
     </td>
     <td>
-      <h1>Categories</h1>
+      <h2>Categories</h2>
     </td>
   </tr>
   <tr>
@@ -121,10 +120,10 @@ implementation of the app is shown as below, these are screenshots from the real
   </tr>
   <tr>
     <td>
-      <h1>Posting lost item</h1>
+      <h2>Posting lost item</h2>
     </td>
     <td>
-      <h1>Showing similar items</h1>
+      <h2>Showing similar items</h2>
     </td>
   </tr>
   <tr>
@@ -136,7 +135,7 @@ implementation of the app is shown as below, these are screenshots from the real
     </td>
 
   </tr>
-  <tr><td><h1>Item post</h1></td></tr>
+  <tr><td><h2>Item post</h2></td></tr>
   <tr>
     <td>
       <img src="./Readme/sc6.jpg" />
@@ -149,7 +148,7 @@ implementation of the app is shown as below, these are screenshots from the real
 <table style="text-align: center;">
   <tr>
     <td>
-      <h1>This is the admin web app</h1>
+      <h2>This is the admin web app</h2>
     </td>
   </tr>
   <tr>
