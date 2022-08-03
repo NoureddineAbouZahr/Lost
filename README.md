@@ -1,16 +1,21 @@
-<div align="center">
-
+<div align="center" style="  border: solid 1px grey; border-radius: 8px; ">
+  <div style=" padding: 10px; border-left: solid 10px #efd16f; border-radius: 8px;">
+    <div style="color: rgb(220,220,220,0.2); font-size: 19px; text-align: left;">Noureddine Abou Zahr</div>
+<h1 style="text-align: left;">Lost</h1>
+<div style="display: flex; background-color: rgb(231, 227, 227,0.2);padding: 8px; border-radius: 8px;">  
+  <div style="width: 100px; padding: 5px; border-radius: 5px; background-color: #efd16f; color: black; font-weight: bold; margin-right: 15px;">React</div>
+  <div style="width: 100px; padding: 5px; border-radius: 5px; background-color: #efd16f; color: black; font-weight: bold; margin-right: 15px;">Flutter</div>
+  <div style="width: 100px; padding: 5px; border-radius: 5px; background-color: #efd16f; color: black; font-weight: bold; margin-right: 15px;">Express</div>
+</div>
+</div>
 </div>
 
 <div align="center">
-
   > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space
   available.
-
+  <br>
   > Lost is a lost and found application that will help people who had found an object to publish this object with its
   specifications, and users who have lost their stuff can find them with application by showin similar items.
-
-
 </div>
 
 
