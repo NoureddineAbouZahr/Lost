@@ -23,6 +23,8 @@
   <div align="center">
     <img id="project-philosophy" src="./Readme/wf.png"/>
   </div>
+  > This design was planned before on paper, then moved to Figma app for the fine details.
+Note that i didn't use any styling library or theme, all from scratch and using pure css modules
 
 <table align="center" style="text-align: center;">
   <tr>
@@ -69,23 +71,29 @@
   </tr>
 
 </table>
+
+<div align="center">
+<img id="project-philosophy" src="./Readme/tech.png"/>
+  </div>
+
 <ul>
   <li>
     This project uses the Flutter app development framework. Flutter is a cross-platform hybrid app development platform
     which allows us to use a single codebase for apps on mobile, desktop, and the web.
   </li>
   <li>
-    For storing the database, the app uses MongoDb for items and firebase for the realtime chat
+    For storing the database, the app uses Mongooose ODM to store all data.
   </li>
   <li>
+ For implementing the realtime chat Firebase is used to store conversations between users.
+  </li>
 </ul>
-<br><br>
+<br>
 
-> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the
-implementation of the app is shown as below, these are screenshots from the real app
+
+> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app.
 
 <table align="center" style="text-align: center;">
-  <tr>Some Screenshots of the implemented design in the mobile application</tr>
   <tr>
     <td>
       <h2>Login</h2>
