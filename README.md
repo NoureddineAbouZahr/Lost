@@ -23,6 +23,8 @@
   <div align="center">
     <img id="wireframes" src="./Readme/wf.png"/>
   </div>
+  <br>
+  
 > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
 
@@ -75,6 +77,8 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 <div align="center">
 <img id="tech-stack" src="./Readme/tech.png"/>
   </div>
+  
+  <br>
 
 <ul>
   <li>
