@@ -23,7 +23,7 @@
   <div align="center">
     <img id="wireframes" src="./Readme/wf.png"/>
   </div>
-  > This design was planned before on paper, then moved to Figma app for the fine details.
+> This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
 
 <table align="center" style="text-align: center;">
