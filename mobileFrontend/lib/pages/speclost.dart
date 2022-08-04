@@ -26,7 +26,6 @@ class _SpecLostState extends State<SpecLost> {
   bool addedPosts = false;
   @override
   Widget build(BuildContext context) {
-    print(posts);
     if (!addedPosts) {
       getItem((items) {
         addedPosts = true;
@@ -89,7 +88,7 @@ class _SpecLostState extends State<SpecLost> {
           children: [
             SizedBox(height: 30),
             (posts.isEmpty
-                ? Center(
+                ? const Center(
                     child: SizedBox(
                         child: CircularProgressIndicator(color: Colors.black),
                         width: 100,
@@ -165,8 +164,8 @@ class _PostState extends State<Post> {
           width: width * 0.9,
           height: width * 0.45,
           child: AnimatedContainer(
-              margin: EdgeInsets.only(top: 10),
-              padding: EdgeInsets.all(5),
+              margin: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.all(5),
               // , spreadRadius: 3
               decoration: BoxDecoration(
                 boxShadow: [
@@ -192,20 +191,20 @@ class _PostState extends State<Post> {
                                   .image)),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         widget.name,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         width: width * 0.4,
                         child: Flexible(
                             child: Text(widget.extra,
-                                style: TextStyle(overflow: TextOverflow.clip))),
+                                style: const TextStyle(overflow: TextOverflow.clip))),
                       )
                     ],
                   )

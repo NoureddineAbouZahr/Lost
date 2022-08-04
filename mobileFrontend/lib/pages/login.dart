@@ -21,7 +21,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+        preferredSize: const Size.fromHeight(60),
         child: AppBar(
           centerTitle: true,
           title: Column(
@@ -57,7 +57,7 @@ class _LoginState extends State<Login> {
                         alignment: Alignment.centerLeft,
                         child: Text('With your existing account',
                             style: TextStyle(fontSize: 20.0)))),
-                Padding(padding: EdgeInsets.only(bottom: 20)),
+                const Padding(padding: EdgeInsets.only(bottom: 20)),
                 LostInput(
                   labelText: 'Email Address',
                   hintText: 'Enter Your Email',
@@ -70,7 +70,7 @@ class _LoginState extends State<Login> {
                   dp: true,
                 ),
                 LostButton(text: 'Log In', onPressed: () => authorizeData()),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 LostButton(
                     secondary: true,
                     text: 'Register',

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lost/pages/login.dart';
 import 'package:lost/utils.dart';
-import 'package:lost/widgets/treeview.dart';
 import '../widgets/lost_button.dart';
 import 'signup.dart';
-import '../widgets/hyperlink.dart';
-import 'package:lost/pages/splash.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -26,14 +23,14 @@ class Welcome extends StatelessWidget {
           ),
           LostButton(
               text: 'Sign Up',
-              onPressed: () => {switchPage(context, () => Signup())}),
+              onPressed: () => {switchPage(context, () => const Signup())}),
           const SizedBox(
             height: 20.0,
           ),
           LostButton(
               text: 'Log In',
               secondary: true,
-              onPressed: () => {switchPage(context, () => Login())}),
+              onPressed: () => {switchPage(context, () => const Login())}),
           const SizedBox(height: 15),
         ],
       )),

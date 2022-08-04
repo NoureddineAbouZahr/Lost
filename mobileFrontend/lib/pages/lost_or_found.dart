@@ -59,11 +59,11 @@ class LostFound extends StatelessWidget {
                     left: MediaQuery.of(context).size.width * 0.05),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text("Welcome, $name!", style: TextStyle(fontSize: 30.0)))),
+                    child: Text("Welcome, $name!", style: const TextStyle(fontSize: 30.0)))),
             Container(
                 margin: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.05),
-                child: Align(
+                child: const Align(
                     alignment: Alignment.centerLeft,
                     child: Text('How can we help you today?', style: TextStyle(fontSize: 20.0)))),
             const SizedBox(height: 20),
@@ -75,11 +75,11 @@ class LostFound extends StatelessWidget {
             const SizedBox(
               height: 70,
             ),
-            LostButton(text: 'Found Object', onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>Cats(0)))}),
+            LostButton(text: 'Found Object', onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>const Cats(0)))}),
             const SizedBox(
               height: 20,
             ),
-            LostButton(text: 'Lost Object', secondary:true,onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>Cats(1)))}),
+            LostButton(text: 'Lost Object', secondary:true,onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (c)=>const Cats(1)))}),
 
             // AlertDialog(
             //   title: Text('Success'),

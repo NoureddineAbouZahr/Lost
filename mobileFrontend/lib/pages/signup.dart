@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_simple_treeview/flutter_simple_treeview.dart';
 import 'package:lost/pages/login.dart';
-import 'package:lost/widgets/treeview.dart';
 import '../services/services.dart';
 import '../utils.dart';
 import '../widgets/input.dart';
 import '../widgets/lost_button.dart';
-import '../widgets/hyperlink.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -26,7 +23,7 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+        preferredSize: const Size.fromHeight(60),
         child: AppBar(
           centerTitle: true,
           title: Column(
@@ -50,13 +47,13 @@ class _SignupState extends State<Signup> {
             Container(
                 margin: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.05),
-                child: Align(
+                child: const Align(
                     alignment: Alignment.centerLeft,
                     child: Text('Register', style: TextStyle(fontSize: 30.0)))),
             Container(
                 margin: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.05),
-                child: Align(
+                child: const Align(
                     alignment: Alignment.centerLeft,
                     child: Text('A new account', style: TextStyle(fontSize: 20.0)))),
 
@@ -88,11 +85,11 @@ class _SignupState extends State<Signup> {
               controller: cp,
               dp: true,
             ),
-            Align(child: Column(children: [
+            Align(alignment: Alignment.bottomCenter,child: Column(children: [
               LostButton(text: 'Register', onPressed: () => authorizeData()),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               LostButton(secondary: true, text: 'Log In', onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Login())))
-            ]), alignment: Alignment.bottomCenter,)
+            ]),)
           ],
         ),
       ])),
@@ -118,7 +115,7 @@ class _SignupState extends State<Signup> {
       if (response.statusCode == 200) {
         ls.setItem('token', token);
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => Login()));
+            context, MaterialPageRoute(builder: (_) => const Login()));
       }
     } else {
       print('password doesn\'t match');
