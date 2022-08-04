@@ -20,7 +20,8 @@ void initState() {
 }
 _navigatetohome() async{
   await ls.ready;
-  // ls.clear();
+
+   ls.clear();
   String? email = await ls.getItem('email');
   String? password = await ls.getItem('password');
   if (email != null && password != null) {
@@ -30,7 +31,9 @@ _navigatetohome() async{
       await ls.setItem('token', token);
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const LostFound()));
     }
-    ).catchError(print);
+    ).catchError((err){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Login()));
+    });
   } else {
     await Future.delayed(const Duration(seconds: 2),(){});
 

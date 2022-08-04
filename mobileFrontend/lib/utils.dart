@@ -16,7 +16,7 @@ Future<http.Response> sendToApiGet(url) {
 
 Future<http.Response> sendToApiPost(url, params) {
   return http.post(Uri.parse(baseUrl + url),
-      headers: {"Content-Type": "application/json"}, body: jsonEncode(params));
+      headers: {"Content-Type": "application/json;charset=UTF-8"}, body: jsonEncode(params));
 }
 
 Future<http.Response> sendToApidelete(url, params) {

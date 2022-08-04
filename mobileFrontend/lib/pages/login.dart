@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:lost/pages/lost_or_found.dart';
 import 'package:lost/pages/signup.dart';
 import 'package:lost/services/services.dart';
@@ -93,8 +94,14 @@ class _LoginState extends State<Login> {
       await ls.setItem('token', token);
       await ls.setItem('email', email.text);
       await ls.setItem('password', password.text);
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (c) => const LostFound()));
+      try {
+        Jwt.parseJwt(token);
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (c) => const LostFound()));
+      }catch(e){
+        print(e);
+      }
+
     }).catchError(print);
   }
 }
