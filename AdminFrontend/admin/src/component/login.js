@@ -18,7 +18,7 @@ const Login = () => {
     const onSubmit = (e) => {
         if (!email || !password) {
             e.preventDefault();
-            alert("no entered data");
+            setInvalid("No Entered data");
             return
         }
         e.preventDefault();

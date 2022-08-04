@@ -514,3 +514,10 @@ logo{
   color: rgb(86, 83, 83);
 
 }
+.val{
+  color: red;
+  font-size: 12;
+  margin-top: -20px; ;
+  margin-bottom: 20px; 
+  margin-left: 15px;
+}
