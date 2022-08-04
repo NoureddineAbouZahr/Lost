@@ -9,8 +9,11 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [invalid, setInvalid] = useState("");
+    const [auth, setAuth] = useState("");
     const em = document.getElementById('email');
     const p = document.getElementById('password');
+
 
     const onSubmit = (e) => {
         if (!email || !password) {
@@ -42,9 +45,9 @@ const Login = () => {
             
             
             window.location.href = "/admin";}
-            else alert("you are not authorized");
+            else setInvalid("You are unauthorized");
         }).catch(function (error) {
-            alert('invalid email or password');
+            setInvalid('invalid email or password');
         })
 
     }
@@ -73,6 +76,7 @@ const Login = () => {
                             placeholder='Password'
                             onChange={e => setPassword(e.target.value)} />
                     </div>
+                    <p className="val" >{invalid}</p>
                     <input type="submit" value=" Log In" className="btn btn-block" />
                 </div>
             </form>
