@@ -123,10 +123,10 @@ Note that i didn't use any styling library or theme, all from scratch and using 
   </tr>
   <tr>
     <td>
-      <h2>Welcome</h2>
+      <h2>Welcome & Categories</h2>
     </td>
     <td>
-      <h2>Categories</h2>
+      <h2>Posting Lost Item</h2>
     </td>
   </tr>
   <tr>
@@ -139,10 +139,10 @@ Note that i didn't use any styling library or theme, all from scratch and using 
   </tr>
   <tr>
     <td>
-      <h2>Posting lost item</h2>
+      <h2>Viewing lost items</h2>
     </td>
     <td>
-      <h2>Showing similar items</h2>
+      <h2>Viewing Item & Navigating to Chat</h2>
     </td>
   </tr>
   <tr>
@@ -154,7 +154,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
     </td>
 
   </tr>
-  <tr><td><h2>Item post</h2></td></tr>
+  <tr><td><h2>Chatting</h2></td></tr>
   <tr>
     <td>
       <img src="./Readme/sc7.gif" />
