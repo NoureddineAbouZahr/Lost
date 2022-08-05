@@ -115,7 +115,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 
   <tr>
     <td>
-      <img src="./Readme/sc1.jpg" />
+      <img src="./Readme/sc1.gif" />
     </td>
     <td>
       <img src="./Readme/sc2.jpg" />
@@ -131,10 +131,10 @@ Note that i didn't use any styling library or theme, all from scratch and using 
   </tr>
   <tr>
     <td>
-      <img src="./Readme/sc3.jpg" />
+      <img src="./Readme/sc3.gif" />
     </td>
     <td>
-      <img src="./Readme/sc4.jpg" />
+      <img src="./Readme/sc4.gif" />
     </td>
   </tr>
   <tr>
@@ -147,7 +147,7 @@ Note that i didn't use any styling library or theme, all from scratch and using 
   </tr>
   <tr>
     <td>
-      <img src="./Readme/sc5.jpg" />
+      <img src="./Readme/sc5.gif" />
     </td>
     <td>
       <img src="./Readme/sc6.jpg" />
