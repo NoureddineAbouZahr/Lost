@@ -15,9 +15,15 @@
   
   ### User Stories
   - As a user, I found a lost Item and want to publish it to reach its owner.
-  - As a user, I want to search for my lost item and check if my item is    published.
-  - As a user, I want to contact the person who published my lost item to get it back.
-
+  - As a user, I want to post the lost item by choosing in which category it is, then entering its specification and adding its image.
+  - As a user, I want to check the lost items I posted and delete posts when the owner is found.
+  - As a user, I lost an item in a public place and can't find it.
+  - As a user, I want to search for my lost item and check if my item is published.
+  - As a user searching for his lost item, I will enter the category of this item and similar items will be displayed.
+  - As a user, I want to contact  the person who found my item  by pressing the floating button and it will redirect me to the chat.
+  - As an admin, I want to see the posted items in the mobile application.
+  - As an admin, I want to add a new type of category so users can choose what re the posting or searching for.
+  
   <br><br>  
 
   <div align="center">
