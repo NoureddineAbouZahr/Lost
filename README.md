@@ -150,14 +150,14 @@ Note that i didn't use any styling library or theme, all from scratch and using 
       <img src="./Readme/sc5.gif" />
     </td>
     <td>
-      <img src="./Readme/sc6.jpg" />
+      <img src="./Readme/sc6.gif" />
     </td>
 
   </tr>
   <tr><td><h2>Item post</h2></td></tr>
   <tr>
     <td>
-      <img src="./Readme/sc6.jpg" />
+      <img src="./Readme/sc7.gif" />
     </td>
 
   </tr>
