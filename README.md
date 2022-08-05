@@ -84,24 +84,23 @@ Note that i didn't use any styling library or theme, all from scratch and using 
 <img id="tech-stack" src="./Readme/tech.png"/>
   </div>
   
-  <br>
+  <br><br>
 
-<ul>
-  <li>
-    This project uses the Flutter app development framework. Flutter is a cross-platform hybrid app development platform
+
+- This project uses the Flutter app development framework. Flutter is a cross-platform hybrid app development platform
     which allows us to use a single codebase for apps on mobile, desktop, and the web.
-  </li>
-  <li>
-    For storing the database, the app uses Mongooose ODM to store all data.
-  </li>
-  <li>
- For implementing the realtime chat Firebase is used to store conversations between users.
-  </li>
-</ul>
+- For storing the database, the app uses Mongooose ODM to store all data.
+ 
+- For implementing the realtime chat Firebase is used to store conversations between users.
+ 
 <br>
 
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are screenshots from the real app.
+
+<br>
+
+
 <div align="center">
 <img id="implementation" src="./Readme/implement.png"/>
   </div>
